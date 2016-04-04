@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="28dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="微贷吧"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+        
+        
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/background_title_top">
+
+
+        <com.zyx.widget.CircleImageView
+            android:id="@+id/iv_head_big"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/user_head_loading_img"
+            app:border_color="@android:color/transparent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Go,Yeah!"
+            android:id="@+id/tv_custNick"
+            android:textColor="@color/black"
+            android:layout_alignTop="@+id/iv_head_big"
+            android:layout_toRightOf="@+id/iv_head_big"
+            android:layout_toEndOf="@+id/iv_head_big"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/tv_custNick"
+            android:layout_toRightOf="@+id/iv_head_big"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="信誉值:" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="5000"
+                android:id="@+id/tv_credit"
+                android:textSize="16dp"
+                android:layout_marginLeft="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="10dp"
+                android:text="积分:" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="666"
+                android:id="@+id/tv_point"
+                android:textSize="16dp"
+                android:layout_marginLeft="8dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+        <View
+            style="@style/border_line"
+            android:layout_marginTop="2dp"></View>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_me"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/img_me_false"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人信息"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/verification_code"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+
+    <View
+    style="@style/border_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_bill"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/img_loan_false"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的账单"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/verification_code"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/border_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_order"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/img_order_false"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的订单"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/verification_code"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/border_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_level"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/img_credit_false"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="信用等级"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/verification_code"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/border_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_safty"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/img_safty_false"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安全中心"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/verification_code"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/border_line"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_help"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/img_help_false"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于帮助"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/verification_code"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/border_line"/>
+
+
+</LinearLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title"></include>
+
+    <EditText
+        android:id="@+id/ib_search"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingRight="85dp"
+        android:src="@mipmap/icon_wdb"
+        android:hint="@string/input_search_zh"
+        android:textSize="14sp"
+        android:textColor="@color/lostPwd_color"
+        android:drawableLeft="@mipmap/img_search1"
+        android:background="@drawable/bt_title_box"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:src="@mipmap/cancle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border">
+
+                    <ListView
+                        android:id="@+id/lv_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:dividerHeight="16dp"
+                        android:divider="@color/white"
+                        android:clickable="true"></ListView>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="8dp"
+                    android:layout_alignParentBottom="true">
+                    <Button
+                        android:id="@+id/bt_yuqi"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bt_order"
+                        android:text="我要购书"
+                        android:textColor="@color/white"
+                        />
+
+                    <Button
+                        android:id="@+id/bt_repay"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bt_order"
+                        android:text="我要售书"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            </LinearLayout>
+</LinearLayout>

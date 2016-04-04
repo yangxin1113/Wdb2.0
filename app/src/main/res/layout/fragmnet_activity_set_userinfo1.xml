@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bc_blue"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_status_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/background_title_top" >
+
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bt_back" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/side_me_info"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="@string/text_save_zh"
+                android:textColor="@drawable/bt_registered"
+                android:textSize="16dp"
+                />
+        </RelativeLayout>
+
+        <com.zyx.widget.ScrollView1
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl_modify_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/move"
+                    android:gravity="center">
+
+
+                    <com.zyx.widget.CircleImageView
+                        android:id="@+id/iv_head_big"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/img_head_true"
+                        app:border_color="@android:color/transparent" />
+
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_modify_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/iv_head_big"
+                        android:layout_toRightOf="@+id/iv_head_big"
+                        android:layout_toEndOf="@+id/iv_head_big">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/img_write" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="5dp"
+                            android:text="修改头像"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"></View>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/iv_head_big"
+                            android:layout_centerHorizontal="true"
+                            android:text="用   户   名"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/et_custNick"
+                            android:layout_width="0dp"
+                            android:layout_weight="2.5"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Go,Yeah!"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:background="@drawable/text_edit_box"
+                            android:layout_marginRight="30dp"/>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/iv_head_big"
+                            android:layout_centerHorizontal="true"
+                            android:text="手   机   号"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/et_custPhoneNum"
+                            android:layout_width="0dp"
+                            android:layout_weight="2.5"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="13429526009"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:background="@drawable/text_edit_box"
+                            android:layout_marginRight="30dp"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/iv_head_big"
+                            android:layout_centerHorizontal="true"
+                            android:text="身  份  证"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/et_custIdCard"
+                            android:layout_width="0dp"
+                            android:layout_weight="2.5"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="330683199411138217"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:background="@drawable/text_edit_box"
+                            android:layout_marginRight="30dp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/iv_head_big"
+                            android:layout_centerHorizontal="true"
+                            android:text="姓   名"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/et_custName"
+                            android:layout_width="0dp"
+                            android:layout_weight="2.5"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="杨鑫"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:background="@drawable/text_edit_box"
+                            android:layout_marginRight="30dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.zyx.widget.ScrollView1>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_show_head"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:clickable="true"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_show_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/view_navigation_bar" />
+</FrameLayout>

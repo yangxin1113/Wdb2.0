@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white" >
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:padding="3dp" >
+
+            <com.zyx.widget.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/user_head_loading_img"
+                app:border_color="@android:color/transparent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_class"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:background="@drawable/bt_class"
+            >
+
+            <ImageView
+                android:id="@+id/iv_class"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/img_class_false1"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/ib_search"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="50dp"
+            android:paddingRight="85dp"
+            android:src="@mipmap/icon_wdb"
+            android:text="@string/input_search_zh"
+            android:textSize="14sp"
+            android:textColor="@color/lostPwd_color"
+            android:drawableLeft="@mipmap/img_search1"
+            android:background="@drawable/bt_title_box"/>
+
+       <!-- <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="@string/input_search_zh"
+            android:textSize="20sp"
+            android:background="@drawable/bt_title_box"
+            android:padding="5dp"/>-->
+    </RelativeLayout>
+</LinearLayout>

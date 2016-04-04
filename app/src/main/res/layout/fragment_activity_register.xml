@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/view_status_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <include layout="@layout/layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="30dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/single_white_text"
+                    android:padding="0.5dp" >
+
+                    <ImageView
+                        android:id="@+id/img_phone"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/input_phone_number_or_usernick" />
+
+                    <View
+                        style="@style/v_line"
+                        android:layout_margin="10dp" />
+
+                    <EditText
+                        android:id="@+id/et_phone_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/input_phone_number_zh"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:paddingRight="5dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#cccccc"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp" >
+
+                    <TextView
+                        android:id="@+id/tv_get_code"
+                        android:layout_width="100dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/single_verification_txt"
+                        android:gravity="center"
+                        android:text="@string/get_verification_code_zh"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_toLeftOf="@+id/tv_get_code"
+                        android:background="@drawable/single_white_text"
+                        android:padding="0.5dp" >
+
+                        <ImageView
+                            android:id="@+id/img_verification_code"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/input_verification_code" />
+
+                        <View
+                            style="@style/v_line"
+                            android:layout_margin="10dp" />
+
+                        <EditText
+                            android:id="@+id/et_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/input_verification_code_zh"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="#cccccc"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_user_agreement"
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:layout_margin="15dp" >
+
+                    <ImageView
+                        android:id="@+id/iv_check"
+                        android:layout_width="22dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/check_img_false" />
+
+                    <TextView
+                        android:id="@+id/tv_agreement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="6dp"
+                        android:layout_toRightOf="@+id/iv_check"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/agree_protocol_zh"
+                        android:textColor="@color/main_color"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/bt_next"
+                    style="@style/btn_layout"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/next_zh" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include layout="@layout/view_navigation_bar" />
+
+</LinearLayout>

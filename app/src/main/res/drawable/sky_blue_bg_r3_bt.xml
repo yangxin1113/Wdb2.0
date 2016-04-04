@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="@android:integer/config_mediumAnimTime">
+
+    <item android:state_pressed="false"><shape>
+            <solid android:color="#00ccff" />
+
+            <corners android:radius="3dp" />
+        </shape></item>
+    <item android:state_pressed="true"><shape>
+            <solid android:color="#059ec4" />
+
+            <corners android:radius="3dp" />
+        </shape></item>
+
+</selector>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/view_status_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <include layout="@layout/layout_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="30dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/single_white_text"
+                    android:orientation="horizontal"
+                    android:padding="0.5dp" >
+
+                    <ImageView
+                        android:id="@+id/img_login_pwd"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/input_password" />
+
+                    <View
+                        style="@style/v_line"
+                        android:layout_margin="10dp" />
+
+                    <EditText
+                        android:id="@+id/et_set_pwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/input_login_pwd_zh"
+                        android:inputType="textPassword"
+                        android:paddingRight="5dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#cccccc"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/single_white_text"
+                    android:padding="0.5dp" >
+
+                    <ImageView
+                        android:id="@+id/img_pwd"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/input_password" />
+
+                    <View
+                        style="@style/v_line"
+                        android:layout_margin="10dp" />
+
+                    <EditText
+                        android:id="@+id/et_confirm_pwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/notarize_pwd_zh"
+                        android:inputType="textPassword"
+                        android:paddingRight="5dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#cccccc"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bt_confirm"
+                    style="@style/btn_layout"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/determine_zh" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include layout="@layout/view_navigation_bar" />
+
+</LinearLayout>

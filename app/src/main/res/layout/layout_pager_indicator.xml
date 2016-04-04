@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  头部标题栏 
+ 包含一个水平滚动条
+ 单选按钮组
+ 以及一个标题指示条
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <HorizontalScrollView
+        android:id="@+id/hsv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <!-- 单选按钮 -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/rg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+            </RadioGroup>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="10dp" >
+
+                <View
+                    android:id="@+id/indicator"
+                    android:layout_width="100dp"
+                    android:layout_height="2.5dp"
+                    android:background="@color/bt_nomal" />
+            </FrameLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

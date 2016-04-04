@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_status_bar" />
+
+    <include layout="@layout/layout_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zyx.widget.CustomScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_name_tel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="收件人：杨鑫  13429526599"/>
+
+                    <TextView
+                        android:id="@+id/tv_addr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="收件地址：浙江省杭州市临安市城中花园"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/img_to_right_false"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+                <View style="@style/border_line_big"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_product"
+                        android:layout_width="0dp"
+                        android:layout_height="75dp"
+                        android:layout_weight="0.8"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:src="@mipmap/shouji1"/>
+                    <TextView
+                        android:id="@+id/tv_product_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1.6"
+                        android:layout_marginLeft="8dp"
+                        android:text="苹果（Apple） iPhone6s plus 银色 64G"
+                        android:textSize="@dimen/textSmall"/>
+
+                    <TextView
+                        android:id="@+id/tv_Qprice"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="￥4855.00"
+                        android:textSize="14sp"/>
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="8dp"
+                        />
+
+                </LinearLayout>
+
+
+                <View style="@style/border_line_big"></View>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="分期详情"
+                    android:textSize="@dimen/textLarge"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="首付:      ￥"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_firstPay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10dp"
+                        android:text="1500"
+                        android:textSize="@dimen/textSmall"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
+                <View
+                    style="@style/border_line"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                   >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="0.3"
+                        android:text="分期次数:"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_stage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="7"
+                        android:textSize="@dimen/textMedium"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:layout_marginRight="10dp"
+                        android:text="次"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.3"
+                        android:text="每月还款: "
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_repayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+
+                        android:layout_marginLeft="8dp"
+                        android:text="477.7"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:layout_marginRight="8dp"
+                        android:text="￥"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/border_line_big"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="@string/select_pay_way_zh"
+                        android:textSize="@dimen/textMedium"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="8dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@mipmap/pay_q"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="钱包支付"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="强力推荐支付方式"
+                            android:textColor="@color/color_text1_zh"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/iv_pay_q"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/check_img_true"
+                        android:layout_marginRight="20dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@mipmap/pay_z"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="支付宝支付"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="支付宝用户推荐使用方式"
+                            android:textColor="@color/color_text1_zh"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/iv_pay_z"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/check_img_false"
+                        android:layout_marginRight="20dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="16dp"
+                        android:src="@mipmap/pay_w"
+                        android:layout_marginRight="16dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="微信支付"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="微信用户推荐使用方式"
+                            android:textColor="@color/color_text1_zh"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/iv_pay_w"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/check_img_false"
+                        android:layout_marginRight="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.zyx.widget.CustomScrollView>
+
+        <Button
+            android:id="@+id/bt_buy"
+            style="@style/btn_layout"
+            android:layout_alignParentBottom="true"
+            android:text="确认购买"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
