@@ -46,6 +46,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
     private ImageView iv_yes;
     private ImageView iv_no;
 
-    private ArrayList<HashMap<String,Object>> mList;
+    private ArrayList<LinkedHashMap<String,Object>> mList;
 
 
     /**图片*/
@@ -113,7 +114,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
 
 
     /**商品选择对比记录*/
-    Map<Integer, String> plist = new HashMap<Integer, String>();
+    LinkedHashMap<Integer, String> plist = new LinkedHashMap<Integer, String>();
 
     /**单属性*/
     private Attr attrdata ;
@@ -338,12 +339,12 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
             int count = data.getInt("count");
             JSONObject attrs =data.getJSONObject("attrs");
             l_attr = new ArrayList<Attr>();
-            mList = new ArrayList<HashMap<String,Object>>();
+            mList = new ArrayList<LinkedHashMap<String,Object>>();
             for (int j=0; j<count; j++){
                 JSONArray attr = attrs.getJSONArray("attr"+j);
                 //LogUtil.i("sdfsf", attrs.getString("attr"+j);
                 list = new ArrayList<String>();
-                HashMap<String,Object> hashMap = hashMap = new HashMap<String,Object>();
+                LinkedHashMap<String,Object> hashMap  = new LinkedHashMap<String,Object>();
                 for(int k=0; k<attr.length(); k++){
                     if(k==0){
                         hashMap.put("type", attr.get(k));

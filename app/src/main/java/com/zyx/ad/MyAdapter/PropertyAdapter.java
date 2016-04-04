@@ -14,6 +14,7 @@ import com.zyx.widget.FlowLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by zyx on 2016/3/12.
@@ -21,27 +22,27 @@ import java.util.HashMap;
 public class PropertyAdapter extends BaseAdapter{
 
     private Context mContext;
-    private ArrayList<HashMap<String,Object>> mList;
-    private ArrayList<HashMap<String,TextView[]>> mViewList;
+    private ArrayList<LinkedHashMap<String,Object>> mList;
+    private ArrayList<LinkedHashMap<String,TextView[]>> mViewList;
     //用于保存用户的属性集合
-    private HashMap<String,String> selectProMap=new HashMap<String, String>();
+    private LinkedHashMap<String,String> selectProMap=new LinkedHashMap<String, String>();
     /**
      * 返回选中的属性
      * @return
      */
-    public HashMap<String, String> getSelectProMap() {
+    public LinkedHashMap<String, String> getSelectProMap() {
         return selectProMap;
     }
 
 
-    public void setSelectProMap(HashMap<String, String> selectProMap) {
+    public void setSelectProMap(LinkedHashMap<String, String> selectProMap) {
         this.selectProMap = selectProMap;
     }
 
-    public PropertyAdapter(Context mContext, ArrayList<HashMap<String, Object>> mList){
+    public PropertyAdapter(Context mContext, ArrayList<LinkedHashMap<String, Object>> mList){
         this.mContext = mContext;
         this.mList = mList;
-        mViewList=new ArrayList<HashMap<String,TextView[]>>();
+        mViewList=new ArrayList<LinkedHashMap<String,TextView[]>>();
     }
 
     @Override

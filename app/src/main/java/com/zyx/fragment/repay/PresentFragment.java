@@ -41,8 +41,7 @@ import java.util.Map;
 
 public class PresentFragment extends BaseFragment{
 
-    PullToRefreshScrollView mPullRefreshScrollView;
-    ScrollView mScrollView;
+
     private DialogWidget mDialogWidget; //弹框
     private Button bt_yuqi; //逾期
     private Button bt_repay; //还款
@@ -168,7 +167,7 @@ public class PresentFragment extends BaseFragment{
         rl_empty = (RelativeLayout) rootview.findViewById(R.id.rl_empty);
         bt_gogo = (Button) rootview.findViewById(R.id.bt_gogo);
 
-        mPullRefreshScrollView = (PullToRefreshScrollView) rootview.findViewById(R.id.pull_refresh_scrollview);
+
     }
 
     @Override
@@ -187,15 +186,6 @@ public class PresentFragment extends BaseFragment{
         bt_yuqi.setOnClickListener(this);
         bt_gogo.setOnClickListener(this);
 
-        mPullRefreshScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollView>() {
-
-            @Override
-            public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
-                //new GetDataTask();
-            }
-        });
-
-        mScrollView = mPullRefreshScrollView.getRefreshableView();
     }
 
     @Override
@@ -277,27 +267,5 @@ public class PresentFragment extends BaseFragment{
     }
 
 
-/*    private class GetDataTask extends AsyncTask<Void, Void, String[]> {
 
-        @Override
-        protected String[] doInBackground(Void... params) {
-            // Simulates a background job.
-            try {
-                Thread.sleep(1000);
-
-            } catch (InterruptedException e) {
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String[] result) {
-            // Do some stuff here
-
-            // Call onRefreshComplete when the list has been refreshed.
-            mPullRefreshScrollView.onRefreshComplete();
-
-            super.onPostExecute(result);
-        }
-    }*/
 }
