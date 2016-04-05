@@ -2,6 +2,8 @@ package com.zyx.ad.MyAdapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,33 +18,37 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+
 /**
  * Created by zyx on 2016/3/12.
  */
-public class PropertyAdapter extends BaseAdapter{
+public class PropertyAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<LinkedHashMap<String,Object>> mList;
-    private ArrayList<LinkedHashMap<String,TextView[]>> mViewList;
+    //private ArrayList<LinkedHashMap<String,TextView[]>> mViewList;
+    private Handler mhandler;
     //用于保存用户的属性集合
     private LinkedHashMap<String,String> selectProMap=new LinkedHashMap<String, String>();
     /**
      * 返回选中的属性
      * @return
-     */
+     *//*
     public LinkedHashMap<String, String> getSelectProMap() {
         return selectProMap;
-    }
+    }*/
 
 
     public void setSelectProMap(LinkedHashMap<String, String> selectProMap) {
         this.selectProMap = selectProMap;
     }
 
-    public PropertyAdapter(Context mContext, ArrayList<LinkedHashMap<String, Object>> mList){
+    public PropertyAdapter(Context mContext, ArrayList<LinkedHashMap<String, Object>> mList, Handler handler){
         this.mContext = mContext;
         this.mList = mList;
-        mViewList=new ArrayList<LinkedHashMap<String,TextView[]>>();
+        //this.mViewList=new ArrayList<LinkedHashMap<String,TextView[]>>();
+        this.mhandler = handler;
+        MapToString(selectProMap);
     }
 
     @Override
@@ -124,8 +130,8 @@ public class PropertyAdapter extends BaseAdapter{
                 }
 
                 //把控件存起来
-//               mapView.put(type, textViews);
-//               mViewList.add(mapView);
+               //mapView.put(type, textViews);
+               //mViewList.add(mapView);
             }
             /**判断之前是否已选中标签*/
             if(selectProMap.get(type)!=null){
@@ -166,7 +172,8 @@ public class PropertyAdapter extends BaseAdapter{
                     //textViews[i].setTextColor(Color.parseColor("#000000"));
                     textViews[i].setBackgroundResource(R.drawable.flag_02);
                     selectProMap.put(type, textViews[i].getText().toString());
-                    Log.i("zyxaaaa", tv.getText().toString()+selectProMap.toString());
+                    sendEmptyMessage(0X888, selectProMap);
+                    //Log.i("zyxaaaa", tv.getText().toString()+selectProMap.toString());
                 }else{
                     //其他标签背景变成白色，字体颜色为黑色
                     //textViews[i].setBackgroundDrawable(drawableNormal);
@@ -178,5 +185,33 @@ public class PropertyAdapter extends BaseAdapter{
 
         }
 
+    }
+
+    //属性顺序固定
+    private void MapToString(LinkedHashMap<String, String> selectProMap) {
+
+        for(int i = 0; i<mList.size(); i++){
+            String type = mList.get(i).get("type").toString();
+            selectProMap.put(type, "");
+        }
+
+    }
+
+
+    /**
+     * 发消息
+     *
+     * @param emptyMessage
+     * @param data
+     */
+    private void sendEmptyMessage(int emptyMessage, LinkedHashMap<String,String> data) {
+        if (emptyMessage != -1) {
+            if (mhandler != null) {
+                Message msg = mhandler.obtainMessage();
+                msg.what = emptyMessage;
+                msg.obj = data;
+                mhandler.sendMessage(msg);
+            }
+        }
     }
 }

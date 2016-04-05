@@ -33,6 +33,7 @@ import com.zyx.base.MyBaseFragmentActivity;
 import com.zyx.bean.Attr;
 import com.zyx.contants.Contants;
 import com.zyx.thread.getJsonDataThread;
+import com.zyx.utils.CaculateHelper;
 import com.zyx.utils.LogUtil;
 import com.zyx.utils.MyMessageQueue;
 import com.zyx.widget.CategoryView;
@@ -113,12 +114,14 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
 
 
 
-    /**商品选择对比记录*/
+    /**商品选择对比记录, 商品编号和详情*/
     LinkedHashMap<Integer, String> plist = new LinkedHashMap<Integer, String>();
+    /**商品选择对比记录, 商品价格和详情*/
+    LinkedHashMap<Double, String> Mlist = new LinkedHashMap<Double, String>();
+    /**商品选择返回的属性*/
+    LinkedHashMap<String,String> datadetail;
 
     /**单属性*/
-    private Attr attrdata ;
-    private CategoryView categoryView;
     private List<String> list;
     /**属性list*/
     private List<Attr> l_attr;
@@ -128,7 +131,9 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
         switch(v.getId()){
             case R.id.bt_stage:
                 Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
-                i.putExtra("ProductNumber", "1");
+                String productNum = new CaculateHelper(tv_Qprice.getText().toString(),
+                        mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).getProductNum();
+                i.putExtra("ProductNumber", productNum);
                 startActivity(i);
                 break;
             case R.id.iv_yes:
@@ -304,8 +309,23 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                         Attr attr = (com.zyx.bean.Attr) it.next();
                         categoryView.add(attr.getAttr(), attr.getType());
                     }*/
-                    propertyAdapter = new PropertyAdapter(getApplicationContext(), mList);
+                    propertyAdapter = new PropertyAdapter(getApplicationContext(), mList, handler);
                     lv_property.setAdapter(propertyAdapter);
+                }
+                break;
+
+            case 0X888:
+                LogUtil.i("zyx", "property");
+                 datadetail = (LinkedHashMap<String,String>) (msg.obj);
+
+                //LogUtil.i("zyx", "data,data:"+datadetail.);
+                if(datadetail != null ){
+                    LogUtil.i("zyx", "data,data:" + datadetail.toString());
+                    LogUtil.i("zyx", "data,data:" + Mlist.toString());
+                    tv_Qprice.setText(new CaculateHelper(Mlist, datadetail).changeprice());
+                    tv_Mprice.setText(new CaculateHelper(tv_Qprice.getText().toString(),
+                            mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).caculate());
+
                 }
                 break;
         }
@@ -327,6 +347,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 JSONObject item = products.getJSONObject(i);
                 //LogUtil.i("zzzzyyyy", item.get("ProductDescription").toString());
                 plist.put(item.getInt("ProductNumber"), item.get("ProductDescription").toString());
+                Mlist.put(item.getDouble("QuotoPrice"), item.get("ProductDescription").toString());
                 tv_ProductName.setText(item.getString("ProductName").toString());
                 tv_Mprice.setText(String.valueOf(item.getDouble("Mprice")));
                 tv_Qprice.setText(String.valueOf(item.getDouble("QuotoPrice")));
@@ -501,6 +522,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
             mSpinerPopWindow.dismiss();
             mTView.setText(mListType.get(position));
             Toast.makeText(getApplicationContext(), "点击了:" + mListType.get(position), Toast.LENGTH_LONG).show();
+            tv_Mprice.setText(new CaculateHelper(tv_Qprice.getText().toString(),
+                    mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).caculate());
         }
     };
 
@@ -510,6 +533,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
             mSpinerPopWindow1.dismiss();
             mTmonth.setText(mListType1.get(position));
             Toast.makeText(getApplicationContext(), "点击了:" + mListType1.get(position), Toast.LENGTH_LONG).show();
+            tv_Mprice.setText(new CaculateHelper(tv_Qprice.getText().toString(),
+                    mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).caculate());
         }
     };
 
