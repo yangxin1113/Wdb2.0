@@ -131,8 +131,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
         switch(v.getId()){
             case R.id.bt_stage:
                 Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
-                String productNum = new CaculateHelper(tv_Qprice.getText().toString(),
-                        mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).getProductNum();
+                String productNum =new CaculateHelper(tv_Qprice.getText().toString(),
+                        mTmonth.getText().toString(), mTView.getText().toString(), plist, Mlist, datadetail).getProductNum();
                 i.putExtra("ProductNumber", productNum);
                 startActivity(i);
                 break;
@@ -318,13 +318,16 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 LogUtil.i("zyx", "property");
                  datadetail = (LinkedHashMap<String,String>) (msg.obj);
 
-                //LogUtil.i("zyx", "data,data:"+datadetail.);
+                LogUtil.i("zyx", "aaa,data:"+tv_Qprice.getText().toString()+"aaa"+mTmonth.getText().toString());
                 if(datadetail != null ){
                     LogUtil.i("zyx", "data,data:" + datadetail.toString());
                     LogUtil.i("zyx", "data,data:" + Mlist.toString());
-                    tv_Qprice.setText(new CaculateHelper(Mlist, datadetail).changeprice());
                     tv_Mprice.setText(new CaculateHelper(tv_Qprice.getText().toString(),
-                            mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).caculate());
+                            mTmonth.getText().toString(), mTView.getText().toString(), plist, Mlist, datadetail).caculate());
+                    String chageprice = new CaculateHelper(tv_Qprice.getText().toString(),
+                            mTmonth.getText().toString(), mTView.getText().toString(), plist, Mlist, datadetail).changeprice();
+                    LogUtil.i("zyx", "chageprice:" + chageprice);
+                    tv_Qprice.setText(chageprice);
 
                 }
                 break;
@@ -523,7 +526,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
             mTView.setText(mListType.get(position));
             Toast.makeText(getApplicationContext(), "点击了:" + mListType.get(position), Toast.LENGTH_LONG).show();
             tv_Mprice.setText(new CaculateHelper(tv_Qprice.getText().toString(),
-                    mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).caculate());
+                    mTmonth.getText().toString(), mTView.getText().toString(), plist, Mlist, datadetail).caculate());
         }
     };
 
@@ -534,7 +537,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
             mTmonth.setText(mListType1.get(position));
             Toast.makeText(getApplicationContext(), "点击了:" + mListType1.get(position), Toast.LENGTH_LONG).show();
             tv_Mprice.setText(new CaculateHelper(tv_Qprice.getText().toString(),
-                    mTmonth.getText().toString(), mTView.getText().toString(), plist, datadetail).caculate());
+                    mTmonth.getText().toString(), mTView.getText().toString(), plist, Mlist, datadetail).caculate());
         }
     };
 

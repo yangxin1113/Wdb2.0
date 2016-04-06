@@ -2,7 +2,6 @@ package com.zyx.utils;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 /**
  * Created by zyx on 2016/4/4.
@@ -19,21 +18,16 @@ public class CaculateHelper {
     private Iterator iter1;
 
     public CaculateHelper (String price, String month, String firstpay,
-                           LinkedHashMap<Integer, String>  prouductdescrib, LinkedHashMap<String,String> productdetail){
+                           LinkedHashMap<Integer, String>  prouductdescrib, LinkedHashMap<Double, String>  prouductprice, LinkedHashMap<String,String> productdetail){
 
         this.price = price;
         this.month = month;
         this.firstpay = firstpay;
         this.prouductdescrib = prouductdescrib;
-        this.productdetail = productdetail;
-    }
-
-
-
-    public CaculateHelper (LinkedHashMap<Double, String>  prouductprice, LinkedHashMap<String,String> productdetail){
         this.prouductprice = prouductprice;
         this.productdetail = productdetail;
     }
+
 
 
 
@@ -41,10 +35,9 @@ public class CaculateHelper {
     public String caculate() {
         String result = "";
         //商品价格减去首付
-        double exceptfirsprice = Parse.getInstance().parseDouble(price, "#,##") * (1 - Parse.getInstance().parseDouble(firstpay, "#,##"));
+        double exceptfirsprice = Parse.getInstance().parseDouble(price, "#.##") * (1 - Parse.getInstance().parseDouble(firstpay, "#.##"));
         //除去每个月乘以0.09得每月还款
-        double mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month), "#,##") * 0.09;
-
+        double mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month), "#.##") * 1.09;
         result = String.valueOf(mMonthprice);
         return result;
     }
@@ -64,7 +57,7 @@ public class CaculateHelper {
         iter = prouductdescrib.entrySet().iterator();
         while(iter.hasNext()){
             LinkedHashMap.Entry entry =(LinkedHashMap.Entry)iter.next();
-            if(prouductdescrib.get(entry.getValue()).toString().equals(result))
+            if(entry.getValue().toString().equals(result))
                 return String.valueOf(entry.getKey());
         }
         return result;
@@ -88,7 +81,7 @@ public class CaculateHelper {
          iter = prouductprice.entrySet().iterator();
         while(iter.hasNext()){
             LinkedHashMap.Entry entry =(LinkedHashMap.Entry)iter.next();
-            if(prouductprice.get(entry.getValue()).toString().equals(result))
+            if(entry.getValue().toString().equals(result.trim()))
                 return String.valueOf(entry.getKey());
         }
         return price;
