@@ -12,19 +12,20 @@
     </array>
 
     <array name="firstPay">
-        <item>"80"</item>
-        <item>"60"</item>
-        <item>"40"</item>
-        <item>"20"</item>
-        <item>"0"</item>
+        <item>"80%"</item>
+        <item>"60%"</item>
+        <item>"40%"</item>
+        <item>"20%"</item>
+        <item>"0%"</item>
     </array>
 
     <array name="s_stage">
-        <item>一个月</item>
-        <item>三个月</item>
-        <item>五个月</item>
-        <item>七个月</item>
-        <item>九个月</item>
+        <item>1个月</item>
+        <item>3个月</item>
+        <item>5个月</item>
+        <item>7个月</item>
+        <item>9个月</item>
+        <item>12个月</item>
     </array>
 
 

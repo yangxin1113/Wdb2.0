@@ -139,7 +139,7 @@ public class PropertyAdapter extends BaseAdapter {
                     TextView v=(TextView) holder.mFlowLayout.getChildAt(h);
                     if(selectProMap.get(type).equals(v.getText().toString())){
                         //v.setBackgroundColor(Color.parseColor("#EE5500"));
-                        v.setTextColor(Color.parseColor("#FFFFFF"));
+                        //v.setTextColor(Color.parseColor("#FFFFFF"));
                         selectProMap.put(type, v.getText().toString());
                     }
                 }
