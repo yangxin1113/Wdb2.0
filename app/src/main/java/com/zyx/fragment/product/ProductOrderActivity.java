@@ -9,9 +9,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lidroid.xutils.BitmapUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.zyx.R;
 import com.zyx.ad.Passwordborder.PayPasswordView;
@@ -51,6 +53,8 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
     private TextView tv_repayment;
     private TextView tv_name_tel;
     private TextView tv_addr ;
+    private LinearLayout ll_product;
+    private BitmapUtils bitmapUtils;
 
     /**支付方式钱包,微信,支付宝*/
     private ImageView pay_q;
@@ -58,8 +62,12 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
     private ImageView pay_w;
 
     /**相关数据*/
-    private String imageUrl;
+    private String pronctnumber;
     private String productName;
+    private String productImage;
+    private String firstpay;
+    private String stages;
+    private int categoryId;
     private String customerId;
 
 
@@ -86,6 +94,11 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
                 mDialogWidget=new DialogWidget(ProductOrderActivity.this, getDecorViewDialog());
                 mDialogWidget.show();
                 break;
+            case R.id.ll_product:
+                Intent i = new Intent(ProductOrderActivity.this, ProductFragmentActivity.class);
+                i.putExtra("categoryId", categoryId);
+                startActivity(i);
+                break;
         }
 
     }
@@ -105,8 +118,16 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
     @Override
     protected void init(Bundle arg0) {
         setContentView(R.layout.product_fragment_creat_order);
-        imageUrl = getIntent().getStringExtra("imageUrl");
-        productName = getIntent().getStringExtra("productName");
+        /*imageUrl = getIntent().getStringExtra("imageUrl");
+        productName = getIntent().getStringExtra("productName");*/
+        Bundle bundle = getIntent().getExtras();
+        pronctnumber = bundle.getString("ProductNumber");
+        productName = bundle.getString("ProductName");
+        productImage = bundle.getString("ProductImage");
+        firstpay = bundle.getString("FirstPay");
+        stages = bundle.getString("Stages");
+        categoryId = bundle.getInt("CategoryId");
+
     }
 
     @Override
@@ -118,6 +139,7 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
         pay_q = (ImageView) findViewById(R.id.iv_pay_q);
         pay_z = (ImageView) findViewById(R.id.iv_pay_z);
         pay_w = (ImageView) findViewById(R.id.iv_pay_w);
+        ll_product = (LinearLayout)findViewById(R.id.ll_product);
         iv_product = (ImageView) findViewById(R.id.iv_product);
         tv_productName = (TextView) findViewById(R.id.tv_product_name);
         tv_Qprice = (TextView) findViewById(R.id.tv_Qprice);
@@ -163,6 +185,7 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
         pay_w.setOnClickListener(this);
         pay_z.setOnClickListener(this);
         bt_buy.setOnClickListener(this);
+        ll_product.setOnClickListener(this);
 
 
     }
@@ -179,12 +202,18 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
 
     @Override
     protected void getData() {
+        bitmapUtils = new BitmapUtils(getApplicationContext());
+        bitmapUtils.display(iv_product, productImage);
+        tv_productName.setText(productName);
+        tv_stage.setText(stages);
+        tv_firstPay.setText(firstpay);
+
 
     }
 
     protected View getDecorViewDialog() {
         // TODO Auto-generated method stub
-        return PayPasswordView.getInstance(String.valueOf("200"), this, new PayPasswordView.OnPayListener() {
+        return PayPasswordView.getInstance(firstpay, this, new PayPasswordView.OnPayListener() {
 
             @Override
             public void onSurePay(String password) {
@@ -210,9 +239,9 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
     public void postData(String dealPwd){
         Map<String, String > map = new HashMap<String, String>();
         map.put("customerId", customerId);
-        map.put("productNumber","3");
-        map.put("stages", "5");
-        map.put("firstPay", "1500");
+        map.put("productNumber",pronctnumber);
+        map.put("stages", stages);
+        map.put("firstPay", firstpay);
         map.put("repayment", "399");
         map.put("dealPwd", dealPwd);
         startRunnable(new PostDataThread(Contants.CreateOrder, map,

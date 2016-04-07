@@ -45,16 +45,25 @@ public class CaculateHelper {
         return result;
     }
 
+
+    //首付金额
+    public String getFirstpay(){
+        double getfirstpay = Parse.getInstance().parseDouble(price, "#.##") * (Parse.getInstance().parseDouble(firstpay.replace("%",""), "#.##")*0.01);
+        return String.valueOf(Parse.getInstance().parseDouble(getfirstpay,"#.##"));
+    }
+
     //返回商品编号
     public String getProductNum() {
         String result = "";
+        if(productdetail ==null)
+            return null;
         iter1 = productdetail.entrySet().iterator();
         while (iter1.hasNext()){
             LinkedHashMap.Entry entry =(LinkedHashMap.Entry)iter1.next();
             if(!iter1.hasNext())
-                result = result + productdetail.get(entry.getValue());
+                result = result + entry.getValue();
             else
-                result = result + productdetail.get(entry.getValue())+"，";
+                result = result + entry.getValue()+"，";
         }
 
         iter = productdescrib.entrySet().iterator();
@@ -63,7 +72,7 @@ public class CaculateHelper {
             if(entry.getValue().toString().equals(result))
                 return String.valueOf(entry.getKey());
         }
-        return result;
+        return null;
     }
 
     //对应商品价格变动

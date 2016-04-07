@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lidroid.xutils.BitmapUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zyx.R;
 
@@ -110,6 +111,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
 
     private  int[] Qprice;
     private int [] Onhand;
+    private String product_name;
+    private String product_image;
 
 
 
@@ -122,6 +125,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
     LinkedHashMap<Integer, String> OnHandlist = new LinkedHashMap<Integer, String>();
     /**商品选择返回的属性*/
     LinkedHashMap<String,String> datadetail;
+    String productNum;
 
     /**单属性*/
     private List<String> list;
@@ -132,11 +136,24 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.bt_stage:
-                Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
-                String productNum =new CaculateHelper(tv_Qprice.getText().toString(),
+                productNum =new CaculateHelper(tv_Qprice.getText().toString(),
                         mTmonth.getText().toString(), mTView.getText().toString(), OnHandlist, plist, Mlist, datadetail).getProductNum();
-                i.putExtra("ProductNumber", productNum);
-                startActivity(i);
+                if(isEmpty()){
+                    Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
+                    String firstpay = new CaculateHelper(tv_Qprice.getText().toString(),
+                            mTmonth.getText().toString(), mTView.getText().toString(), OnHandlist, plist, Mlist, datadetail).getFirstpay();
+                    String stages = mTmonth.getText().toString();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("ProductNumber", productNum);
+                    LogUtil.w("zzzzz", productNum);
+                    bundle.putString("ProductName", product_name);
+                    bundle.putString("ProductImage", product_image);
+                    bundle.putString("FirstPay", firstpay);
+                    bundle.putString("Stages", stages.replace("个月", ""));
+                    bundle.putInt("CategoryId", Integer.valueOf(categoryId));
+                    i.putExtras(bundle);
+                    startActivity(i);
+                }
                 break;
             case R.id.iv_yes:
                 if(!isfirstpay){
@@ -176,6 +193,21 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 break;
         }
 
+    }
+
+    private boolean isEmpty() {
+        boolean isNext = true;
+        if(datadetail == null){
+            utils.showToast(getApplicationContext(), "请选择商品属性！");
+            ll_proverty.setVisibility(View.VISIBLE);
+            isProperty = true;
+            isNext = false;
+        }else if(productNum == null){
+            utils.showToast(getApplicationContext(), "请将商品属性选择完整！");
+            isNext = false;
+        }
+
+        return isNext;
     }
 
 
@@ -354,6 +386,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 Mlist.put(item.getDouble("QuotoPrice"), item.get("ProductDescription").toString());
                 OnHandlist.put(item.getInt("QuantityOnHand"), item.get("ProductDescription").toString());
                 tv_ProductName.setText(item.getString("ProductName").toString());
+                product_name = item.getString("ProductName").toString();
                 tv_Mprice.setText(String.valueOf(item.getDouble("Mprice")));
                 tv_Qprice.setText(String.valueOf(item.getDouble("QuotoPrice")));
                 tv_Sprice.setText(String.valueOf(item.getDouble("QuotoPrice")+111));
@@ -361,6 +394,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 Qprice[i] = (int)item.getDouble("QuotoPrice");
                 Onhand[i] = item.getInt("QuantityOnHand");
                 imageUrl[i] = item.getString("ImageUrls");
+                product_image = imageUrl[0];
             }
             int count = data.getInt("count");
             JSONObject attrs =data.getJSONObject("attrs");
