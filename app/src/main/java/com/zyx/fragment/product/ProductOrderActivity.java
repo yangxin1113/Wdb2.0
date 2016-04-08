@@ -66,6 +66,7 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
     private String productName;
     private String productImage;
     private String firstpay;
+    private String repayment;
     private String stages;
     private int categoryId;
     private String customerId;
@@ -127,6 +128,7 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
         firstpay = bundle.getString("FirstPay");
         stages = bundle.getString("Stages");
         categoryId = bundle.getInt("CategoryId");
+        repayment = bundle.getString("Repayment");
 
     }
 
@@ -207,7 +209,7 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
         tv_productName.setText(productName);
         tv_stage.setText(stages);
         tv_firstPay.setText(firstpay);
-
+        tv_repayment.setText(repayment);
 
     }
 
@@ -242,7 +244,7 @@ public class ProductOrderActivity extends MyBaseFragmentActivity implements Upda
         map.put("productNumber",pronctnumber);
         map.put("stages", stages);
         map.put("firstPay", firstpay);
-        map.put("repayment", "399");
+        map.put("repayment", repayment);
         map.put("dealPwd", dealPwd);
         startRunnable(new PostDataThread(Contants.CreateOrder, map,
                 handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));

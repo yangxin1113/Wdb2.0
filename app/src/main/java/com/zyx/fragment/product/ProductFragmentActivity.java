@@ -151,6 +151,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                     bundle.putString("FirstPay", firstpay);
                     bundle.putString("Stages", stages.replace("个月", ""));
                     bundle.putInt("CategoryId", Integer.valueOf(categoryId));
+                    bundle.putString("Repayment", tv_Mprice.getText().toString());
                     i.putExtras(bundle);
                     startActivity(i);
                 }

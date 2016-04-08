@@ -13,7 +13,7 @@ public class CaculateHelper {
     private String firstpay; //首付金额
     private LinkedHashMap<Integer, String>  productdescrib; //商品编号
     private LinkedHashMap<Double, String>  productprice; //商品价格
-    private LinkedHashMap<Integer, String>  productonhand; //商品价格
+    private LinkedHashMap<Integer, String>  productonhand; //库存价格
     private LinkedHashMap<String,String> productdetail;  //商品属性
     private Iterator iter;
     private Iterator iter1;
