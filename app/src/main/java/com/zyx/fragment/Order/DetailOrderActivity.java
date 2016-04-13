@@ -114,18 +114,20 @@ public class DetailOrderActivity extends MyBaseFragmentActivity {
     private void setOrderData(List<OrderData> lv_orderData) {
         OrderData od = lv_orderData.get(0);
         categoryId = od.getCategoryid().toString();
-        LogUtil.w("zzzzzzz",od.getCategoryid().toString());
-        bitmapUtils.display(iv_product, od.getImageurls());
-        tv_product_name.setText(od.getProductname().toString());
-        tv_qprice.setText(od.getQuotoprice().toString());
-        tv_firstpay.setText(od.getHasfirstpay().toString());
-        tv_stage.setText(od.getTimes().toString());
-        tv_mprice.setText(od.getRepayment().toString());
-        tv_ordernumber.setText(od.getOrdernumber().toString());
-        tv_creatdate.setText(od.getOrderdate().toString().replace(".0",""));
-        tv_custname.setText(od.getCustname().toString());
-        tv_custphone.setText(od.getCustphonenum().toString());
-        tv_address.setText(od.getCustaddress().toString().replace("，","  "));
+        LogUtil.w("zzzzzzz", od.getCategoryid().toString());
+        if(od.getImageurls()==null ||!od.getImageurls().equals("")) {
+            bitmapUtils.display(iv_product, od.getImageurls());
+        }
+            tv_product_name.setText(od.getProductname().toString());
+            tv_qprice.setText(od.getQuotoprice().toString());
+            tv_firstpay.setText(od.getHasfirstpay().toString());
+            tv_stage.setText(od.getTimes().toString());
+            tv_mprice.setText(od.getRepayment().toString());
+            tv_ordernumber.setText(od.getOrdernumber().toString());
+            tv_creatdate.setText(od.getOrderdate().toString().replace(".0", ""));
+            tv_custname.setText(od.getCustname().toString());
+            tv_custphone.setText(od.getCustphonenum().toString());
+            tv_address.setText(od.getCustaddress().toString().replace("，", "  "));
     }
 
     @Override

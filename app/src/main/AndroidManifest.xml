@@ -157,6 +157,13 @@
             android:screenOrientation="portrait" >
         </activity>
 
+        <!-- 贷款下单 -->
+        <activity
+            android:name="com.zyx.fragment.loan.LoanOrderActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
     </application>
 
 </manifest>

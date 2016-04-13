@@ -41,8 +41,12 @@ public final class Contants {
     /** 获得某商品*/
     public static final String Product_One = "GetProduct.action";
 
-    /** 创建订单*/
+    /** 创建商品订单*/
     public static final String CreateOrder = "CreateOrder.action";
+
+    /** 创建商品订单*/
+    public static final String CreateLoan = "loanAction.action";
+
 
     /** 订单List*/
     public static final String OrderList = "OrderList.action";

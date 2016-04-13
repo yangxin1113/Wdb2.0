@@ -226,12 +226,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     protected boolean isLogin() {
         Map<String, Object> user = ((MyApplication) getActivity()
                 .getApplication()).getUser();
-        if (user != null && getParse().parseBool(user.get("isDsf"))) {
+        if (user != null && getParse().parseBool(user.get("CustNick"))) {
             return true;
         }
-        Map<String, String> userMap = ((MyApplication) getActivity()
-                .getApplication()).getUserMap();
-        if ((user != null && (user.get("token") != null))
+        Map<String, String> userMap = ((MyApplication) getActivity().getApplication())
+                .getUserMap();
+        if ((user != null && (user.get("CustPhoneNum") != null))
                 && (userMap != null && userMap.get(Contants.UPWD) != null)) {
             return true;
         }

@@ -40,14 +40,9 @@
                         android:id="@+id/tv_name_tel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="收件人：杨鑫  13429526599"/>
+                        android:text="收款人：杨鑫  13429526599"/>
 
-                    <TextView
-                        android:id="@+id/tv_addr"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="收件地址：浙江省杭州市临安市城中花园"
-                        android:layout_marginTop="8dp"/>
+
                 </LinearLayout>
 
                     <ImageView
@@ -61,7 +56,8 @@
 
                 <View style="@style/border_line_big"></View>
 
-                <LinearLayout
+               <LinearLayout
+                    android:id="@+id/ll_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -70,37 +66,25 @@
                     <ImageView
                         android:id="@+id/iv_product"
                         android:layout_width="0dp"
-                        android:layout_height="75dp"
-                        android:layout_weight="0.8"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="8dp"
-                        android:src="@mipmap/shouji1"/>
+                        android:layout_weight="0.8"
+                        android:src="@mipmap/img_card" />
+
                     <TextView
                         android:id="@+id/tv_product_name"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1.6"
-                        android:layout_marginLeft="8dp"
-                        android:text="苹果（Apple） iPhone6s plus 银色 64G"
-                        android:textSize="@dimen/textSmall"/>
-
-                    <TextView
-                        android:id="@+id/tv_Qprice"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="￥4855.00"
-                        android:textSize="14sp"/>
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginLeft="8dp"
-                        />
+                        android:maxLines="2"
+                        android:text="大学生分期贷款"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -129,12 +113,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:text="首付:      ￥"
+                        android:text="贷款金额:      ￥"
                         android:textSize="@dimen/textMedium"
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:id="@+id/tv_firstPay"
+                        android:id="@+id/tv_loanMoney"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -186,9 +170,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="0.3"
-                        android:text="每月还款: "
+                        android:text="每月还款:"
                         android:textSize="@dimen/textMedium"
                         android:textColor="@color/black" />
 
@@ -196,9 +180,9 @@
                         android:id="@+id/tv_repayment"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_weight="0.2"
 
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="4dp"
                         android:text="477.7"
                         android:textSize="@dimen/textMedium"
                         android:textColor="@color/black"/>
@@ -224,7 +208,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text="@string/select_pay_way_zh"
+                        android:text="@string/select_get_way_zh"
                         android:textSize="@dimen/textMedium"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="8dp"/>
@@ -252,61 +236,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="钱包支付"
+                            android:text="支付宝收款"
                             android:textColor="@color/black"
                             android:layout_marginLeft="8dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="强力推荐支付方式"
-                            android:textColor="@color/color_text1_zh"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginTop="2dp"/>
-
-                    </LinearLayout>
-
-
-                    <ImageView
-                        android:id="@+id/iv_pay_q"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@mipmap/check_img_true"
-                        android:layout_marginRight="20dp"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:src="@mipmap/pay_z"/>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="支付宝支付"
-                            android:textColor="@color/black"
-                            android:layout_marginLeft="8dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="支付宝用户推荐使用方式"
+                            android:text="推荐，方便，快捷"
                             android:textColor="@color/color_text1_zh"
                             android:layout_marginLeft="8dp"
                             android:layout_marginTop="2dp"/>
@@ -320,7 +257,38 @@
                         android:layout_height="24dp"
                         android:src="@mipmap/check_img_false"
                         android:layout_marginRight="20dp"/>
+
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_zfb"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="32dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="支付宝账号:"/>
+
+                    <EditText
+                        android:id="@+id/ed_zfb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入如支付宝账号"
+                        android:maxLength="11"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#cccccc"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="8dp"
+                        android:background="@android:color/transparent"/>
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -344,14 +312,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="微信支付"
+                            android:text="银行卡收款"
                             android:textColor="@color/black"
                             android:layout_marginLeft="8dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="微信用户推荐使用方式"
+                            android:text="已绑定银行卡用户使用方式"
                             android:textColor="@color/color_text1_zh"
                             android:layout_marginLeft="8dp"
                             android:layout_marginTop="2dp"/>
@@ -360,13 +328,57 @@
 
 
                     <ImageView
-                        android:id="@+id/iv_pay_w"
+                        android:id="@+id/iv_pay_b"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@mipmap/check_img_false"
                         android:layout_marginRight="20dp"/>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_bank"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="32dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/youzheng"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="账号"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="8dp"/>
+                    <TextView
+                        android:id="@+id/tv_bankcount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="2131***********1361"
+                        android:maxLength="11"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#cccccc"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="8dp"
+                        android:background="@android:color/transparent"/>
+
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@mipmap/change"
+                        android:layout_marginLeft="32dp"/>
+                </LinearLayout>
+
 
             </LinearLayout>
 

@@ -42,7 +42,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="8dp"
                         android:layout_weight="0.8"
-                        android:src="@mipmap/shouji1" />
+                        android:src="@mipmap/img_card" />
 
                     <TextView
                         android:id="@+id/tv_product_name"

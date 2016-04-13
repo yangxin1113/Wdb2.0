@@ -1,5 +1,8 @@
 package com.zyx.fragment.loan;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 import com.zyx.R;
 import com.zyx.base.BaseFragment;
 import com.zyx.fragment.life.LifeFragment;
+import com.zyx.fragment.login.LoginFragmentActivity;
 import com.zyx.utils.Parse;
 import com.zyx.widget.MyTitleBar;
 import com.zyx.widget.SpinerPopWindow;
@@ -40,11 +44,13 @@ public class LoanFragment extends BaseFragment {
     private TextView mMonth;
     private LinearLayout ll_drop;
     private ImageView iv_check;// 勾选框
+    private boolean isCheck;
 
     private String[] name_month;
     private List<String> mListType = new ArrayList<String>();  //类型列表
     //设置PopWindow
     private SpinerPopWindow<String> mSpinerPopWindow;
+    String Mprice;
 
 
     @Override
@@ -55,19 +61,35 @@ public class LoanFragment extends BaseFragment {
                 break;
             case R.id.bt_next:
 
-                if (isValid(ed_money.getText().toString(), mMonth.getText().toString())) {
-                    utils.showToast(getContext(), "fsafsadf");
+                if (isValid()) {
+                    if (isLogin()) {
+                        Intent i = new Intent(getActivity(), LoanOrderActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Repayment", tv_repayment.getText().toString());
+                        bundle.putString("LoanMoney", ed_money.getText().toString());
+                        bundle.putString("Stages", mMonth.getText().toString());
+                        i.putExtras(bundle);
+                        startActivity(i);
+                    } else {
+                        utils.showToast(getContext(),
+                                getString(R.string.please_login));
+                        startActivityForResult(new Intent(getContext(),
+                                        LoginFragmentActivity.class),
+                                22);
+                        getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                    }
 
+                    /*}*/
                 }
                 break;
 
             case R.id.iv_check:
-                if (getParse().parseBool1(iv_check.getTag())) {
-                    iv_check.setTag(false);
-                    iv_check.setImageResource(R.mipmap.check_img_false);
-                } else {
-                    iv_check.setTag(true);
+                if (!isCheck) {
+                    isCheck = true;
                     iv_check.setImageResource(R.mipmap.check_img_true);
+                } else {
+                    isCheck = false;
+                    iv_check.setImageResource(R.mipmap.check_img_false);
                 }
                 break;
 
@@ -106,7 +128,7 @@ public class LoanFragment extends BaseFragment {
         ll_drop.setOnClickListener(this);
         bt_next.setOnClickListener(this);
         iv_check.setOnClickListener(this);
-        //ed_money.addTextChangedListener(watcher);
+        ed_money.addTextChangedListener(watcher);
     }
 
     @Override
@@ -172,32 +194,26 @@ public class LoanFragment extends BaseFragment {
         return tv_money;
     }
 
-    private boolean isValid(String money, String month) {
+    private boolean isValid() {
         boolean isNext = true;
-        Double Money = Parse.getInstance().parseDouble(money);
-        Double Month = Parse.getInstance().parseDouble(month);
-        String tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)), "#.##"));
-        tv_repayment.setText(tv_money);
-        if (Money != null) {
-            double value = Parse.getInstance().parseDouble(Money / 100);
-            if (value % 1.0 != 0.0) {
-                utils.showToast(getContext(), "请输入100的倍数的贷款金额");
-                isNext =  false;
-            }
-        } else if (!getParse().parseBool1(iv_check.getTag())) {
-
+        Double Money = Parse.getInstance().parseDouble(ed_money.getText().toString());
+        double value = Parse.getInstance().parseDouble(Money / 100);
+        if (Money == null) {
+            utils.showToast(getContext(), "请输入贷款金额");
+            isNext =  false;
+        } else if (!isCheck) {
             utils.showToast(getContext(),
                     getString(R.string.please_agree_agreement_zh_));
             isNext = false;
-        } else if(Money == null) {
-            utils.showToast(getContext(), "请输入贷款金额");
+        } else if(value % 1.0 != 0.0) {
+            utils.showToast(getContext(), "请输入100的倍数的贷款金额");
             isNext =  false;
         }
         return isNext;
     }
 
 
-    /*private TextWatcher watcher = new TextWatcher() {
+    private TextWatcher watcher = new TextWatcher() {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -209,14 +225,45 @@ public class LoanFragment extends BaseFragment {
         public void beforeTextChanged(CharSequence s, int start, int count,
                                       int after) {
             // TODO Auto-generated method stub
+
             updaterepay(ed_money.getText().toString(), mMonth.getText().toString());
         }
 
         @Override
         public void afterTextChanged(Editable s) {
             // TODO Auto-generated method stub
-            updaterepay(ed_money.getText().toString(), mMonth.getText().toString());
-
+            //utils.showToast(getContext(),ed_money.getText().toString());
+            Mprice = updaterepay(ed_money.getText().toString(), mMonth.getText().toString());
+            tv_repayment.setText(Mprice);
         }
-    };*/
+    };
+
+
+    @Override
+    public void onActivityResult(int arg0, int arg1, Intent arg2) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(arg0, arg1, arg2);
+        if (arg0 == 22) {
+            if (arg1 == Activity.RESULT_OK) {
+                // 注册成功返回
+                if (arg2.getBooleanExtra("isRegistered", false)
+                        || arg2.getBooleanExtra("isLogin", false)) {
+                    if (isLogin()) {
+                        Intent i = new Intent(getActivity(), LoanOrderActivity.class);
+                        i.putExtra("repayment", tv_repayment.getText().toString());
+                        i.putExtra("loanMoney", ed_money.getText().toString());
+                        i.putExtra("stages", mMonth.getText().toString());
+                        startActivity(i);
+                    } else {
+                        utils.showToast(getContext(),
+                                getString(R.string.please_login));
+                        startActivityForResult(new Intent(getContext(),
+                                        LoginFragmentActivity.class),
+                                22);
+                        getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                    }
+                }
+            }
+        }
+    }
 }
