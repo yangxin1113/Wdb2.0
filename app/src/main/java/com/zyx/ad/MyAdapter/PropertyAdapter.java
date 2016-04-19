@@ -23,7 +23,7 @@ import java.util.LinkedHashMap;
  * Created by zyx on 2016/3/12.
  */
 public class PropertyAdapter extends BaseAdapter {
-
+    HashMap<Integer,View> lmap = new HashMap<Integer,View>();
     private Context mContext;
     private ArrayList<LinkedHashMap<String,Object>> mList;
     //private ArrayList<LinkedHashMap<String,TextView[]>> mViewList;
@@ -69,7 +69,7 @@ public class PropertyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        if (convertView == null) {
+        if (lmap.put(position, convertView) == null) {
             // 获取list_item布局文件的视图
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.lv_property_item, parent, false);
             holder = new ViewHolder();
@@ -81,71 +81,78 @@ public class PropertyAdapter extends BaseAdapter {
             //holder.tlPropContents=(TableLayout)convertView.findViewById(R.id.ll_property_content);
             // 设置控件集到convertView
             holder.mFlowLayout= (FlowLayout) convertView.findViewById(R.id.myviewgroup);
+            lmap.put(position, convertView);
             convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        if (this.mList != null) {
-            //HashMap<String,TextView[]> mapView=new HashMap<String, TextView[]>();
-            ArrayList<String> lables = (ArrayList<String>) this.mList.get(position).get("lable");
-            String type = (String) this.mList.get(position).get(
-                    "type");
-            holder.tvPropName.setText(type);//规格名称
-            holder.tvPropName.setTextColor(Color.BLACK);
-            //动态加载标签
-            //判断布局中的子控件是否为0，如果不为0，就不添加了，防止ListView滚动时重复添加
-            if(holder.mFlowLayout.getChildCount()==0){
-                TextView[]  textViews = new TextView[lables.size()];
-                //设置每个标签的文本和布局
-                //TableRow tr=new TableRow(mContext);
 
-                for (int i = 0; i < lables.size(); i++) {
-                    TextView textView = new TextView(mContext);
+
+            if (this.mList != null) {
+                //HashMap<String,TextView[]> mapView=new HashMap<String, TextView[]>();
+                ArrayList<String> lables = (ArrayList<String>) this.mList.get(position).get("lable");
+                String type = (String) this.mList.get(position).get(
+                        "type");
+                holder.tvPropName.setText(type);//规格名称
+                holder.tvPropName.setTextColor(Color.BLACK);
+                //动态加载标签
+                //判断布局中的子控件是否为0，如果不为0，就不添加了，防止ListView滚动时重复添加
+                if(holder.mFlowLayout.getChildCount()==0){
+                    TextView[]  textViews = new TextView[lables.size()];
+                    //设置每个标签的文本和布局
+                    //TableRow tr=new TableRow(mContext);
+
+                    for (int i = 0; i < lables.size(); i++) {
+                        TextView textView = new TextView(mContext);
 
                     /*textView.setGravity(17);
                     textView.setPadding(100, 200, 100, 15);*/
 
-                    ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                        ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT);
 
 
-                    lp.setMargins(16,4,16,4);
-                    textViews[i] = textView;
-                    textViews[i].setBackgroundResource(R.drawable.flag_01);
+                        lp.setMargins(16,4,16,4);
+                        textViews[i] = textView;
+                        textViews[i].setBackgroundResource(R.drawable.flag_01);
                     /*textView.setPadding(100, 200, 100, 15);*/
-                    textViews[i].setText(lables.get(i).toString());
+                        textViews[i].setText(lables.get(i).toString());
                     /*textViews[i].setPadding(15, 15, 15, 15);*/
-                    textViews[i].setTag(i);
+                        textViews[i].setTag(i);
 
-                    textViews[i].setTextColor(Color.GRAY);
-                    //tr.addView(textViews[i]);
-                    // holder.llPropContents.addView(textViews[i]);
-                    holder.mFlowLayout.addView(textView,lp);
-                }
-                //holder.tlPropContents.addView(tr);
-                //绑定标签的Click事件
-                for(int j=0;j<textViews.length;j++){
-                    textViews[j].setTag(textViews);
-                    textViews[j].setOnClickListener(new LableClickListener(type));
-                }
+                        textViews[i].setTextColor(Color.GRAY);
+                        //tr.addView(textViews[i]);
+                        // holder.llPropContents.addView(textViews[i]);
+                        holder.mFlowLayout.addView(textView,lp);
+                    }
+                    //holder.tlPropContents.addView(tr);
+                    //绑定标签的Click事件
+                    for(int j=0;j<textViews.length;j++){
+                        textViews[j].setTag(textViews);
+                        textViews[j].setOnClickListener(new LableClickListener(type));
+                    }
 
-                //把控件存起来
-               //mapView.put(type, textViews);
-               //mViewList.add(mapView);
-            }
-            /**判断之前是否已选中标签*/
-            if(selectProMap.get(type)!=null){
-                for(int h=0;h<holder.mFlowLayout.getChildCount();h++){
-                    TextView v=(TextView) holder.mFlowLayout.getChildAt(h);
-                    if(selectProMap.get(type).equals(v.getText().toString())){
-                        //v.setBackgroundColor(Color.parseColor("#EE5500"));
-                        //v.setTextColor(Color.parseColor("#FFFFFF"));
-                        selectProMap.put(type, v.getText().toString());
+                    //把控件存起来
+                    //mapView.put(type, textViews);
+                    //mViewList.add(mapView);
+                }
+                /**判断之前是否已选中标签*/
+                if(selectProMap.get(type)!=null){
+                    for(int h=0;h<holder.mFlowLayout.getChildCount();h++){
+                        TextView v=(TextView) holder.mFlowLayout.getChildAt(h);
+                        if(selectProMap.get(type).equals(v.getText().toString())){
+                            //v.setBackgroundColor(Color.parseColor("#EE5500"));
+                            //v.setTextColor(Color.parseColor("#FFFFFF"));
+                            selectProMap.put(type, v.getText().toString());
+                        }
                     }
                 }
+
             }
 
+
+        } else {
+            convertView = lmap.get(position);
+            holder = (ViewHolder) convertView.getTag();
         }
+
         return convertView;
     }
 

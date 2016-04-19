@@ -164,6 +164,33 @@
             android:screenOrientation="portrait" >
         </activity>
 
+        <!-- 帮助中心 -->
+        <activity
+            android:name="com.zyx.fragment.help.HelpFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 帮助详情 -->
+        <activity
+            android:name="com.zyx.fragment.help.DetailFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 安全详情 -->
+        <activity
+            android:name="com.zyx.fragment.safe.DetailFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 安全中心 -->
+        <activity
+            android:name="com.zyx.fragment.safe.SafeFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
     </application>
 
 </manifest>

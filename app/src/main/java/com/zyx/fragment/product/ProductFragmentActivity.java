@@ -37,6 +37,7 @@ import com.zyx.thread.getJsonDataThread;
 import com.zyx.utils.CaculateHelper;
 import com.zyx.utils.LogUtil;
 import com.zyx.utils.MyMessageQueue;
+import com.zyx.utils.Parse;
 import com.zyx.widget.CategoryView;
 import com.zyx.widget.MyTitleBar;
 import com.zyx.widget.SpinerPopWindow;
@@ -80,6 +81,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
     /**是否首付*/
     private ImageView iv_yes;
     private ImageView iv_no;
+    private LinearLayout ll_drop;
+    private LinearLayout ll_drop1;
 
     private ArrayList<LinkedHashMap<String,Object>> mList;
 
@@ -120,7 +123,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
     /**商品选择对比记录, 商品编号和详情*/
     LinkedHashMap<Integer, String> plist = new LinkedHashMap<Integer, String>();
     /**商品选择对比记录, 商品价格和详情*/
-    LinkedHashMap<Double, String> Mlist = new LinkedHashMap<Double, String>();
+    LinkedHashMap<String, Double> Mlist = new LinkedHashMap<String, Double>();
     /**商品选择对比记录, 商品价格和详情*/
     LinkedHashMap<Integer, String> OnHandlist = new LinkedHashMap<Integer, String>();
     /**商品选择返回的属性*/
@@ -176,7 +179,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 showSpinWindow(mSpinerPopWindow);
                 break;
             case R.id.ll_drop1:
-                showSpinWindow(mSpinerPopWindow1);
+                showSpinWindow1(mSpinerPopWindow1);
                 break;
             case R.id.s_stages:
                 break;
@@ -254,6 +257,9 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
 
         mTView = (TextView) findViewById(R.id.tv_value);
         mTmonth = (TextView) findViewById(R.id.tv_month);
+
+        ll_drop = (LinearLayout) findViewById(R.id.ll_drop);
+        ll_drop1 = (LinearLayout) findViewById(R.id.ll_drop1);
     }
 
     @Override
@@ -314,6 +320,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
         });
 
         tv_property.setOnClickListener(this);
+        ll_drop.setOnClickListener(this);
+        ll_drop1.setOnClickListener(this);
        /* mSpinerPopWindow1.setItemListener(this);
         mSpinerPopWindow11.setItemListener(this);*/
 
@@ -352,7 +360,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 LogUtil.i("zyx", "property");
                  datadetail = (LinkedHashMap<String,String>) (msg.obj);
 
-                LogUtil.i("zyx", "aaa,data:"+tv_Qprice.getText().toString()+"aaa"+mTmonth.getText().toString());
+                //LogUtil.i("zyx", "aaa,data:"+tv_Qprice.getText().toString()+"aaa"+mTmonth.getText().toString());
                 if(datadetail != null ){
                     LogUtil.i("zyx", "data,data:" + datadetail.toString());
                     LogUtil.i("zyx", "data,data:" + Mlist.toString());
@@ -375,20 +383,21 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
      */
     private void setProductdata(String reslut) {
         try {
-            imageUrl = new String[8];
+
             JSONObject data = new JSONObject(reslut);
             JSONArray products =data.getJSONArray("data");
+            imageUrl = new String[products.length()];
             Qprice = new int[products.length()];
             Onhand = new int[products.length()];
             for(int i=0; i<products.length(); i++){
                 JSONObject item = products.getJSONObject(i);
                 //LogUtil.i("zzzzyyyy", item.get("ProductDescription").toString());
                 plist.put(item.getInt("ProductNumber"), item.get("ProductDescription").toString());
-                Mlist.put(item.getDouble("QuotoPrice"), item.get("ProductDescription").toString());
+                Mlist.put(item.get("ProductDescription").toString(), item.getDouble("QuotoPrice"));
                 OnHandlist.put(item.getInt("QuantityOnHand"), item.get("ProductDescription").toString());
                 tv_ProductName.setText(item.getString("ProductName").toString());
                 product_name = item.getString("ProductName").toString();
-                tv_Mprice.setText(String.valueOf(item.getDouble("Mprice")));
+                tv_Mprice.setText(String.valueOf(Parse.getInstance().parseDouble(item.getDouble("Mprice"), "#.##")));
                 tv_Qprice.setText(String.valueOf(item.getDouble("QuotoPrice")));
                 tv_Sprice.setText(String.valueOf(item.getDouble("QuotoPrice")+111));
                 tv_onHand.setText(String.valueOf(item.getInt("QuantityOnHand")));
@@ -526,6 +535,12 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
         Log.e("", "showSpinWindow");
         s.setWidth(mTView.getWidth());
         s.showAsDropDown(mTView, 0, -200);
+    }
+
+    private void showSpinWindow1(SpinerPopWindow s){
+        Log.e("", "showSpinWindow");
+        s.setWidth(mTmonth.getWidth());
+        s.showAsDropDown(mTmonth, 0, -300);
     }
 
     /**

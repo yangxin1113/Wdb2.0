@@ -1,5 +1,6 @@
 package com.zyx.fragment.home;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -23,14 +24,24 @@ import com.zyx.ad.slidePlayView.AbSlidingPlayView;
 import com.zyx.application.MyApplication;
 import com.zyx.base.BaseFragment;
 import com.zyx.base.MyFragmentPagerAdapter;
+import com.zyx.contants.Contants;
 import com.zyx.contants.UpdateUserInfo;
 import com.zyx.fragment.Order.DetailOrderActivity;
 import com.zyx.fragment.Order.OrderFragmentActivity;
+import com.zyx.fragment.help.HelpFragmentActivity;
+import com.zyx.fragment.loan.LoanOrderActivity;
+import com.zyx.fragment.login.LoginFragmentActivity;
 import com.zyx.fragment.me.FragmentMeInfo;
 import com.zyx.fragment.repay.FragmentRepayActivity;
+import com.zyx.fragment.safe.SafeFragmentActivity;
+import com.zyx.thread.PostDataThread;
+import com.zyx.utils.LogUtil;
+import com.zyx.utils.MyMessageQueue;
+import com.zyx.utils.Resolve;
 import com.zyx.widget.CircleImageView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -44,13 +55,20 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     private RelativeLayout rl_class;
     private ImageView iv_class; //分类
     private ImageView ivBottomLine; //导航栏下划线
-    private TextView tvTab1, tvTab2,tvTab3;//导航名
-    private TextView[] titles ;
+    private TextView tvTab1, tvTab2, tvTab3;//导航名
+    private TextView[] titles;
 
     private AbSlidingPlayView viewPager;// 首页轮播
     private ArrayList<View> allListView;//存储首页轮播的界面
 
-    /**菜单信息*/
+    /**
+     * 数据相关
+     */
+    private Map<String, String> userMap;
+
+    /**
+     * 菜单信息
+     */
     private CircleImageView iv_big_head;
     private TextView tv_custNick;
     private TextView tv_credit;
@@ -58,7 +76,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
 
     private ViewPager mfragPager;
     private ArrayList<Fragment> fragmentsList;
-    private int[] resId = {  R.mipmap.page1, R.mipmap.page3,
+    private int[] resId = {R.mipmap.page1, R.mipmap.page3,
             R.mipmap.page2, R.mipmap.page3,
             R.mipmap.page1, R.mipmap.page2};
 
@@ -66,7 +84,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     private int bottomLineWidth;
     private int offset = 0;
     private int position_one;
-    public final static int num = 3 ;
+    public final static int num = 3;
     private FragmentTab1 fragmentTab1;
     private FragmentTab2 fragmentTab2;
     private FragmentTab3 fragmentTab3;
@@ -125,15 +143,54 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
 
     @Override
     protected void handlerMessage(Message msg) {
+        switch (msg.what) {
+            case MyMessageQueue.OK:
+                LogUtil.i("zyx", "44444444444");
 
+                Map<String, Map<String, Object>> mapXML = (Map<String, Map<String, Object>>) (msg.obj);
+                LogUtil.i("zyx", "mapXML,mapXML:" + mapXML);
+
+                if (mapXML != null && mapXML.size() > 0) {
+                    if ("200".equals(mapXML.get("code"))) {
+                        LogUtil.i("zyx", "yes");
+                        ArrayList<Map<String, Object>> userinfList = Resolve
+                                .getInstance().getList(mapXML, "userInfo");
+                        //LogUtil.i("zyx",userinfList.toString());
+                        if (userinfList != null && userinfList.size() > 0) {
+                            Map<String, Object> user = userinfList.get(0);
+                            if (user.get("CustomerId") != null) {
+                                // LogUtil.i("zyx1111",user.get("CustomerId").toString());
+                                ((MyApplication) getActivity().getApplication()).setUser(user);
+                                setUserInfo(((MyApplication) getActivity().getApplication()).getUser());
+                            }
+                        }
+                    }
+                }
+                break;
+        }
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.rl_head:
                 iv_head.setVisibility(View.INVISIBLE);
-                SlidingMenu();
+                if(isLogin()) {
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.put("userName", ((MyApplication) getActivity().getApplication()).getUser().get("CustPhoneNum").toString());
+                    map.put("password", ((MyApplication) getActivity().getApplication()).getUser().get("CustLoginPwd").toString());
+
+                    startRunnable(new PostDataThread(Contants.USER_LOGIN, map,
+                            handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));
+                    SlidingMenu();
+                }else{
+                    utils.showToast(getContext(),
+                            getString(R.string.please_login));
+                    startActivityForResult(new Intent(getContext(),
+                                    LoginFragmentActivity.class),
+                            33);
+                    getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                }
                 break;
 
         }
@@ -156,7 +213,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
 
     /**
      * 轮播图
-     * */
+     */
     private void initViewPager() {
         if (allListView != null) {
             allListView.clear();
@@ -197,12 +254,14 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         public void onClick(View v) {
             mfragPager.setCurrentItem(index);
         }
-    };
+    }
+
+    ;
 
     /**
      * fragment导航栏
-     * */
-    public void InitFragViewPager(){
+     */
+    public void InitFragViewPager() {
 
         fragmentsList = new ArrayList<Fragment>();
         fragmentTab1 = new FragmentTab1();
@@ -219,10 +278,12 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     }
 
     /**
-     * fragPager监听*/
+     * fragPager监听
+     */
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         int one = offset * 2 + bottomLineWidth;// 页卡1 -> 页卡2 偏移量
+
         @Override
         public void onPageSelected(int arg0) {
             Animation animation = null;
@@ -260,8 +321,8 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
 
             titles[arg0].setTextColor(getResources().getColor(R.color.text_bottom_true));
             titles[arg0].setTextColor(getResources().getColor(R.color.text_bottom_true));
-            for(int i= 0;i <titles.length; i++ ){
-                if(i!=arg0){
+            for (int i = 0; i < titles.length; i++) {
+                if (i != arg0) {
                     titles[i].setTextColor(getResources().getColor(R.color.text_bottom_false));
                 }
             }
@@ -277,7 +338,6 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     }
 
 
-
     @Override
     public void notifyUserInfo(Map<String, Object> userInfo) {
 
@@ -288,7 +348,6 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         // TODO Auto-generated method stub
         super.onResume();
         setUserInfo(((MyApplication) getActivity().getApplication()).getUser());
-
         UpdateUserInfo.getInstance().addOnUpdateUserInfo("my", this);
     }
 
@@ -316,10 +375,6 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
                 imageLoader.displayImage(getString(R.string.ip) + headImg,
                         iv_head, userHeadOption);
             }
-           /* tv_nickname.setText(getParse().isNull(userInfo.get("nickname")));
-            tv_number.setText(getParse().isNull(userInfo.get("userid")));*/
-//			tv_integral_num
-//					.setText(getParse().isNull(userInfo.get("integral")));
         }
     }
 
@@ -341,7 +396,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
                 imageLoader.displayImage(getString(R.string.ip) + headImg,
                         iv_big_head, userHeadOption);
             }
-           tv_custNick.setText(getParse().isNull(userInfo.get("CustNick")));
+            tv_custNick.setText(getParse().isNull(userInfo.get("CustNick")));
             tv_credit.setText(getParse().isNull(userInfo.get("CustCreditRest")));
             tv_point.setText(getParse().isNull(userInfo.get("CustPoint")));
 //			tv_integral_num
@@ -352,7 +407,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     /**
      * 侧滑菜单
      */
-    public void SlidingMenu(){
+    public void SlidingMenu() {
         SlidingMenu slidingMenu = new SlidingMenu(getActivity());
         //slidingMenu.setMenu(R.layout.slidingmenu_home_left);
         slidingMenu.setMenu(getView());
@@ -367,7 +422,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
             @Override
             public void onOpened() {
                 iv_head.setVisibility(View.INVISIBLE);
-                utils.showToast(getActivity(), "开");
+
 
 
             }
@@ -377,29 +432,28 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
             @Override
             public void onClosed() {
                 iv_head.setVisibility(View.VISIBLE);
-                utils.showToast(getActivity(), "关");
+
             }
         });
 
     }
 
-    public View getView(){
+    public View getView() {
         View view = getActivity().getLayoutInflater().inflate(R.layout.slidingmenu_home_left, null);
         iv_big_head = (CircleImageView) view.findViewById(R.id.iv_head_big);
         tv_custNick = (TextView) view.findViewById(R.id.tv_custNick);
         tv_credit = (TextView) view.findViewById(R.id.tv_credit);
         tv_point = (TextView) view.findViewById(R.id.tv_point);
-        LinearLayout ll_me = (LinearLayout)view.findViewById(R.id.ll_me);
-        LinearLayout ll_bill = (LinearLayout)view.findViewById(R.id.ll_bill);
-        LinearLayout ll_order = (LinearLayout)view.findViewById(R.id.ll_order);
-        LinearLayout ll_credit = (LinearLayout)view.findViewById(R.id.ll_credit);
-        LinearLayout ll_safty = (LinearLayout)view.findViewById(R.id.ll_safty);
-        LinearLayout ll_help = (LinearLayout)view.findViewById(R.id.ll_help);
+        LinearLayout ll_me = (LinearLayout) view.findViewById(R.id.ll_me);
+        LinearLayout ll_bill = (LinearLayout) view.findViewById(R.id.ll_bill);
+        LinearLayout ll_order = (LinearLayout) view.findViewById(R.id.ll_order);
+        LinearLayout ll_credit = (LinearLayout) view.findViewById(R.id.ll_credit);
+        LinearLayout ll_safty = (LinearLayout) view.findViewById(R.id.ll_safty);
+        LinearLayout ll_help = (LinearLayout) view.findViewById(R.id.ll_help);
 
         ll_me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                utils.showToast(getActivity(), "fsdfsdf");
                 Intent i = new Intent(getActivity(), FragmentMeInfo.class);
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -423,6 +477,59 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
+
+        ll_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), HelpFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            }
+        });
+        ll_safty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), SafeFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            }
+        });
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int arg0, int arg1, Intent arg2) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(arg0, arg1, arg2);
+        if (arg0 == 33) {
+            if (arg1 == Activity.RESULT_OK) {
+                // 注册成功返回
+                if (arg2.getBooleanExtra("isRegistered", false)
+                        || arg2.getBooleanExtra("isLogin", false)) {
+                    if (isLogin()) {
+                        SlidingMenu();
+                    } else {
+                        utils.showToast(getContext(),
+                                getString(R.string.please_login));
+                        startActivityForResult(new Intent(getContext(),
+                                        LoginFragmentActivity.class),
+                                22);
+                        getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                    }
+                }
+            }
+        }
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            //fragment可见时执行加载数据或者进度条等
+            setViewData();
+        } else {
+            //不可见时不执行操作
+        }
     }
 }

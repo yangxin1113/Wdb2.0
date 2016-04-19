@@ -219,8 +219,8 @@
 
                     <ListView
                         android:id="@+id/lv_property"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
 
                         android:divider="#C0C0C0"
                         android:dividerHeight="0.5px"
@@ -326,7 +326,7 @@
                             android:orientation="horizontal"
                             android:background="@drawable/spiner"
                             android:layout_marginRight="20dp"
-                            android:onClick="onClick">
+                            >
                             <TextView
                                 android:id="@+id/tv_value"
                                 android:layout_width="0dp"
@@ -370,7 +370,7 @@
                             android:orientation="horizontal"
                             android:background="@drawable/spiner"
                             android:layout_marginRight="20dp"
-                            android:onClick="onClick">
+                            >
                             <TextView
                                 android:id="@+id/tv_month"
                                 android:layout_width="0dp"

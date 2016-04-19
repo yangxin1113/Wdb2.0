@@ -12,7 +12,7 @@ public class CaculateHelper {
     private String month; //分期月数
     private String firstpay; //首付金额
     private LinkedHashMap<Integer, String>  productdescrib; //商品编号
-    private LinkedHashMap<Double, String>  productprice; //商品价格
+    private LinkedHashMap<String, Double>  productprice; //商品价格
     private LinkedHashMap<Integer, String>  productonhand; //库存价格
     private LinkedHashMap<String,String> productdetail;  //商品属性
     private Iterator iter;
@@ -20,7 +20,7 @@ public class CaculateHelper {
     private Iterator iter2;
 
     public CaculateHelper (String price, String month, String firstpay, LinkedHashMap<Integer, String>  productonhand,
-                           LinkedHashMap<Integer, String>  productdescrib, LinkedHashMap<Double, String>  productprice, LinkedHashMap<String,String> productdetail){
+                           LinkedHashMap<Integer, String>  productdescrib, LinkedHashMap<String, Double>  productprice, LinkedHashMap<String,String> productdetail){
 
         this.price = price;
         this.month = month;
@@ -93,8 +93,8 @@ public class CaculateHelper {
          iter = productprice.entrySet().iterator();
         while(iter.hasNext()){
             LinkedHashMap.Entry entry =(LinkedHashMap.Entry)iter.next();
-            if(entry.getValue().toString().equals(result.trim()))
-                return String.valueOf(entry.getKey());
+            if(entry.getKey().toString().equals(result.trim()))
+                return String.valueOf(entry.getValue());
         }
         return price;
     }

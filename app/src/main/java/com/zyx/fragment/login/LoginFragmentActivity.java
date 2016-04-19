@@ -70,11 +70,7 @@ public class LoginFragmentActivity extends MyBaseFragmentActivity implements
                   try {
                         LogUtil.i("zyx", "11111111111");
 
-                       Map<String, String> map = new HashMap<String, String>();
-//			jSon.put("uid", et_phone_no.getText().toString());
-//			jSon.put("pwd", et_pwd.getText().toString());
-//			jSon.put("cmd", "applogin");
-//			jSon.put("dwc", utils.getDeviceId(getApplicationContext()));
+                        Map<String, String> map = new HashMap<String, String>();
                         map.put("userName", et_phone_no.getText().toString());
                         map.put("password", et_pwd.getText().toString());
 
@@ -130,9 +126,6 @@ public class LoginFragmentActivity extends MyBaseFragmentActivity implements
                 Map<String, Map<String, Object>> mapXML = (Map<String, Map<String, Object>>) (msg.obj);
                 LogUtil.i("zyx", "mapXML,mapXML:"+mapXML);
 
-//	ArrayList<Map<String, Object>> resultList = Resolve.getInstance().getList(mapXML, "result");
-//	ArrayList<Map<String, Object>> resultList = Resolve.getInstance().getList(mapXML, "data", "userinf");
-//	Log.i("fc", "resultList,resultList:"+resultList.size());
                 if (mapXML != null && mapXML.size() > 0) {
                     if ("200".equals(mapXML.get("code"))) {
                         LogUtil.i("zyx","yes");

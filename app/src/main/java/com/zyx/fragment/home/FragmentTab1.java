@@ -69,7 +69,7 @@ public class FragmentTab1 extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 utils.showToast(getActivity(), String.valueOf(gv_ProductData.get(position).getCategoryId()));
                 Intent i = new Intent(getActivity(), ProductFragmentActivity.class);
-                i.putExtra("categoryId",gv_ProductData.get(position).getCategoryId());
+                i.putExtra("categoryId", gv_ProductData.get(position).getCategoryId());
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
@@ -108,5 +108,16 @@ public class FragmentTab1 extends BaseFragment {
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            //fragment可见时执行加载数据或者进度条等
+            setViewData();
+        } else {
+            //不可见时不执行操作
+        }
     }
 }
