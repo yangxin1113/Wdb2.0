@@ -1,5 +1,6 @@
 package com.zyx.fragment.home;
 
+import android.content.Intent;
 import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import com.zyx.ad.MyAdapter.GridViewAdapterProduct;
 import com.zyx.base.BaseFragment;
 import com.zyx.bean.ProductData;
 import com.zyx.contants.Contants;
+import com.zyx.fragment.product.ProductFragmentActivity;
 import com.zyx.json.ParserJsonProductitem;
 import com.zyx.thread.getJsonDataThread;
 import com.zyx.utils.LogUtil;
@@ -62,7 +64,11 @@ public class FragmentTab3 extends BaseFragment{
         gv_product_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                utils.showToast(getActivity(), gv_ProductData.get(position).getProductName());
+                utils.showToast(getActivity(), String.valueOf(gv_ProductData.get(position).getCategoryId()));
+                Intent i = new Intent(getActivity(), ProductFragmentActivity.class);
+                i.putExtra("categoryId", gv_ProductData.get(position).getCategoryId());
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
     }

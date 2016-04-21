@@ -15,6 +15,8 @@ import com.zyx.R;
 import com.zyx.application.MyApplication;
 import com.zyx.base.BaseFragment;
 import com.zyx.contants.UpdateUserInfo;
+import com.zyx.fragment.Order.OrderFragmentActivity;
+import com.zyx.fragment.repay.FragmentRepayActivity;
 import com.zyx.widget.CircleImageView;
 import com.zyx.widget.MyTitleBar;
 
@@ -33,6 +35,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
     private ImageView iv_to_rignt;
     private CircleImageView iv_head_big;
     private TextView tv_level;
+
     private TextView tv_credit;
     private TextView tv_point;
     private TextView tv_pocketmoney;
@@ -51,11 +54,21 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.iv_to_right:
+            /*case R.id.iv_to_right:
                 Intent i = new Intent(getActivity(), FragmentMeInfo.class);
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.right_in,R.anim.left_out);
+                break;*/
+            /*case R.id.ll_bill:
+                i = new Intent(getActivity(), FragmentRepayActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
+            case R.id.ll_order:
+                i = new Intent(getActivity(), OrderFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;*/
         }
 
     }
@@ -68,7 +81,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
 
     @Override
     protected void initView(View rootview) {
-        view_status_bar = (View) rootview.findViewById(R.id.view_status_bar);
+        /*view_status_bar = (View) rootview.findViewById(R.id.view_status_bar);
         view_navigation_bar = (View) rootview.findViewById(R.id.view_navigation_bar);
         mtb_title = (MyTitleBar) rootview.findViewById(R.id.mtb_title);
         rl_me = (RelativeLayout) rootview.findViewById(R.id.rl_me);
@@ -77,33 +90,33 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         tv_level = (TextView) rootview.findViewById(R.id.tv_level);
         tv_credit = (TextView) rootview.findViewById(R.id.tv_credit);
         tv_point = (TextView) rootview.findViewById(R.id.tv_point);
-        tv_pocketmoney = (TextView) rootview.findViewById(R.id.tv_pocketmoney);
-        tv_bank_count = (TextView) rootview.findViewById(R.id.tv_bank_count);
+        tv_pocketmoney = (TextView) rootview.findViewById(R.id.tv_pocketmoney);*/
+        /*tv_bank_count = (TextView) rootview.findViewById(R.id.tv_bank_count);
         tv_bill_count = (TextView) rootview.findViewById(R.id.tv_bill_count);
         tv_order_count = (TextView) rootview.findViewById(R.id.tv_order_count);
         ll_pocketmoney = (LinearLayout) rootview.findViewById(R.id.ll_pocketmoney);
         ll_bank = (LinearLayout) rootview.findViewById(R.id.ll_bank);
         ll_bill = (LinearLayout) rootview.findViewById(R.id.ll_bill);
-        ll_order = (LinearLayout) rootview.findViewById(R.id.ll_order);
+        ll_order = (LinearLayout) rootview.findViewById(R.id.ll_order);*/
 
     }
 
     @Override
     protected void setViewData() {
-        view_status_bar.setBackgroundColor(getResources().getColor(
+       /* view_status_bar.setBackgroundColor(getResources().getColor(
                 R.color.main_color));
         mtb_title.setText(getString(R.string.me_bottom_text));
-        mtb_title.setLeftVisibility(View.INVISIBLE);
+        mtb_title.setLeftVisibility(View.INVISIBLE);*/
     }
 
     @Override
     protected void initEvent() {
-        rl_me.setOnClickListener(this);
+        /*rl_me.setOnClickListener(this);
         iv_to_rignt.setOnClickListener(this);
         ll_pocketmoney.setOnClickListener(this);
-        ll_bank.setOnClickListener(this);
-        ll_bill.setOnClickListener(this);
-        ll_order.setOnClickListener(this);
+        ll_bank.setOnClickListener(this);*/
+        /*ll_bill.setOnClickListener(this);
+        ll_order.setOnClickListener(this);*/
 
     }
 
@@ -142,7 +155,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
      * @param userInfo
      */
     private void setUserInfo(Map<String, Object> userInfo) {
-        if (userInfo != null) {
+        /*if (userInfo != null) {
             String headImg = getParse().isNull(userInfo.get("CustHead"));
             if ("".equals(headImg)) {
                 iv_head_big.setImageResource(R.mipmap.img_head_false);
@@ -156,15 +169,12 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
             tv_level.setText(getParse().isNull(userInfo.get("CustlevelId")));
             tv_credit.setText(getParse().isNull(userInfo.get("CustCreditRest")));
             tv_credit.setText(getParse().isNull(userInfo.get("CustPoint")));
-            tv_pocketmoney.setText(getParse().isNull((userInfo.get("CustPocketMoney"))));
-            tv_bank_count.setText(getParse().isNull((userInfo.get("CustPocketMoney"))));
-            tv_bill_count.setText(getParse().isNull((userInfo.get("tv_bill_count"))));
-            tv_order_count.setText(getParse().isNull((userInfo.get("tv_order_count"))));
-           /* tv_nickname.setText(getParse().isNull(userInfo.get("nickname")));
-            tv_number.setText(getParse().isNull(userInfo.get("userid")));*/
-//			tv_integral_num
-//					.setText(getParse().isNull(userInfo.get("integral")));
-        }
+            tv_pocketmoney.setText(getParse().isNull((userInfo.get("CustPocketMoney"))));*/
+            //tv_bank_count.setText(getParse().isNull((userInfo.get("CustPocketMoney"))));
+            /*tv_bill_count.setText(getParse().isNull((userInfo.get("tv_bill_count"))));
+            tv_order_count.setText(getParse().isNull((userInfo.get("tv_order_count"))));*/
+
+        //}
     }
 
     @Override

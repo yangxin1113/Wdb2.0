@@ -57,6 +57,9 @@ public final class Contants {
     /**修改订单状态订单*/
     public static final String UpdateOrderStatus = "UpdateOrders.action";
 
+    /** 搜索商品*/
+    public static final String SearchProducts = "searchProducts.action";
+
 
     /**repay状态订单,,逾期/还款*/
     public static final String RepayAction = "repayAction.action";

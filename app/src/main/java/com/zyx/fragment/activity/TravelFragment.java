@@ -12,6 +12,7 @@ import com.zyx.ad.MyAdapter.ListProductAdapter;
 import com.zyx.base.BaseFragment;
 import com.zyx.bean.ProductData;
 import com.zyx.fragment.Order.DetailOrderActivity;
+import com.zyx.fragment.product.TravelFragmentActivity;
 import com.zyx.widget.MyTitleBar;
 
 import java.util.ArrayList;
@@ -122,8 +123,7 @@ public class TravelFragment extends BaseFragment {
         @Override
         public void myOnClick(int position, View v) {
             //Toast.makeText(getContext(), "ordernumber" + lv_OrderData.get(position).getProductname(),Toast.LENGTH_LONG);
-            Intent i = new Intent(getActivity(), DetailOrderActivity.class);
-            //i.putExtra("OrderNumber", lv_OrderData.get(position).getOrdernumber());
+            Intent i = new Intent(getActivity(), TravelFragmentActivity.class);
             startActivity(i);
             getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
 

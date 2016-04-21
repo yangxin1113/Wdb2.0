@@ -366,9 +366,14 @@
 
                 <Button
                     android:id="@+id/bt_login_out"
-                    style="@style/btn_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:text="退出"
-                    android:layout_marginTop="20dp"/>
+                    android:background="@drawable/bt_short"
+
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"/>
             </LinearLayout>
 
         </com.zyx.widget.ScrollView1>

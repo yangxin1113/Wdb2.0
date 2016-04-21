@@ -47,10 +47,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by zyx on 2016/2/22.
+ * Created by zyx on 2016/2/22.(无用)
  */
 
-public class TravelFragmentActivity extends MyBaseFragmentActivity{
+public class SearchListActivity extends MyBaseFragmentActivity{
 
     /** 控件相关 */
     private View view_status_bar;// 状态栏
@@ -222,7 +222,8 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
     @Override
     protected void init(Bundle arg0) {
 
-        setContentView(R.layout.product_fragment_travel);
+        setContentView(R.layout.product_fragment_detail);
+        categoryId = getIntent().getIntExtra("categoryId",0);
     }
 
     @Override
@@ -232,7 +233,7 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
         view_navigation_bar = (View) findViewById(R.id.view_navigation_bar);
 
         mtb_title = (MyTitleBar) findViewById(R.id.mtb_title);
-        /*tv_ProductName = (TextView)findViewById(R.id.tv_product_name);
+        tv_ProductName = (TextView)findViewById(R.id.tv_product_name);
         tv_Mprice = (TextView) findViewById(R.id.tv_Mprice);
         tv_Qprice = (TextView) findViewById(R.id.tv_Qprice);
         tv_Sprice = (TextView) findViewById(R.id.tv_sPrice);
@@ -251,7 +252,7 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
         mTmonth = (TextView) findViewById(R.id.tv_month);
 
         ll_drop = (LinearLayout) findViewById(R.id.ll_drop);
-        ll_drop1 = (LinearLayout) findViewById(R.id.ll_drop1);*/
+        ll_drop1 = (LinearLayout) findViewById(R.id.ll_drop1);
     }
 
     @Override
@@ -269,22 +270,39 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
         view_status_bar.setBackgroundColor(getResources().getColor(
                 R.color.main_color));
         mtb_title.setText(getString(R.string.title_product_zh));
-        initViewPager();
+        Map<String, String > map = new HashMap<String, String>();
+        map.put("categoryId", String.valueOf(categoryId));
+        startRunnable(new getJsonDataThread(Contants.Product_One, map,
+                handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));
+
 
         initData();
-        /*mSpinerPopWindow = new SpinerPopWindow<String>(this, mListType,itemClickListener);
+        mSpinerPopWindow = new SpinerPopWindow<String>(this, mListType,itemClickListener);
         mSpinerPopWindow.setOnDismissListener(dismissListener);
         mSpinerPopWindow1 = new SpinerPopWindow<String>(this, mListType1,itemClickListener1);
-        mSpinerPopWindow1.setOnDismissListener(dismissListener);*/
+        mSpinerPopWindow1.setOnDismissListener(dismissListener);
+       /* mAdapter = new SpinerAdapter(this,mListType);
+        mAdapter.refreshData(mListType, 0);
+        mAdapter1 = new SpinerAdapter(this,mListType1);
+        mAdapter1.refreshData(mListType1, 0);*/
+
+        /*//初始化PopWindow
+        mSpinerPopWindow = new SpinerPopWindow(this);
+        mSpinerPopWindow.setAdatper(mAdapter);
+
+        mSpinerPopWindow1 = new SpinerPopWindow(this);
+        mSpinerPopWindow1.setAdatper(mAdapter1);*/
 
     }
 
     @Override
     protected void initEvent() {
-
-        /*iv_no.setOnClickListener(this);
-        iv_yes.setOnClickListener(this);*/
-        //bt_stage.setOnClickListener(this);
+//        categoryView.setOnClickCategoryListener(this);
+       /* s_stages.setOnClickListener(this);
+        firstPay.setOnClickListener(this);*/
+        iv_no.setOnClickListener(this);
+        iv_yes.setOnClickListener(this);
+        bt_stage.setOnClickListener(this);
         mtb_title.setLeftImageOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -294,9 +312,13 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
             }
         });
 
-        //tv_property.setOnClickListener(this);
-        //ll_drop.setOnClickListener(this);
-        //ll_drop1.setOnClickListener(this);
+        tv_property.setOnClickListener(this);
+        ll_drop.setOnClickListener(this);
+        ll_drop1.setOnClickListener(this);
+       /* mSpinerPopWindow1.setItemListener(this);
+        mSpinerPopWindow11.setItemListener(this);*/
+
+
     }
 
     @Override
@@ -316,7 +338,7 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
                 if(data != null ){
                     LogUtil.i("zyx", "data,data:" + data.toString());
                     setProductdata(data);
-                    //initViewPager(imageUrl);
+                    initViewPager(imageUrl);
                     /*Iterator it = l_attr.iterator();
                     while (it.hasNext()) {
                         Attr attr = (com.zyx.bean.Attr) it.next();
@@ -418,11 +440,8 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
     /**
      * 商品图片
      * */
-    private void initViewPager() {
-       String[] urlss = new  String [3];
-        urlss[0] = "http://s3.lvjs.com.cn//uploads/pc/place2/2015-01-12/6f914743-a476-4214-bb1f-07d7736bab5e.jpg";
-        urlss[1] = "http://s3.lvjs.com.cn//uploads/pc/place2/2015-01-12/6f914743-a476-4214-bb1f-07d7736bab5e.jpg";
-        urlss[2] = "http://s3.lvjs.com.cn//uploads/pc/place2/2015-01-12/6f914743-a476-4214-bb1f-07d7736bab5e.jpg";
+    private void initViewPager(String[] urls) {
+
         if(allListView!=null){
             allListView.clear();
             allListView = null;
@@ -430,10 +449,10 @@ public class TravelFragmentActivity extends MyBaseFragmentActivity{
         allListView = new ArrayList<View>();
 
 
-        for(int i=0; i<urlss.length; i++){
+        for(int i=0; i<imageUrl.length; i++){
             View view = LayoutInflater.from(this).inflate(R.layout.dpic_item,null);
             ImageView imageView = (ImageView) view.findViewById(R.id.pic_item);
-            ImageLoader.getInstance().displayImage(urlss[i], imageView, options);
+            ImageLoader.getInstance().displayImage(urls[i], imageView, options);
             imageView.setOnClickListener(new View.OnClickListener() {
 
                 @Override

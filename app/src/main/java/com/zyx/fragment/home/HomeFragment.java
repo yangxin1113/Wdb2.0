@@ -32,6 +32,8 @@ import com.zyx.fragment.help.HelpFragmentActivity;
 import com.zyx.fragment.loan.LoanOrderActivity;
 import com.zyx.fragment.login.LoginFragmentActivity;
 import com.zyx.fragment.me.FragmentMeInfo;
+import com.zyx.fragment.product.ProductFragmentActivity;
+import com.zyx.fragment.product.SearchFragmentActivity;
 import com.zyx.fragment.repay.FragmentRepayActivity;
 import com.zyx.fragment.safe.SafeFragmentActivity;
 import com.zyx.thread.PostDataThread;
@@ -100,6 +102,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     protected void initView(View rootview) {
         rl_head = (RelativeLayout) rootview.findViewById(R.id.rl_head);
         iv_head = (CircleImageView) rootview.findViewById(R.id.iv_head);
+        bt_search = (Button) rootview.findViewById(R.id.bt_search);
         rl_class = (RelativeLayout) rootview.findViewById(R.id.rl_class);
         tvTab1 = (TextView) rootview.findViewById(R.id.tv_tab1);
         tvTab2 = (TextView) rootview.findViewById(R.id.tv_tab2);
@@ -130,6 +133,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     protected void initEvent() {
         rl_head.setOnClickListener(this);
         rl_class.setOnClickListener(this);
+        bt_search.setOnClickListener(this);
         tvTab1.setOnClickListener(new MyOnClickListener(0));
         tvTab2.setOnClickListener(new MyOnClickListener(1));
         tvTab3.setOnClickListener(new MyOnClickListener(2));
@@ -192,6 +196,10 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
                     getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
                 }
                 break;
+            case R.id.bt_search:
+                Intent i = new Intent(getActivity(), SearchFragmentActivity.class);
+                startActivity(i);
+                break;
 
         }
 
@@ -236,8 +244,9 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
             @Override
             public void onClick(int position) {
                 // 跳转到详情界面
-                //Intent intent = new Intent(getActivity(), GoodsList.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getActivity(), ProductFragmentActivity.class);
+                intent.putExtra("categoryId",5);
+                startActivity(intent);
             }
 
         });

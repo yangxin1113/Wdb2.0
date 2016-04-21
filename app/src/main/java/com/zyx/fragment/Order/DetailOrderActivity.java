@@ -59,6 +59,7 @@ public class DetailOrderActivity extends MyBaseFragmentActivity {
     private TextView tv_custphone;
     private TextView tv_address;
     private LinearLayout ll_product;
+    private ImageView iv_right;
 
     /** 相关数据 */
     String ordernumber;
@@ -75,10 +76,12 @@ public class DetailOrderActivity extends MyBaseFragmentActivity {
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case R.id.ll_product:
-                i = new Intent(DetailOrderActivity.this, ProductFragmentActivity.class);
-                i.putExtra("categoryId", Parse.getInstance().parseInt(categoryId));
-                startActivity(i);
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                if(!tv_product_name.getText().equals("大学生分期贷款")) {
+                    i = new Intent(DetailOrderActivity.this, ProductFragmentActivity.class);
+                    i.putExtra("categoryId", Parse.getInstance().parseInt(categoryId));
+                    startActivity(i);
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
         }
 
     }
@@ -160,6 +163,7 @@ public class DetailOrderActivity extends MyBaseFragmentActivity {
         tv_custphone = (TextView) findViewById(R.id.tv_custphonenum);
         tv_address = (TextView) findViewById(R.id.tv_custaddress);
         ll_product = (LinearLayout) findViewById(R.id.ll_product);
+        iv_right = (ImageView)findViewById(R.id.iv_right);
 
     }
 
