@@ -64,6 +64,10 @@ public final class Contants {
     /**repay状态订单,,逾期/还款*/
     public static final String RepayAction = "repayAction.action";
 
+
+    /** 获得某商品*/
+    public static final String ZhongchouList = "getZhongchous.action";
+
     /** 用户文件夹 */
     public static final String USER_PATH = "USER/user";
 

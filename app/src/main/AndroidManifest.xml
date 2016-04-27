@@ -205,6 +205,34 @@
             android:screenOrientation="portrait" >
         </activity>
 
+        <!-- 总资产页面 -->
+        <activity
+            android:name="com.zyx.fragment.me.TotalMoneyActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 众筹项目发布页面 -->
+        <activity
+            android:name="com.zyx.fragment.me.ZhongchouPublishActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 众筹项首面 -->
+        <activity
+            android:name="com.zyx.fragment.me.ZhongchouIndexActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 爱理财页面 -->
+        <activity
+            android:name="com.zyx.fragment.me.AilicaiActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
     </application>
 
 </manifest>

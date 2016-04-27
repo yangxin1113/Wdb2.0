@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <include layout="@layout/view_status_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/layout_title" />
+
+        <com.zyx.widget.ScrollView1
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="项目名称"
+                            android:textSize="18sp"
+                            android:gravity="center_vertical"></TextView>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@null"/>
+
+                        </LinearLayout>
+
+
+                <View
+                    style="@style/border_line"
+                    android:layout_marginTop="0.5dp"></View>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                   >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="所需金额"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"></TextView>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:hint="请输入贷款金额"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/color_text1_zh"
+                        android:background="@null"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/border_line"
+                    android:layout_marginTop="0.5dp"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="设置年还款利率"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"></TextView>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:hint="0.065%"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/color_text1_zh"
+                        android:background="@null"/>
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/border_line"
+                    android:layout_marginTop="0.5dp"></View>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="起投金额"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"></TextView>
+
+                    <EditText
+                        android:layout_height="32dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:hint="200"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/color_text1_zh"
+                        android:background="@drawable/spiner"/>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="限投金额"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="8dp"></TextView>
+
+                    <EditText
+                        android:layout_height="32dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:hint="200"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/color_text1_zh"
+                        android:background="@drawable/spiner"/>
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/border_line"
+                    android:layout_marginTop="0.5dp"></View>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="众筹截止"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"></TextView>
+
+                    <EditText
+                        android:id="@+id/et_date1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_marginLeft="8dp"
+                        android:paddingLeft="8dp"
+                        android:hint="请点击右侧日历选择"
+                        android:gravity="center"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:background="@null"/>
+
+                    <ImageView
+                        android:id="@+id/iv_enddate1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/date"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="承诺还清日期"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"></TextView>
+
+                    <EditText
+                        android:id="@+id/et_date2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_marginLeft="8dp"
+                        android:paddingLeft="8dp"
+                        android:hint="请点击右侧日历选择"
+                        android:maxLength="10"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:background="@null"/>
+
+                    <ImageView
+                        android:id="@+id/iv_enddate2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/date"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"/>
+
+                </LinearLayout>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:hint="输入项目详情"
+                    android:minLines="8"
+                    android:background="@drawable/spiner"
+                    android:gravity="left"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="16dp">
+
+                    <Button
+                        android:id="@+id/bt_order"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="重置"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/bt_nomal"
+                        android:background="@drawable/bt_short"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"></View>
+
+                    <Button
+                        android:id="@+id/bt_gogo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="提交"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/bt_nomal"
+                        android:background="@drawable/bt_short"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.zyx.widget.ScrollView1>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/view_navigation_bar" />
+</LinearLayout>

@@ -19,6 +19,8 @@
     <color name="bc_blue">#47AFEF</color>
     <color name="btn_color_nomar">#A8DFF4</color>
 
+    <color name="text_gray1">#959595</color>
+    <color name="text_gray2">#EEEEEE</color>
 
     <color name="materialRed">#FFC93437</color>
     <color name="materialBlue">#FF375BF1</color>

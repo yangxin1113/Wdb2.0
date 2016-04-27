@@ -2,21 +2,16 @@ package com.zyx.fragment.me;
 
 import android.content.Intent;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.zyx.R;
 import com.zyx.application.MyApplication;
 import com.zyx.base.BaseFragment;
 import com.zyx.contants.UpdateUserInfo;
-import com.zyx.fragment.Order.OrderFragmentActivity;
-import com.zyx.fragment.repay.FragmentRepayActivity;
 import com.zyx.widget.CircleImageView;
 import com.zyx.widget.MyTitleBar;
 
@@ -47,6 +42,10 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
     private LinearLayout ll_bill;
     private LinearLayout ll_order;
 
+    private RelativeLayout rl_total;
+    private LinearLayout ll_chou;
+    private LinearLayout ll_li;
+
 
 
 
@@ -69,6 +68,18 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;*/
+            case R.id.rl_total:
+                Intent i = new Intent(getActivity(), TotalMoneyActivity.class);
+                startActivity(i);
+                break;
+            case R.id.ll_chou:
+                i = new Intent(getActivity(), ZhongchouIndexActivity.class);
+                startActivity(i);
+                break;
+            case R.id.ll_li:
+                i = new Intent(getActivity(), AilicaiActivity.class);
+                startActivity(i);
+                break;
         }
 
     }
@@ -81,7 +92,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
 
     @Override
     protected void initView(View rootview) {
-        /*view_status_bar = (View) rootview.findViewById(R.id.view_status_bar);
+        view_status_bar = (View) rootview.findViewById(R.id.view_status_bar);
         view_navigation_bar = (View) rootview.findViewById(R.id.view_navigation_bar);
         mtb_title = (MyTitleBar) rootview.findViewById(R.id.mtb_title);
         rl_me = (RelativeLayout) rootview.findViewById(R.id.rl_me);
@@ -90,7 +101,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         tv_level = (TextView) rootview.findViewById(R.id.tv_level);
         tv_credit = (TextView) rootview.findViewById(R.id.tv_credit);
         tv_point = (TextView) rootview.findViewById(R.id.tv_point);
-        tv_pocketmoney = (TextView) rootview.findViewById(R.id.tv_pocketmoney);*/
+        tv_pocketmoney = (TextView) rootview.findViewById(R.id.tv_pocketmoney);
         /*tv_bank_count = (TextView) rootview.findViewById(R.id.tv_bank_count);
         tv_bill_count = (TextView) rootview.findViewById(R.id.tv_bill_count);
         tv_order_count = (TextView) rootview.findViewById(R.id.tv_order_count);
@@ -99,14 +110,18 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         ll_bill = (LinearLayout) rootview.findViewById(R.id.ll_bill);
         ll_order = (LinearLayout) rootview.findViewById(R.id.ll_order);*/
 
+        rl_total = (RelativeLayout) rootview.findViewById(R.id.rl_total);
+        ll_chou = (LinearLayout) rootview.findViewById(R.id.ll_chou);
+        ll_li = (LinearLayout) rootview.findViewById(R.id.ll_li);
+
     }
 
     @Override
     protected void setViewData() {
-       /* view_status_bar.setBackgroundColor(getResources().getColor(
+       view_status_bar.setBackgroundColor(getResources().getColor(
                 R.color.main_color));
         mtb_title.setText(getString(R.string.me_bottom_text));
-        mtb_title.setLeftVisibility(View.INVISIBLE);*/
+        mtb_title.setLeftVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -117,6 +132,9 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         ll_bank.setOnClickListener(this);*/
         /*ll_bill.setOnClickListener(this);
         ll_order.setOnClickListener(this);*/
+        rl_total.setOnClickListener(this);
+        ll_chou.setOnClickListener(this);
+        ll_li.setOnClickListener(this);
 
     }
 

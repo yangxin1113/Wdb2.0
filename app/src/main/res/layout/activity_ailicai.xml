@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <include layout="@layout/view_status_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/layout_title"
+            />
+
+        <com.zyx.widget.ScrollView1
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="@drawable/move">
+
+                    <LinearLayout
+                        android:id="@+id/ll_income"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@mipmap/date"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="昨日收益(元)"
+                            android:textColor="@color/bt_nomal"
+                            android:layout_marginLeft="8dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.46"
+                        android:textSize="60sp"
+                        android:layout_below="@+id/ll_income"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/bt_nomal"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="历史累计收益"
+                            android:textColor="@color/bt_nomal"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="38.43元"
+                            android:layout_marginLeft="4dp"
+                            android:textColor="@color/bt_nomal"
+                            android:textSize="12sp"/>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="持有金额(元)"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="500,00.00"
+                            android:textSize="32sp"
+                            android:textColor="@color/bt_nomal"
+                            android:layout_alignParentLeft="true"/>
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/bt_go"
+                            android:layout_gravity="center"
+                            android:layout_alignParentRight="true"
+                            />
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/border_line"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="32dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="16dp">
+
+                    <Button
+                        android:id="@+id/bt_order"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="预约"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/bt_nomal"
+                        android:background="@drawable/bt_short"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"></View>
+
+                    <Button
+                        android:id="@+id/bt_gogo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="变现"
+                        android:textSize="@dimen/textMedium"
+                        android:textColor="@color/bt_nomal"
+                        android:background="@drawable/bt_short"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.zyx.widget.ScrollView1>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/view_navigation_bar" />
+</LinearLayout>

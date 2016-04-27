@@ -97,6 +97,7 @@ public class FragmentTab1 extends BaseFragment {
                     gv_product_view.setAdapter(gv_products_adapter);
 
                 }
+                break;
 
 
         }
