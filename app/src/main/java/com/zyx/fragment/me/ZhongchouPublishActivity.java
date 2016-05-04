@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.zyx.R;
 import com.zyx.ad.MyAdapter.DatePopWindow;
@@ -25,9 +26,9 @@ public class ZhongchouPublishActivity extends MyBaseFragmentActivity{
     private View view_navigation_bar;// 虚拟按键
     private MyTitleBar mtb_title;// 标题栏
 
-    private ImageView iv_enddate1;
+    private LinearLayout iv_enddate1;
     private EditText et_date1;
-    private ImageView iv_enddate2;
+    private LinearLayout iv_enddate2;
     private EditText et_date2;
     private DatePopWindow datePopWindow1;
     private DatePopWindow datePopWindow2;
@@ -68,10 +69,10 @@ public class ZhongchouPublishActivity extends MyBaseFragmentActivity{
                     String[] getData = data.split(",");
                     if(getData[1].equals(TYPE1)) {
                         datePopWindow1.showPopupWindow(iv_enddate1);
-                        et_date1.setText(getData[0]);
+                        //et_date1.setText(getData[0]);
                     }else{
                         datePopWindow2.showPopupWindow(iv_enddate1);
-                        et_date2.setText(getData[0]);
+                        //et_date2.setText(getData[0]);
                     }
                 }
                 break;
@@ -90,10 +91,10 @@ public class ZhongchouPublishActivity extends MyBaseFragmentActivity{
         view_navigation_bar = (View) findViewById(R.id.view_navigation_bar);
 
         mtb_title = (MyTitleBar) findViewById(R.id.mtb_title);
-        iv_enddate1 = (ImageView) findViewById(R.id.iv_enddate1);
-        et_date1 = (EditText) findViewById(R.id.et_date1);
-        iv_enddate2 = (ImageView) findViewById(R.id.iv_enddate2);
-        et_date2 = (EditText) findViewById(R.id.et_date2);
+        iv_enddate1 = (LinearLayout) findViewById(R.id.iv_enddate1);
+        //et_date1 = (EditText) findViewById(R.id.et_date1);
+        iv_enddate2 = (LinearLayout) findViewById(R.id.iv_enddate2);
+        //et_date2 = (EditText) findViewById(R.id.et_date2);
 
     }
 

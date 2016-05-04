@@ -38,7 +38,9 @@ public class TouziIndexActivity extends MyBaseFragmentActivity{
     private MyTitleBar mtb_title;// 标题栏
 
 
-
+    private ListView lv_project;
+    private List<ProjectData> listdata;
+    private ListProjectAdapter listProjectAdapter;
 
 
     @Override
@@ -64,14 +66,25 @@ public class TouziIndexActivity extends MyBaseFragmentActivity{
     @Override
     protected void handlerMessage(Message msg) {
         switch (msg.what){
-
+            case MyMessageQueue.OK:
+                LogUtil.i("zyx", "44444444444");
+                String data = (String) (msg.obj);
+                LogUtil.i("zyx", "data,data:"+data);
+                if(data != null ){
+                    LogUtil.i("zyx", "data,data:"+data.toString());
+                    listdata = ParserJsonProjectitem.JsontoProjectItem(data);
+                    listProjectAdapter = new ListProjectAdapter(getApplicationContext(),listdata);
+                    listProjectAdapter.notifyDataSetChanged();
+                    lv_project.setAdapter(listProjectAdapter);
+                }
+                break;
         }
 
     }
 
     @Override
     protected void init(Bundle arg0) {
-     setContentView(R.layout.activity_zhongchou_index);
+     setContentView(R.layout.activity_touzi_index);
     }
 
     @Override
@@ -80,7 +93,7 @@ public class TouziIndexActivity extends MyBaseFragmentActivity{
         view_navigation_bar = (View) findViewById(R.id.view_navigation_bar);
 
         mtb_title = (MyTitleBar) findViewById(R.id.mtb_title);
-
+        lv_project = (ListView) findViewById(R.id.lv_zhong);
     }
 
     @Override
@@ -97,10 +110,11 @@ public class TouziIndexActivity extends MyBaseFragmentActivity{
     protected void setViewData() {
         view_status_bar.setBackgroundColor(getResources().getColor(
                 R.color.main_color));
-        mtb_title.setText(getString(R.string.zhongchou_money_zh));
+        mtb_title.setText(getString(R.string.touzi_money_zh));
 
         Map<String, String > map = new HashMap<String, String>();
         map.put("customerId", ((MyApplication) getApplication()).getUser().get("CustomerId").toString());
+        map.put("condition", "all");
         startRunnable(new getJsonDataThread(Contants.ZhongchouList, map,
                 handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));
 
@@ -108,7 +122,14 @@ public class TouziIndexActivity extends MyBaseFragmentActivity{
 
     @Override
     protected void initEvent() {
+        mtb_title.setLeftImageOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                onKeyDown(KeyEvent.KEYCODE_BACK, null);
+            }
+        });
     }
 
     @Override

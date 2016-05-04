@@ -45,6 +45,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
     private RelativeLayout rl_total;
     private LinearLayout ll_chou;
     private LinearLayout ll_li;
+    private LinearLayout ll_tou;
 
 
 
@@ -80,6 +81,10 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
                 i = new Intent(getActivity(), AilicaiActivity.class);
                 startActivity(i);
                 break;
+            case R.id.ll_tou:
+                i = new Intent(getActivity(), TouziIndexActivity.class);
+                startActivity(i);
+                break;
         }
 
     }
@@ -113,6 +118,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         rl_total = (RelativeLayout) rootview.findViewById(R.id.rl_total);
         ll_chou = (LinearLayout) rootview.findViewById(R.id.ll_chou);
         ll_li = (LinearLayout) rootview.findViewById(R.id.ll_li);
+        ll_tou = (LinearLayout)rootview.findViewById(R.id.ll_tou);
 
     }
 
@@ -135,6 +141,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         rl_total.setOnClickListener(this);
         ll_chou.setOnClickListener(this);
         ll_li.setOnClickListener(this);
+        ll_tou.setOnClickListener(this);
 
     }
 

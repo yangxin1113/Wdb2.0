@@ -57,7 +57,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     private RelativeLayout rl_class;
     private ImageView iv_class; //分类
     private ImageView ivBottomLine; //导航栏下划线
-    private TextView tvTab1, tvTab2, tvTab3;//导航名
+    private TextView tvTab1, tvTab2, tvTab3, tvTab4;//导航名
     private TextView[] titles;
 
     private AbSlidingPlayView viewPager;// 首页轮播
@@ -86,11 +86,11 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
     private int bottomLineWidth;
     private int offset = 0;
     private int position_one;
-    public final static int num = 3;
+    public final static int num = 4;
     private FragmentTab1 fragmentTab1;
     private FragmentTab2 fragmentTab2;
     private FragmentTab3 fragmentTab3;
-
+    private FragmentTab4 fragmentTab4;
 
     @Override
     protected void init() {
@@ -107,6 +107,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         tvTab1 = (TextView) rootview.findViewById(R.id.tv_tab1);
         tvTab2 = (TextView) rootview.findViewById(R.id.tv_tab2);
         tvTab3 = (TextView) rootview.findViewById(R.id.tv_tab3);
+        tvTab4 = (TextView) rootview.findViewById(R.id.tv_tab4);
         viewPager = (AbSlidingPlayView) rootview.findViewById(R.id.viewPager_shop);
         mfragPager = (ViewPager) rootview.findViewById(R.id.fragPager);
         ivBottomLine = (ImageView) rootview.findViewById(R.id.iv_bottom_line);
@@ -120,7 +121,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         viewPager.setSleepTime(3000);
         initViewPager();
         InitFragViewPager();
-        titles = new TextView[]{tvTab1, tvTab2, tvTab3};
+        titles = new TextView[]{tvTab1, tvTab2, tvTab3, tvTab4};
         TranslateAnimation animation = new TranslateAnimation(position_one, offset, 0, 0);
         /*tvTab2.setTextColor(getResources().getColor(R.color.text_bottom_false));
         tvTab3.setTextColor(getResources().getColor(R.color.text_bottom_false));
@@ -137,7 +138,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         tvTab1.setOnClickListener(new MyOnClickListener(0));
         tvTab2.setOnClickListener(new MyOnClickListener(1));
         tvTab3.setOnClickListener(new MyOnClickListener(2));
-
+        tvTab4.setOnClickListener(new MyOnClickListener(3));
     }
 
     @Override
@@ -276,10 +277,12 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         fragmentTab1 = new FragmentTab1();
         fragmentTab2 = new FragmentTab2();
         fragmentTab3 = new FragmentTab3();
+        fragmentTab4 = new FragmentTab4();
 
         fragmentsList.add(fragmentTab1);
         fragmentsList.add(fragmentTab2);
         fragmentsList.add(fragmentTab3);
+        fragmentsList.add(fragmentTab4);
         mfragPager.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager(), fragmentsList));
         mfragPager.setOnPageChangeListener(new MyOnPageChangeListener());
         mfragPager.setCurrentItem(0);

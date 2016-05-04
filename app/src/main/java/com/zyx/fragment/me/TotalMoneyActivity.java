@@ -224,9 +224,9 @@ public class TotalMoneyActivity extends MyBaseFragmentActivity{
         pieDataSet.setSelectionShift(px); // 选中态多出的长度
 
         PieData pieData = new PieData(xValues, pieDataSet);
-        pieData.setValueTextSize(10);
-        pieData.setHighlightEnabled(true);
-        pieData.setValueTextColor(getResources().getColor(R.color.white));
+        pieData.setValueTextSize(0);
+        /*pieData.setHighlightEnabled(true);
+        pieData.setValueTextColor(getResources().getColor(R.color.white));*/
         return pieData;
     }
 }

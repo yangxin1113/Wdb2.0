@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_status_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EAEAEA"
+             >
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/rl_guide"
+                android:background="@drawable/border">
+
+                <LinearLayout
+                    android:id="@+id/bottom_guide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/border">
+
+                    <LinearLayout
+                        android:id="@+id/ll_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="8dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_home"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/img_home_true" />
+
+                        <TextView
+                            android:id="@+id/tv_home"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/home_bottom_text"
+                            android:textColor="@color/text_bottom_true"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <!--<View
+                        style="@style/v_line"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp" />-->
+
+                    <!--<com.zyx.widget.GooeyMenu
+                        android:id="@+id/gooey_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fab_radius="@dimen/big_circle_radius"
+                        app:gap_between_menu_fab="@dimen/min_gap"
+                        app:menu_radius="@dimen/small_circle_radius"
+                        app:no_of_menu="5"
+                        app:menu_drawable="@array/drawable_array"/>-->
+
+                    <LinearLayout
+                        android:id="@+id/ll_loan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="8dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_loan"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/img_loan_false" />
+
+                        <TextView
+                            android:id="@+id/tv_loan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/loan_bottom_text"
+                            android:textColor="@color/text_bottom_false"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+
+
+
+
+                    <!--<View
+                        style="@style/v_line"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp" />-->
+
+                    <LinearLayout
+                        android:id="@+id/ll_traval"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="8dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_traval"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/img_activity_false" />
+
+                        <TextView
+                            android:id="@+id/tv_traval"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/traval_bottom_text"
+                            android:textColor="@color/text_bottom_false"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+
+                    <View
+                        style="@style/v_line"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_life"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="8dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_life"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/img_life_false" />
+
+                        <TextView
+                            android:id="@+id/tv_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/life_bottom_text"
+                            android:textColor="@color/text_bottom_false"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/v_line"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp" />
+
+                    <!--<LinearLayout
+                        android:id="@+id/ll_me"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="8dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_me"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/img_me_false" />
+
+                        <TextView
+                            android:id="@+id/tv_me"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/me_bottom_text"
+                            android:textColor="@color/text_bottom_false"
+                            android:textSize="12dp" />
+                    </LinearLayout>-->
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_w"
+                    />
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <include layout="@layout/view_navigation_bar" />
+</LinearLayout>

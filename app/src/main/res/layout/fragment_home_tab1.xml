@@ -13,12 +13,12 @@
         android:background="#EEEEEE"
         android:listSelector="@android:color/transparent"
         android:numColumns="2"
-        android:horizontalSpacing="15dp"
-        android:verticalSpacing="15dp"
+        android:horizontalSpacing="16dp"
+        android:verticalSpacing="16dp"
         android:scrollbars="none"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         >
     </com.zyx.widget.MyGridView>
 

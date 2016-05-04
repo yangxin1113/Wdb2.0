@@ -29,10 +29,10 @@ public class ParserJsonProjectitem {
             for(int i=0; i<result.length(); i++){
 
                 JSONObject object = result.getJSONObject(i);
-                Log.i("zyxqwewqeq", "Map<String, Map<String, Object>>:" + object.get("ProductName"));
+                Log.i("zyxqwewqeq", "Map<String, Map<String, Object>>:" + object.get("proName"));
 
                 ProjectData pd = new ProjectData();
-                pd.setProId(Integer.valueOf(object.getString("ProId")));
+                pd.setProId(Integer.valueOf(object.getString("proId")));
                 pd.setProNum(object.getString("proNum"));
                 pd.setProName(object.getString("proName"));
                 pd.setProRestMoney((float) object.getDouble("proRestMoney"));

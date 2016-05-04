@@ -18,51 +18,57 @@
         <com.zyx.widget.ScrollView1
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                >
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        >
+                        android:layout_marginLeft="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="项目名称"
                             android:textSize="18sp"
+                            android:textColor="@color/black"
                             android:gravity="center_vertical"></TextView>
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginLeft="8dp"
-                            android:background="@null"/>
+                            android:background="@null"
+                            android:textSize="@dimen/textMedium"
+                            android:textColor="@color/black"/>
 
                         </LinearLayout>
 
 
                 <View
-                    style="@style/border_line"
-                    android:layout_marginTop="0.5dp"></View>
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/text_gray2"></View>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                   >
+                    android:layout_marginLeft="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="所需金额"
                         android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:gravity="center_vertical"></TextView>
 
                     <EditText
@@ -72,27 +78,29 @@
                         android:hint="请输入贷款金额"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/textMedium"
-                        android:textColor="@color/color_text1_zh"
+                        android:textSize="@dimen/textSmall"
+                        android:textColor="@color/black"
                         android:background="@null"/>
 
                 </LinearLayout>
 
                 <View
-                    style="@style/border_line"
-                    android:layout_marginTop="0.5dp"></View>
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/text_gray2"></View>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    >
+                    android:layout_marginLeft="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="设置年还款利率"
                         android:textSize="18sp"
-                        android:gravity="center_vertical"></TextView>
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"></TextView>
 
                     <EditText
                         android:layout_width="match_parent"
@@ -102,7 +110,7 @@
                         android:layout_gravity="center_vertical"
                         android:gravity="center"
                         android:textSize="@dimen/textMedium"
-                        android:textColor="@color/color_text1_zh"
+                        android:textColor="@color/black"
                         android:background="@null"/>
 
                 </LinearLayout>
@@ -116,13 +124,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginRight="8dp">
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="起投金额"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:gravity="center_vertical"></TextView>
 
@@ -132,10 +142,9 @@
                         android:layout_weight="1"
                         android:hint="200"
                         android:layout_gravity="center_vertical"
-                        android:gravity="center"
                         android:textSize="@dimen/textMedium"
-                        android:textColor="@color/color_text1_zh"
-                        android:background="@drawable/spiner"/>
+                        android:textColor="@color/black"
+                        android:background="@null"/>
 
 
                     <TextView
@@ -144,6 +153,7 @@
                         android:layout_weight="1"
                         android:text="限投金额"
                         android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="8dp"></TextView>
 
@@ -153,10 +163,9 @@
                         android:layout_weight="1"
                         android:hint="200"
                         android:layout_gravity="center_vertical"
-                        android:gravity="center"
                         android:textSize="@dimen/textMedium"
-                        android:textColor="@color/color_text1_zh"
-                        android:background="@drawable/spiner"/>
+                        android:textColor="@color/black"
+                        android:background="@null"/>
 
                 </LinearLayout>
 
@@ -169,48 +178,154 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    >
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
+
+
+
 
                     <TextView
-                        android:layout_width="wrap_content"
+
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:text="众筹截止"
-                        android:textSize="18sp"
-                        android:gravity="center_vertical"></TextView>
-
-                    <EditText
-                        android:id="@+id/et_date1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38dp"
-                        android:layout_marginLeft="8dp"
-                        android:paddingLeft="8dp"
-                        android:hint="请点击右侧日历选择"
-                        android:gravity="center"
-                        android:maxLength="10"
+                        android:text="众筹截止日期"
                         android:textColor="@color/black"
-                        android:background="@null"/>
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        ></TextView>
 
-                    <ImageView
-                        android:id="@+id/iv_enddate1"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@mipmap/date"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:text="承诺还清日期"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:gravity="center"></TextView>
+
 
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    >
+                    android:layout_height="140dp"
+                    android:background="@color/text_gray2"
+                   android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/iv_enddate1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:background="@drawable/spiner_noborder"
+                        android:orientation="vertical"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="32dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            android:orientation="horizontal"
+                            android:background="@color/bt_nomal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tv_year1"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="2016年"
+                                android:gravity="center"
+                                android:textColor="@color/white"/>
+
+                            <TextView
+                                android:id="@+id/tv_month1"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.8"
+                                android:layout_height="wrap_content"
+                                android:text="10月"
+                                android:gravity="center"
+                                android:textColor="@color/white"/>
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_day1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="30"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/iv_enddate2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:background="@drawable/spiner_noborder"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="32dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            android:orientation="horizontal"
+                            android:background="@color/bt_nomal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tv_year2"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="2016年"
+                                android:gravity="center"
+                                android:textColor="@color/white"/>
+
+                            <TextView
+                                android:id="@+id/tv_month2"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.8"
+                                android:layout_height="wrap_content"
+                                android:text="10月"
+                                android:gravity="center"
+                                android:textColor="@color/white"/>
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_day2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="30"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:gravity="center"/>
+
+
+
+                    </LinearLayout>
+                    <!--<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="承诺还清日期"
                         android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:gravity="center_vertical"></TextView>
 
                     <EditText
@@ -222,6 +337,7 @@
                         android:hint="请点击右侧日历选择"
                         android:maxLength="10"
                         android:gravity="center"
+                        android:textSize="@dimen/textMedium"
                         android:textColor="@color/black"
                         android:background="@null"/>
 
@@ -231,7 +347,7 @@
                         android:layout_height="24dp"
                         android:src="@mipmap/date"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"/>
+                        android:layout_marginLeft="8dp"/>-->
 
                 </LinearLayout>
 
@@ -240,10 +356,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
+                    android:paddingTop="8dp"
                     android:paddingLeft="8dp"
                     android:hint="输入项目详情"
                     android:minLines="8"
-                    android:background="@drawable/spiner"
+                    android:background="@drawable/spiner_border_blue"
                     android:gravity="left"/>
 
 

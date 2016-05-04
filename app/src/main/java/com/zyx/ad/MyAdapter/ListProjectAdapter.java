@@ -82,10 +82,13 @@ public class ListProjectAdapter extends BaseAdapter {
         //bitmapUtils.display(holder.iv_product, info.getImageUrls());
         bitmapUtils.display(holder.iv_project, info.getProImg());
         holder.tv_proName.setText(info.getProName());
-        //holder.p_proBar;
-        holder.tv_pecent.setText(String.valueOf(Parse.getInstance().parseInt((1 - info.getProRestMoney() / info.getProTotalMoney())*100))+"%");
+        float process = info.getProTotalMoney() - info.getProRestMoney();
+        float process1 = process/info.getProTotalMoney();
+        float process2 = process1*100;
+        holder.p_proBar.setProgress((int)process2);
+        holder.tv_pecent.setText(String.valueOf((int)process2)+"%");
         holder.tv_getMoney.setText(String.valueOf(info.getProTotalMoney() - info.getProRestMoney()));
-        holder.tv_getPer.setText(info.getPerCount());
+        holder.tv_getPer.setText(String.valueOf(info.getPerCount()));
         return convertView;
     }
 

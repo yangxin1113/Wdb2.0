@@ -129,6 +129,7 @@ public class ZhongchouIndexActivity extends MyBaseFragmentActivity{
 
         Map<String, String > map = new HashMap<String, String>();
         map.put("customerId", ((MyApplication) getApplication()).getUser().get("CustomerId").toString());
+        map.put("condition", "per");
         startRunnable(new getJsonDataThread(Contants.ZhongchouList, map,
                 handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));
 

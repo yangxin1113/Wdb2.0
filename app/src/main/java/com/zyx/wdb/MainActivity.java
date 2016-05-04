@@ -2,6 +2,7 @@ package com.zyx.wdb;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zyx.R;
@@ -44,7 +46,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     private LinearLayout ll_home;// 首页
     private ImageView iv_home;// 首页图标
     private TextView tv_home;// 首页文字
-    private LinearLayout ll_me;// 我的
+    //private LinearLayout ll_me;// 我的
     private ImageView iv_me;// 我的图标
     private TextView tv_me;// 我的文字
     private LinearLayout ll_loan;// 微贷
@@ -57,6 +59,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     private ImageView iv_life;//活动图片
     private TextView tv_life;//活动文字
     private LinearLayout bottom_guide;
+    private RelativeLayout rl_guide;
     /**
      * Fragment
      */
@@ -134,7 +137,7 @@ public class MainActivity extends MyBaseFragmentActivity{
 
     @Override
     protected void init(Bundle arg0) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.example_activity_main);
         width = getWindowManager().getDefaultDisplay().getWidth();
 
     }
@@ -146,6 +149,7 @@ public class MainActivity extends MyBaseFragmentActivity{
         //gooeyMenu = (GooeyMenu) findViewById(R.id.gooey_menu);
 
         bottom_guide = (LinearLayout) findViewById(R.id.bottom_guide);
+        rl_guide = (RelativeLayout) findViewById(R.id.rl_guide);
         ll_home = (LinearLayout) findViewById(R.id.ll_home);
         iv_home = (ImageView) findViewById(R.id.iv_home);
         tv_home = (TextView) findViewById(R.id.tv_home);
@@ -158,7 +162,7 @@ public class MainActivity extends MyBaseFragmentActivity{
         ll_life = (LinearLayout) findViewById(R.id.ll_life);
         iv_life = (ImageView) findViewById(R.id.iv_life);
         tv_life = (TextView) findViewById(R.id.tv_life);
-        ll_me = (LinearLayout) findViewById(R.id.ll_me);
+        //ll_me = (LinearLayout) findViewById(R.id.ll_me);
         iv_me = (ImageView) findViewById(R.id.iv_me);
         tv_me = (TextView) findViewById(R.id.tv_me);
 
@@ -224,18 +228,20 @@ public class MainActivity extends MyBaseFragmentActivity{
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.framelayout, mHomeFragment).commitAllowingStateLoss();
         oldIndex = 0;
+        bottom_guide.getBackground().setAlpha(200);
+        rl_guide.getBackground().setAlpha(0);
 
 
     }
 
     @Override
     protected void initEvent() {
-        bottom_guide.getBackground().setAlpha(100);
+
         ll_home.setOnClickListener(this);
         ll_loan.setOnClickListener(this);
         ll_traval.setOnClickListener(this);
         ll_life.setOnClickListener(this);
-        ll_me.setOnClickListener(this);
+        //ll_me.setOnClickListener(this);
         //gooeyMenu.setOnClickListener(this);
     }
 

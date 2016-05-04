@@ -6,6 +6,6 @@
 
     <solid android:color="#ffffff"></solid>
     <stroke android:width="0.2dp"
-        android:color="#000000"></stroke>
+        android:color="@color/bt_nomal"></stroke>
 
 </shape>
