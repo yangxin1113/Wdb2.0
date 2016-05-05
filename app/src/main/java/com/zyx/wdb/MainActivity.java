@@ -2,7 +2,11 @@ package com.zyx.wdb;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -47,8 +51,8 @@ public class MainActivity extends MyBaseFragmentActivity{
     private ImageView iv_home;// 首页图标
     private TextView tv_home;// 首页文字
     //private LinearLayout ll_me;// 我的
-    private ImageView iv_me;// 我的图标
-    private TextView tv_me;// 我的文字
+    //private ImageView iv_me;// 我的图标
+    //private TextView tv_me;// 我的文字
     private LinearLayout ll_loan;// 微贷
     private ImageView iv_loan;// 贷款图标
     private TextView tv_loan;// 贷款
@@ -60,6 +64,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     private TextView tv_life;//活动文字
     private LinearLayout bottom_guide;
     private RelativeLayout rl_guide;
+    private ImageView iv_wdb;
     /**
      * Fragment
      */
@@ -67,7 +72,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     private LoanFragment mLoanFragment;//贷款
     private TravelFragment mTravelFragment;//活动
     private LifeFragment mLifeFragment;
-    private MeFragment mMeFragment;//我的
+    //private MeFragment mMeFragment;//我的
     List<Fragment> fragmentList = new ArrayList<Fragment>();
     private int oldIndex;// 记录当前展示的Fragment
     private List<Map<String, Object>> viewList = new ArrayList<Map<String, Object>>();// 所有底部图标与文字
@@ -77,6 +82,13 @@ public class MainActivity extends MyBaseFragmentActivity{
      */
     private TwoQuit mTwoQuit;
 
+
+    /**
+     *图片旋转
+     *
+     */
+
+    private boolean isRoate =false;
     /**
      * 用于对Fraggment进行管理
      */
@@ -105,7 +117,7 @@ public class MainActivity extends MyBaseFragmentActivity{
                 //活动
                 addOrShowFragment(3);
                 break;
-            case R.id.ll_me:
+            /*case R.id.ll_me:
                 if (isLogin()) {
                     addOrShowFragment(4);
                 } else {
@@ -115,7 +127,30 @@ public class MainActivity extends MyBaseFragmentActivity{
                                     LoginFragmentActivity.class),
                             Activity.RESULT_FIRST_USER);
                     overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                }*/
+            case R.id.iv_wdb:
+                if(!isRoate){
+                    iv_wdb.setRotation(-45);
+                    isRoate = true;
+                }else{
+                    iv_wdb.setRotation(0);
+                    isRoate = false;
                 }
+
+
+               /* Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.icon_w);
+// Getting width & height of the given image.
+                int w = bmp.getWidth()*2;
+                int h = bmp.getHeight()*2;
+// Setting post rotate to 90
+                Matrix mtx = new Matrix();
+                mtx.postRotate(-45);
+// Rotating Bitmap
+                Bitmap rotatedBMP = Bitmap.createBitmap(bmp, 0, 0, w, h, mtx, true);
+                BitmapDrawable bmd = new BitmapDrawable(rotatedBMP);
+                iv_wdb.setImageDrawable(bmd);*/
+
+                break;
         }
 
     }
@@ -162,20 +197,22 @@ public class MainActivity extends MyBaseFragmentActivity{
         ll_life = (LinearLayout) findViewById(R.id.ll_life);
         iv_life = (ImageView) findViewById(R.id.iv_life);
         tv_life = (TextView) findViewById(R.id.tv_life);
-        //ll_me = (LinearLayout) findViewById(R.id.ll_me);
+        /*ll_me = (LinearLayout) findViewById(R.id.ll_me);
         iv_me = (ImageView) findViewById(R.id.iv_me);
-        tv_me = (TextView) findViewById(R.id.tv_me);
+        tv_me = (TextView) findViewById(R.id.tv_me);*/
+
+        iv_wdb = (ImageView) findViewById(R.id.iv_wdb);
 
         mHomeFragment = new HomeFragment();
         mLoanFragment = new LoanFragment();
         mTravelFragment = new TravelFragment();
         mLifeFragment = new LifeFragment();
-        mMeFragment = new MeFragment();
+        //mMeFragment = new MeFragment();
         fragmentList.add(mHomeFragment);
         fragmentList.add(mLoanFragment);
         fragmentList.add(mTravelFragment);
         fragmentList.add(mLifeFragment);
-        fragmentList.add(mMeFragment);
+        //fragmentList.add(mMeFragment);
 
         Map<String, Object> item0 = new HashMap<String, Object>();
         item0.put("textView", tv_home);
@@ -197,16 +234,16 @@ public class MainActivity extends MyBaseFragmentActivity{
         item3.put("imageView", iv_life);
         item3.put("img_false", R.mipmap.img_life_false);
         item3.put("img_true", R.mipmap.img_life_true);
-        Map<String, Object> item4= new HashMap<String, Object>();
+        /*Map<String, Object> item4= new HashMap<String, Object>();
         item4.put("textView", tv_me);
         item4.put("imageView", iv_me);
         item4.put("img_false", R.mipmap.img_me_false);
-        item4.put("img_true", R.mipmap.img_me_true);
+        item4.put("img_true", R.mipmap.img_me_true);*/
         viewList.add(item0);
         viewList.add(item1);
         viewList.add(item2);
         viewList.add(item3);
-        viewList.add(item4);
+        //viewList.add(item4);
 
 
     }
@@ -228,8 +265,10 @@ public class MainActivity extends MyBaseFragmentActivity{
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.framelayout, mHomeFragment).commitAllowingStateLoss();
         oldIndex = 0;
-        bottom_guide.getBackground().setAlpha(200);
+        bottom_guide.getBackground().setAlpha(220);
         rl_guide.getBackground().setAlpha(0);
+
+
 
 
     }
@@ -243,6 +282,8 @@ public class MainActivity extends MyBaseFragmentActivity{
         ll_life.setOnClickListener(this);
         //ll_me.setOnClickListener(this);
         //gooeyMenu.setOnClickListener(this);
+
+        iv_wdb.setOnClickListener(this);
     }
 
     @Override
