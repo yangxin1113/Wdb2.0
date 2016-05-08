@@ -1,5 +1,6 @@
 package com.zyx.fragment.product;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ import com.zyx.ad.ScaleView.HackyViewPager;
 import com.zyx.base.MyBaseFragmentActivity;
 import com.zyx.bean.Attr;
 import com.zyx.contants.Contants;
+import com.zyx.fragment.loan.LoanOrderActivity;
+import com.zyx.fragment.login.LoginFragmentActivity;
 import com.zyx.thread.getJsonDataThread;
 import com.zyx.utils.CaculateHelper;
 import com.zyx.utils.LogUtil;
@@ -142,21 +145,31 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
                 productNum =new CaculateHelper(tv_Qprice.getText().toString(),
                         mTmonth.getText().toString(), mTView.getText().toString(), OnHandlist, plist, Mlist, datadetail).getProductNum();
                 if(isEmpty()){
-                    Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
-                    String firstpay = new CaculateHelper(tv_Qprice.getText().toString(),
-                            mTmonth.getText().toString(), mTView.getText().toString(), OnHandlist, plist, Mlist, datadetail).getFirstpay();
-                    String stages = mTmonth.getText().toString();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("ProductNumber", productNum);
-                    LogUtil.w("zzzzz", productNum);
-                    bundle.putString("ProductName", product_name);
-                    bundle.putString("ProductImage", product_image);
-                    bundle.putString("FirstPay", firstpay);
-                    bundle.putString("Stages", stages.replace("个月", ""));
-                    bundle.putInt("CategoryId", Integer.valueOf(categoryId));
-                    bundle.putString("Repayment", tv_Mprice.getText().toString());
-                    i.putExtras(bundle);
-                    startActivity(i);
+                    if(isLogin()){
+                        Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
+                        String firstpay = new CaculateHelper(tv_Qprice.getText().toString(),
+                                mTmonth.getText().toString(), mTView.getText().toString(), OnHandlist, plist, Mlist, datadetail).getFirstpay();
+                        String stages = mTmonth.getText().toString();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ProductNumber", productNum);
+                        LogUtil.w("zzzzz", productNum);
+                        bundle.putString("ProductName", product_name);
+                        bundle.putString("ProductImage", product_image);
+                        bundle.putString("FirstPay", firstpay);
+                        bundle.putString("Stages", stages.replace("个月", ""));
+                        bundle.putInt("CategoryId", Integer.valueOf(categoryId));
+                        bundle.putString("Repayment", tv_Mprice.getText().toString());
+                        i.putExtras(bundle);
+                        startActivity(i);
+                    }else{
+                        utils.showToast(ProductFragmentActivity.this,
+                                getString(R.string.please_login));
+                        startActivityForResult(new Intent(ProductFragmentActivity.this,
+                                        LoginFragmentActivity.class),
+                                11);
+                        overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                    }
+
                 }
                 break;
             case R.id.iv_yes:
@@ -602,4 +615,43 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
         drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());// 必须设置图片大小，否则不显示
         tvValue.setCompoundDrawables(null, null, drawable, null);
     }*/
+
+
+    @Override
+    public void onActivityResult(int arg0, int arg1, Intent arg2) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(arg0, arg1, arg2);
+        if (arg0 == 11) {
+            if (arg1 == Activity.RESULT_OK) {
+                // 注册成功返回
+                if (arg2.getBooleanExtra("isRegistered", false)
+                        || arg2.getBooleanExtra("isLogin", false)) {
+                    if (isLogin()) {
+                        Intent i = new Intent(getApplicationContext(), ProductOrderActivity.class);
+                        String firstpay = new CaculateHelper(tv_Qprice.getText().toString(),
+                                mTmonth.getText().toString(), mTView.getText().toString(), OnHandlist, plist, Mlist, datadetail).getFirstpay();
+                        String stages = mTmonth.getText().toString();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ProductNumber", productNum);
+
+                        bundle.putString("ProductName", product_name);
+                        bundle.putString("ProductImage", product_image);
+                        bundle.putString("FirstPay", firstpay);
+                        bundle.putString("Stages", stages.replace("个月", ""));
+                        bundle.putInt("CategoryId", Integer.valueOf(categoryId));
+                        bundle.putString("Repayment", tv_Mprice.getText().toString());
+                        i.putExtras(bundle);
+                        startActivity(i);
+                    }else{
+                        utils.showToast(ProductFragmentActivity.this,
+                                getString(R.string.please_login));
+                        startActivityForResult(new Intent(ProductFragmentActivity.this,
+                                        LoginFragmentActivity.class),
+                                11);
+                        overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
+                    }
+                }
+            }
+        }
+    }
 }

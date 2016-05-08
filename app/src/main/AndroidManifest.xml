@@ -240,6 +240,34 @@
             android:screenOrientation="portrait" >
         </activity>
 
+        <!-- 投资页面 -->
+        <activity
+            android:name=".fragment.life.ChongzhiFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 一卡通页面 -->
+        <activity
+            android:name=".fragment.life.SchoolFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 公交卡页面 -->
+        <activity
+            android:name=".fragment.life.BusFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 兼职页面 -->
+        <activity
+            android:name=".fragment.life.JobFragmentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
     </application>
 
 </manifest>

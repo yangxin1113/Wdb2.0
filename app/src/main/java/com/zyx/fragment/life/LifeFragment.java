@@ -1,25 +1,13 @@
 package com.zyx.fragment.life;
 
+import android.content.Intent;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.zyx.R;
 import com.zyx.base.BaseFragment;
-import com.zyx.utils.Parse;
 import com.zyx.widget.MyTitleBar;
-import com.zyx.widget.SpinerPopWindow;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zyx on 2016/2/15.
@@ -31,13 +19,34 @@ public class LifeFragment extends BaseFragment {
      */
     private MyTitleBar mtb_title;// 标题栏
 
-
-
-
+    private LinearLayout ll_chongzhi;
+    private LinearLayout ll_xiaoyuan;
+    private LinearLayout ll_bus;
+    private LinearLayout ll_parttime;
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.ll_chongzhi:
+                Intent i = new Intent(getActivity(), ChongzhiFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;
+            case R.id.ll_xiaoyuan:
+                i = new Intent(getActivity(), SchoolFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;
+            case R.id.ll_bus:
+                i = new Intent(getActivity(), BusFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;
+            case R.id.ll_parttime:
+                /*i = new Intent(getActivity(), JobFragmentActivity.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);*/
+                break;
 
 
         }
@@ -53,6 +62,11 @@ public class LifeFragment extends BaseFragment {
     protected void initView(View rootview) {
         mtb_title = (MyTitleBar) rootview.findViewById(R.id.mtb_title);
 
+        ll_chongzhi = (LinearLayout) rootview.findViewById(R.id.ll_chongzhi);
+        ll_xiaoyuan = (LinearLayout) rootview.findViewById(R.id.ll_xiaoyuan);
+        ll_bus = (LinearLayout) rootview.findViewById(R.id.ll_bus);
+        ll_parttime = (LinearLayout) rootview.findViewById(R.id.ll_parttime);
+
     }
 
     @Override
@@ -64,6 +78,10 @@ public class LifeFragment extends BaseFragment {
 
     @Override
     protected void initEvent() {
+        ll_chongzhi.setOnClickListener(this);
+        ll_xiaoyuan.setOnClickListener(this);
+        ll_bus.setOnClickListener(this);
+        ll_parttime.setOnClickListener(this);
 
     }
 

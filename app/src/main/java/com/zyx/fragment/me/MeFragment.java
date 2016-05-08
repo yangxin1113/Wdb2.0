@@ -72,18 +72,22 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
             case R.id.rl_total:
                 Intent i = new Intent(getActivity(), TotalMoneyActivity.class);
                 startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case R.id.ll_chou:
                 i = new Intent(getActivity(), ZhongchouIndexActivity.class);
                 startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case R.id.ll_li:
                 i = new Intent(getActivity(), AilicaiActivity.class);
                 startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case R.id.ll_tou:
                 i = new Intent(getActivity(), TouziIndexActivity.class);
                 startActivity(i);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
         }
 
@@ -101,7 +105,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         view_navigation_bar = (View) rootview.findViewById(R.id.view_navigation_bar);
         mtb_title = (MyTitleBar) rootview.findViewById(R.id.mtb_title);
         rl_me = (RelativeLayout) rootview.findViewById(R.id.rl_me);
-        iv_to_rignt = (ImageView) rootview.findViewById(R.id.iv_to_right);
+        //iv_to_rignt = (ImageView) rootview.findViewById(R.id.iv_to_right);
         iv_head_big = (CircleImageView) rootview.findViewById(R.id.iv_head_big);
         tv_level = (TextView) rootview.findViewById(R.id.tv_level);
         tv_credit = (TextView) rootview.findViewById(R.id.tv_credit);

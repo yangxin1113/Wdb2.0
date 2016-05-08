@@ -266,8 +266,6 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         }
     }
 
-    ;
-
     /**
      * fragment导航栏
      */

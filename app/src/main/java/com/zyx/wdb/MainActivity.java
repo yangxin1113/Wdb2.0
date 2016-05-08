@@ -1,23 +1,25 @@
 package com.zyx.wdb;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.RelativeLayout.LayoutParams;
 
 import com.zyx.R;
 import com.zyx.base.MyBaseFragmentActivity;
@@ -29,6 +31,7 @@ import com.zyx.fragment.login.LoginFragmentActivity;
 import com.zyx.fragment.me.MeFragment;
 import com.zyx.utils.LogUtil;
 import com.zyx.utils.TwoQuit;
+import com.zyx.widget.MyGestureListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,21 +41,25 @@ import java.util.Map;
 /**
  * Created by zyx on 2016/2/14.
  */
-public class MainActivity extends MyBaseFragmentActivity{
+public class MainActivity extends MyBaseFragmentActivity {
 
     /**
      * 控件相关
      */
     private View view_status_bar;// 状态栏
     private View view_navigation_bar;// 虚拟按键
+
+    private int	screenHeight;
+    private int	screenWidth;
+    private SharedPreferences sp;
     //private GooeyMenu gooeyMenu;
 
     private LinearLayout ll_home;// 首页
     private ImageView iv_home;// 首页图标
     private TextView tv_home;// 首页文字
-    //private LinearLayout ll_me;// 我的
-    //private ImageView iv_me;// 我的图标
-    //private TextView tv_me;// 我的文字
+    private LinearLayout ll_me;// 我的
+    private ImageView iv_me;// 我的图标
+    private TextView tv_me;// 我的文字
     private LinearLayout ll_loan;// 微贷
     private ImageView iv_loan;// 贷款图标
     private TextView tv_loan;// 贷款
@@ -65,6 +72,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     private LinearLayout bottom_guide;
     private RelativeLayout rl_guide;
     private ImageView iv_wdb;
+
     /**
      * Fragment
      */
@@ -72,7 +80,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     private LoanFragment mLoanFragment;//贷款
     private TravelFragment mTravelFragment;//活动
     private LifeFragment mLifeFragment;
-    //private MeFragment mMeFragment;//我的
+    private MeFragment mMeFragment;//我的
     List<Fragment> fragmentList = new ArrayList<Fragment>();
     private int oldIndex;// 记录当前展示的Fragment
     private List<Map<String, Object>> viewList = new ArrayList<Map<String, Object>>();// 所有底部图标与文字
@@ -117,7 +125,7 @@ public class MainActivity extends MyBaseFragmentActivity{
                 //活动
                 addOrShowFragment(3);
                 break;
-            /*case R.id.ll_me:
+            case R.id.ll_me:
                 if (isLogin()) {
                     addOrShowFragment(4);
                 } else {
@@ -127,16 +135,7 @@ public class MainActivity extends MyBaseFragmentActivity{
                                     LoginFragmentActivity.class),
                             Activity.RESULT_FIRST_USER);
                     overridePendingTransition(R.anim.bottom_in, R.anim.no_animation);
-                }*/
-            case R.id.iv_wdb:
-                if(!isRoate){
-                    iv_wdb.setRotation(-45);
-                    isRoate = true;
-                }else{
-                    iv_wdb.setRotation(0);
-                    isRoate = false;
                 }
-
 
                /* Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.icon_w);
 // Getting width & height of the given image.
@@ -172,9 +171,101 @@ public class MainActivity extends MyBaseFragmentActivity{
 
     @Override
     protected void init(Bundle arg0) {
-        setContentView(R.layout.example_activity_main);
+        setContentView(R.layout.activity_main);
         width = getWindowManager().getDefaultDisplay().getWidth();
+        this.screenHeight = this.getWindowManager().getDefaultDisplay()
+                .getHeight();
+        this.screenWidth = this.getWindowManager().getDefaultDisplay()
+                .getWidth();
 
+        iv_wdb = (ImageView) findViewById(R.id.iv_wdb);
+        this.sp = this.getSharedPreferences( "config" , Context.MODE_PRIVATE );
+
+        int lastx = this.sp.getInt( "lastx" , 500 );
+        int lasty = this.sp.getInt( "lasty" , 500 );
+
+        RelativeLayout.LayoutParams params = (LayoutParams) this.iv_wdb
+                .getLayoutParams();
+        params.leftMargin = lastx;
+        params.topMargin = lasty;
+        iv_wdb.setLayoutParams(params);
+        iv_wdb.setOnTouchListener(new View.OnTouchListener() {
+            int startX;
+            int startY;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:// 手指第一次触摸到屏幕
+                        this.startX = (int) event.getRawX();
+                        this.startY = (int) event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:// 手指移动
+                        int newX = (int) event.getRawX();
+                        int newY = (int) event.getRawY();
+
+                        int dx = newX - this.startX;
+                        int dy = newY - this.startY;
+
+                        // 计算出来控件原来的位置
+                        int l = MainActivity.this.iv_wdb.getLeft();
+                        int r = MainActivity.this.iv_wdb.getRight();
+                        int t = MainActivity.this.iv_wdb.getTop();
+                        int b = MainActivity.this.iv_wdb.getBottom();
+
+                        int newt = t + dy;
+                        int newb = b + dy;
+                        int newl = l + dx;
+                        int newr = r + dx;
+
+                        if ((newl < 0) || (newt < 0)
+                                || (newr > MainActivity.this.screenWidth)
+                                || (newb > MainActivity.this.screenHeight)) {
+                            break;
+                        }
+
+                        // 更新iv在屏幕的位置.
+                        MainActivity.this.iv_wdb
+                                .layout(newl, newt, newr, newb);
+                        this.startX = (int) event.getRawX();
+                        this.startY = (int) event.getRawY();
+
+                        break;
+                    case MotionEvent.ACTION_UP: // 手指离开屏幕的一瞬间
+
+                        int lastx = MainActivity.this.iv_wdb.getLeft();
+                        int lasty = MainActivity.this.iv_wdb.getTop();
+
+                        if (Math.abs(lastx - startX) < 200 && Math.abs(lasty - startY) < 200){
+                            /*Intent serviceStop = new Intent();
+                            serviceStop.setClass(FloatService.this, FloatService.class);
+                            stopService(serviceStop);
+                            //进入社区页面
+                            Intent intent =new Intent(FloatService.this,Activity_Community.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);*/
+                            if(!isRoate){
+                                iv_wdb.setRotation(-45);
+                                isRoate = true;
+                            }else{
+                                iv_wdb.setRotation(0);
+                                isRoate = false;
+                            }
+                            Log.i("zyx","click");
+                            /*Toast.makeText(getApplication(), "zyx", Toast.LENGTH_LONG).show();*/
+                        }
+                        SharedPreferences.Editor editor = MainActivity.this.sp.edit();
+                        editor.putInt("lastx", lastx);
+                        editor.putInt("lasty", lasty);
+                        editor.commit();
+
+                        //关键部分：移动距离较小，视为onclick点击行为
+
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -197,22 +288,22 @@ public class MainActivity extends MyBaseFragmentActivity{
         ll_life = (LinearLayout) findViewById(R.id.ll_life);
         iv_life = (ImageView) findViewById(R.id.iv_life);
         tv_life = (TextView) findViewById(R.id.tv_life);
-        /*ll_me = (LinearLayout) findViewById(R.id.ll_me);
+        ll_me = (LinearLayout) findViewById(R.id.ll_me);
         iv_me = (ImageView) findViewById(R.id.iv_me);
-        tv_me = (TextView) findViewById(R.id.tv_me);*/
+        tv_me = (TextView) findViewById(R.id.tv_me);
 
-        iv_wdb = (ImageView) findViewById(R.id.iv_wdb);
+
 
         mHomeFragment = new HomeFragment();
         mLoanFragment = new LoanFragment();
         mTravelFragment = new TravelFragment();
         mLifeFragment = new LifeFragment();
-        //mMeFragment = new MeFragment();
+        mMeFragment = new MeFragment();
         fragmentList.add(mHomeFragment);
         fragmentList.add(mLoanFragment);
         fragmentList.add(mTravelFragment);
         fragmentList.add(mLifeFragment);
-        //fragmentList.add(mMeFragment);
+        fragmentList.add(mMeFragment);
 
         Map<String, Object> item0 = new HashMap<String, Object>();
         item0.put("textView", tv_home);
@@ -234,16 +325,16 @@ public class MainActivity extends MyBaseFragmentActivity{
         item3.put("imageView", iv_life);
         item3.put("img_false", R.mipmap.img_life_false);
         item3.put("img_true", R.mipmap.img_life_true);
-        /*Map<String, Object> item4= new HashMap<String, Object>();
+        Map<String, Object> item4= new HashMap<String, Object>();
         item4.put("textView", tv_me);
         item4.put("imageView", iv_me);
         item4.put("img_false", R.mipmap.img_me_false);
-        item4.put("img_true", R.mipmap.img_me_true);*/
+        item4.put("img_true", R.mipmap.img_me_true);
         viewList.add(item0);
         viewList.add(item1);
         viewList.add(item2);
         viewList.add(item3);
-        //viewList.add(item4);
+        viewList.add(item4);
 
 
     }
@@ -265,11 +356,8 @@ public class MainActivity extends MyBaseFragmentActivity{
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.framelayout, mHomeFragment).commitAllowingStateLoss();
         oldIndex = 0;
-        bottom_guide.getBackground().setAlpha(220);
+        bottom_guide.getBackground().setAlpha(225);
         rl_guide.getBackground().setAlpha(0);
-
-
-
 
     }
 
@@ -280,11 +368,92 @@ public class MainActivity extends MyBaseFragmentActivity{
         ll_loan.setOnClickListener(this);
         ll_traval.setOnClickListener(this);
         ll_life.setOnClickListener(this);
-        //ll_me.setOnClickListener(this);
+        ll_me.setOnClickListener(this);
         //gooeyMenu.setOnClickListener(this);
 
-        iv_wdb.setOnClickListener(this);
+        //iv_wdb.setOnClickListener(this);
+
     }
+
+
+    /*private View.OnTouchListener myTouch = new View.OnTouchListener() {
+        int startX;
+        int startY;
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:// 手指第一次触摸到屏幕
+                    this.startX = (int) event.getRawX();
+                    this.startY = (int) event.getRawY();
+                    break;
+                case MotionEvent.ACTION_MOVE:// 手指移动
+                    int newX = (int) event.getRawX();
+                    int newY = (int) event.getRawY();
+
+                    int dx = newX - this.startX;
+                    int dy = newY - this.startY;
+
+                    // 计算出来控件原来的位置
+                    int l = MainActivity.this.iv_wdb.getLeft();
+                    int r = MainActivity.this.iv_wdb.getRight();
+                    int t = MainActivity.this.iv_wdb.getTop();
+                    int b = MainActivity.this.iv_wdb.getBottom();
+
+                    int newt = t + dy;
+                    int newb = b + dy;
+                    int newl = l + dx;
+                    int newr = r + dx;
+
+                    if ((newl < 0) || (newt < 0)
+                            || (newr > MainActivity.this.screenWidth)
+                            || (newb > MainActivity.this.screenHeight)) {
+                        break;
+                    }
+
+                    // 更新iv在屏幕的位置.
+                    MainActivity.this.iv_wdb
+                            .layout(newl, newt, newr, newb);
+                    this.startX = (int) event.getRawX();
+                    this.startY = (int) event.getRawY();
+
+                    break;
+                case MotionEvent.ACTION_UP: // 手指离开屏幕的一瞬间
+
+                    int lastx = MainActivity.this.iv_wdb.getLeft();
+                    int lasty = MainActivity.this.iv_wdb.getTop();
+
+                    if (Math.abs(lastx - startX) < 200 && Math.abs(lasty - startY) < 200){
+                           *//* *//**//*Intent serviceStop = new Intent();
+                            serviceStop.setClass(FloatService.this, FloatService.class);
+                            stopService(serviceStop);
+                            //进入社区页面
+                            Intent intent =new Intent(FloatService.this,Activity_Community.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);*//**//*
+                        Log.i("zyx", "click");
+                        Toast.makeText(getApplication(), "zyx", Toast.LENGTH_LONG).show();*//*
+
+                        if(!isRoate){
+                            iv_wdb.setRotation(-45);
+                            isRoate = true;
+                        }else{
+                            iv_wdb.setRotation(0);
+                            isRoate = false;
+                        }
+                    }
+                    SharedPreferences.Editor editor = MainActivity.this.sp.edit();
+                    editor.putInt("lastx", lastx);
+                    editor.putInt("lasty", lasty);
+                    editor.commit();
+
+                    //关键部分：移动距离较小，视为onclick点击行为
+
+                    break;
+            }
+            return true;
+        }
+    };*/
 
     @Override
     protected void getData() {
@@ -387,6 +556,7 @@ public class MainActivity extends MyBaseFragmentActivity{
     public void startHomeFragment() {
         onClick(ll_home);
     }
+
 
 
 /*

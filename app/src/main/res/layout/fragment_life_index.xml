@@ -18,7 +18,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="160dp"
                 android:background="@color/white"
                 android:src="@mipmap/life" />
 
@@ -29,27 +29,29 @@
                 android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="75dp"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:gravity="center">
 
                 <LinearLayout
+                    android:id="@+id/ll_chongzhi"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/bt_box_select">
 
                     <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:src="@mipmap/chong" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:text="手机充值"
                         android:textSize="12sp" />
 
@@ -58,29 +60,32 @@
                 <View style="@style/v_line"></View>
 
                 <LinearLayout
+                    android:id="@+id/ll_xiaoyuan"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/bt_box_select">
 
                     <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:src="@mipmap/school" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+
                         android:text="校园一卡通"
                         android:textSize="12sp" />
 
                 </LinearLayout>
 
-                <View style="@style/v_line"></View>
+                <!--<View style="@style/v_line"></View>-->
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -99,7 +104,7 @@
                         android:text="旧书交易"
                         android:textSize="12sp" />
 
-                </LinearLayout>
+                </LinearLayout>-->
 
             </LinearLayout>
 
@@ -109,28 +114,30 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="75dp"
                     android:background="@color/white"
                     android:orientation="horizontal"
                     android:gravity="center">
 
                     <LinearLayout
+                        android:id="@+id/ll_bus"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical"
-                        >
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/bt_box_select">
 
                         <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
                             android:src="@mipmap/bus" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+
                             android:text="公交卡充值"
                             android:textSize="12sp" />
 
@@ -139,29 +146,32 @@
                     <View style="@style/v_line"></View>
 
                     <LinearLayout
+                        android:id="@+id/ll_parttime"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/bt_box_select">
 
                         <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
                             android:src="@mipmap/job" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+
                             android:text="学生兼职"
                             android:textSize="12sp" />
 
                     </LinearLayout>
 
-                    <View style="@style/v_line"></View>
+                    <!--<View style="@style/v_line"></View>-->
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -180,7 +190,7 @@
                             android:text="寝室电费"
                             android:textSize="12sp" />
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                 </LinearLayout>
 
@@ -193,6 +203,12 @@
             <!--<View
                 style="@style/border_line"
                 android:layout_margin="0.5dp" />-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/text_gray2"></View>
+
 
         </LinearLayout>
     </com.zyx.widget.ScrollView1>

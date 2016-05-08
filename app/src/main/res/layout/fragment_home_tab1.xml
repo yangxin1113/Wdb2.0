@@ -14,7 +14,7 @@
         android:listSelector="@android:color/transparent"
         android:numColumns="2"
         android:horizontalSpacing="16dp"
-        android:verticalSpacing="16dp"
+        android:verticalSpacing="8dp"
         android:scrollbars="none"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
