@@ -6,18 +6,16 @@ import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.zyx.R;
-import com.zyx.ad.MyAdapter.DatePopWindow;
 import com.zyx.base.MyBaseFragmentActivity;
+import com.zyx.fragment.product.OrderSuccess;
 import com.zyx.widget.MyTitleBar;
 
 /**
  * Created by zyx on 2016/3/23.
  */
-public class AilicaiActivity extends MyBaseFragmentActivity{
+public class AilicaiBuyActivity extends MyBaseFragmentActivity{
 
 
 
@@ -26,20 +24,17 @@ public class AilicaiActivity extends MyBaseFragmentActivity{
     private View view_navigation_bar;// 虚拟按键
     private MyTitleBar mtb_title;// 标题栏
 
-    private Button bt_order;
-    private Button bt_gogo;
+    private Button bt_yes;
 
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.bt_order:
-                Intent i = new Intent(AilicaiActivity.this, AilicaiBuyActivity.class);
+            case R.id.bt_yes:
+                Intent i = new Intent(AilicaiBuyActivity.this, OrderSuccess.class);
                 startActivity(i);
-                break;
-            case R.id.bt_gogo:
-
+                finish();
                 break;
 
         }
@@ -79,7 +74,7 @@ public class AilicaiActivity extends MyBaseFragmentActivity{
 
     @Override
     protected void init(Bundle arg0) {
-     setContentView(R.layout.activity_ailicai);
+     setContentView(R.layout.activity_ailicai_buy);
     }
 
     @Override
@@ -88,8 +83,7 @@ public class AilicaiActivity extends MyBaseFragmentActivity{
         view_navigation_bar = (View) findViewById(R.id.view_navigation_bar);
 
         mtb_title = (MyTitleBar) findViewById(R.id.mtb_title);
-        bt_order = (Button) findViewById(R.id.bt_order);
-        bt_gogo = (Button) findViewById(R.id.bt_gogo);
+        bt_yes = (Button) findViewById(R.id.bt_yes);
 
 
     }
@@ -123,8 +117,8 @@ public class AilicaiActivity extends MyBaseFragmentActivity{
                 onKeyDown(KeyEvent.KEYCODE_BACK, null);
             }
         });
-        bt_order.setOnClickListener(this);
-        bt_gogo.setOnClickListener(this);
+
+        bt_yes.setOnClickListener(this);
 
     }
 

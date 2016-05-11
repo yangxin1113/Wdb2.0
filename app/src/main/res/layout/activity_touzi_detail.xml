@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white">
-
-    <include layout="@layout/view_status_bar" />
+    <include layout="@layout/view_status_bar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +24,6 @@
                 android:dividerHeight="16dp"
                 android:divider="@color/white"
                 android:clickable="true"></ListView>
-
 
         </RelativeLayout>
 

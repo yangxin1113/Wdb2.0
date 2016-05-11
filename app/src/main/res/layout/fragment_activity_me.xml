@@ -229,7 +229,7 @@
                                 android:id="@+id/tv_pocketmoney"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="666.00"
+                                android:text="888.06"
                                 android:textColor="@color/text_bottom_true"
                                 android:layout_marginTop="4dp"/>
                         </LinearLayout>

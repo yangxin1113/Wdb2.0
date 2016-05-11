@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.zyx.R;
 import com.zyx.application.MyApplication;
 import com.zyx.base.BaseFragment;
@@ -119,6 +120,7 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
         ll_bill = (LinearLayout) rootview.findViewById(R.id.ll_bill);
         ll_order = (LinearLayout) rootview.findViewById(R.id.ll_order);*/
 
+
         rl_total = (RelativeLayout) rootview.findViewById(R.id.rl_total);
         ll_chou = (LinearLayout) rootview.findViewById(R.id.ll_chou);
         ll_li = (LinearLayout) rootview.findViewById(R.id.ll_li);
@@ -184,30 +186,36 @@ public class MeFragment extends BaseFragment implements UpdateUserInfo.onUpdateU
      * @param userInfo
      */
     private void setUserInfo(Map<String, Object> userInfo) {
-        /*if (userInfo != null) {
-            String headImg = getParse().isNull(userInfo.get("CustHead"));
-            if ("".equals(headImg)) {
-                iv_head_big.setImageResource(R.mipmap.img_head_false);
-            } else {
-                DisplayImageOptions userHeadOption = ((MyApplication) getActivity()
-                        .getApplication()).getUserHeadOptions();
-                imageLoader.displayImage(getString(R.string.ip) + headImg,
-                        iv_head_big, userHeadOption);
-            }
+        String headImg = getParse().isNull(userInfo.get("CustHead"));
 
-            tv_level.setText(getParse().isNull(userInfo.get("CustlevelId")));
-            tv_credit.setText(getParse().isNull(userInfo.get("CustCreditRest")));
-            tv_credit.setText(getParse().isNull(userInfo.get("CustPoint")));
-            tv_pocketmoney.setText(getParse().isNull((userInfo.get("CustPocketMoney"))));*/
-            //tv_bank_count.setText(getParse().isNull((userInfo.get("CustPocketMoney"))));
-            /*tv_bill_count.setText(getParse().isNull((userInfo.get("tv_bill_count"))));
-            tv_order_count.setText(getParse().isNull((userInfo.get("tv_order_count"))));*/
+        if ("".equals(headImg)) {
+            iv_head_big.setImageResource(R.mipmap.img_head_false);
+        } else {
+            DisplayImageOptions userHeadOption = ((MyApplication) getActivity()
+                    .getApplication()).getUserHeadOptions();
 
-        //}
+            imageLoader.displayImage(getString(R.string.ip) + headImg,
+                    iv_head_big, userHeadOption);
+        }
+        //tv_custNick.setText(getParse().isNull(userInfo.get("CustNick")));
+        tv_credit.setText(getParse().isNull(userInfo.get("CustCreditRest")));
+        tv_point.setText(getParse().isNull(userInfo.get("CustPoint")));
     }
 
     @Override
     public void notifyUserInfo(Map<String, Object> userInfo) {
 
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            //fragment可见时执行加载数据或者进度条等
+            setViewData();
+        } else {
+            //不可见时不执行操作
+        }
     }
 }

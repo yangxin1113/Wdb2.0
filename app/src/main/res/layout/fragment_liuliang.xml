@@ -180,7 +180,7 @@
                 android:id="@+id/bt_login_out"
                 android:layout_width="48dp"
                 android:layout_height="32dp"
-                android:text="退出"
+                android:text="购买"
                 android:textColor="@color/bt_nomal"
                 android:background="@drawable/bt_short_small"
                 android:layout_marginLeft="32dp"

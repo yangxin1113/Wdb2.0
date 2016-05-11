@@ -1,8 +1,9 @@
 <resources>
     <!--<string name="ip">http://10.66.206.84:8080/wdb_android/</string>-->
-   <!-- <string name="ip">http://192.168.1.102:8080/wdb_android/</string>-->
-    <string name="ip">http://42.96.150.57:8080/wdb_android/</string>
- <!--<string name="ip">http://192.168.1.103:8080/wdb_android/</string>-->  //寝室
+    <!--<string name="ip">http://192.168.43.69:8080/wdb_android/</string>-->  //手机
+    <!--<string name="ip">http://42.96.150.57:8080/wdb_android/</string>-->
+ <!--<string name="ip">http://192.168.1.103:8080/wdb_android/</string>  //寝室-->
+   <string name="ip">http://172.20.10.3:8080/wdb_android/</string>  //寝室
     <string name="app_name">Wdb</string>
     <string name="action_settings">Settings</string>
     <string name="home_bottom_text">微分期</string>
@@ -103,5 +104,6 @@
    <string name="school_zh">校园一卡通</string>
    <string name="phone_zh">手机充值</string>
    <string name="bus_zh">公交卡充值</string>
+   <string name="notice_zh">当您“确认下单”则表示您阅读并同意《产品合同》，接收该产品由金融机构作为增信机构提供本息兑付增信措施，并知晓在其未能按约履行增信措施等情况下仍有可能面临资金损失风险</string>
 </resources>
 

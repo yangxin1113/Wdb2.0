@@ -214,6 +214,7 @@ public class LoanOrderActivity extends MyBaseFragmentActivity implements UpdateU
         map.put("stages", stages);
         map.put("repayment", repayment);
         map.put("dealPwd", dealPwd);
+        map.put("condition", "loan");
         startRunnable(new PostDataThread(Contants.CreateLoan, map,
                 handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));
     }

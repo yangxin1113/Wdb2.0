@@ -83,7 +83,7 @@ public class PayPasswordView{
         this.mContext=mContext;
         mView=LayoutInflater.from(mContext).inflate(R.layout.password_item, null);
         ViewUtils.inject(this, mView);
-        content.setText("首付金额："+monney+"元");
+        content.setText("付款："+monney+"元");
     }
     @OnClick({R.id.pay_keyboard_del,R.id.pay_keyboard_zero,
             R.id.pay_keyboard_one,R.id.pay_keyboard_two,

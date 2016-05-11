@@ -4,8 +4,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:layout_height="110dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/iv_project"
@@ -26,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="生活从新开始范德萨发大水大法师打发"
                 android:textSize="@dimen/textSmall"
+                android:textColor="@color/black"
                 android:maxLines="2"
                 />
 
@@ -42,8 +44,8 @@
                 <ProgressBar
                     android:id="@+id/p_proBar"
                     android:layout_width="0dp"
-                    android:layout_height="8dp"
-                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:max="100"
                     android:progress="50"
@@ -51,12 +53,14 @@
 
                 <TextView
                     android:id="@+id/tv_pecent"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="80%"
-                    android:textSize="10sp"/>
+                    android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:textColor="@color/red"/>
             </LinearLayout>
 
             <LinearLayout
@@ -70,22 +74,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="已筹资￥"
-                    android:textSize="10sp"/>
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/tv_getMoney"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3000"
-                    android:layout_marginLeft="8dp"
-                    android:textSize="10sp"/>
+                    android:layout_marginLeft="6dp"
+                    android:textSize="12sp"/>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="投资人数"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:layout_marginLeft="20dp"/>
 
                 <TextView
@@ -93,11 +97,219 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="21"
-                    android:layout_marginLeft="8dp"
-                    android:textSize="10sp"/>
+                    android:layout_marginLeft="6dp"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
         </RelativeLayout>
+        
+       <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="云南大理九日游"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:textSize="18sp"
+                android:layout_marginLeft="16dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/text_gray2"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="截止时间"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2016-6-10"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="承诺还清时间"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2016-6-10"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_gray2"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年利率"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:textSize="17sp"
+                android:layout_marginLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1%"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:textSize="14sp"
+                android:layout_marginLeft="8dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总金额"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已投金额"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1000"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/ll_processbar"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <ProgressBar
+                android:id="@+id/p_proBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:secondaryProgress="70"
+                android:layout_marginLeft="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_pecent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="80%"
+                android:textSize="16sp"
+                />
+        </LinearLayout>-->
+        
     </LinearLayout>
 
 </LinearLayout>

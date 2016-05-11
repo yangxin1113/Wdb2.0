@@ -39,10 +39,10 @@ public class FragmentMeInfo extends MyBaseFragmentActivity {
                 ((MyApplication) getApplication()).setUser(null);
                 startHomeActivity();
                 break;
-            case R.id.tv_more:
+            /*case R.id.tv_more:
                 break;
             case R.id.tv_modify_info:
-                break;
+                break;*/
         }
 
     }
@@ -74,8 +74,8 @@ public class FragmentMeInfo extends MyBaseFragmentActivity {
         view_navigation_bar = (View) findViewById(R.id.view_navigation_bar);
         iv_left = (ImageView) findViewById(R.id.iv_left);
         bt_login_out = (Button) findViewById(R.id.bt_login_out);
-        tv_more = (TextView)findViewById(R.id.tv_more);
-        tv_modify_info = (TextView)findViewById(R.id.tv_modify_info);
+       /* tv_more = (TextView)findViewById(R.id.tv_more);
+        tv_modify_info = (TextView)findViewById(R.id.tv_modify_info);*/
 
     }
 

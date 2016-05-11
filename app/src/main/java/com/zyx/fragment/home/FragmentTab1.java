@@ -48,7 +48,7 @@ public class FragmentTab1 extends BaseFragment {
     @Override
     protected void setViewData() {
         Map<String, String > map = new HashMap<String, String>();
-        map.put("condition", "electronic");
+        map.put("condition", "tuijian");
         startRunnable(new getJsonDataThread(Contants.Product_List, map,
                 handler, MyMessageQueue.OK, MyMessageQueue.TIME_OUT));
 

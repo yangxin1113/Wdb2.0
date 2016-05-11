@@ -119,13 +119,16 @@
 
                         <ImageView
                             android:id="@+id/iv_right"
-                            android:layout_width="36dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/bt_go"
-                            />
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/bt_go_po"
+                            android:gravity="center"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginRight="28dp"
+                            android:layout_marginEnd="28dp"
+                            android:focusable="true"/>
                     </LinearLayout>
 
 
