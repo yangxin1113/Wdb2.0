@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_status_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/background_title_top" >
+
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bt_back" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/fit_zh"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="意见反馈"
+                android:textColor="@drawable/bt_registered"
+                android:textSize="16dp"
+                />
+        </RelativeLayout>
+
+      <LinearLayout
+          android:id="@+id/ll_user_safe"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginTop="8dp"
+          android:background="@drawable/bt_normal">
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+              android:layout_marginLeft="24dp">
+
+
+
+              <TextView
+                  android:layout_toRightOf="@+id/iv_left1"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="账号安全"
+                  android:textSize="16sp"
+                  android:layout_centerVertical="true"
+                  android:textColor="@color/black"/>
+              
+              
+              <ImageView
+                  android:layout_width="12dp"
+                  android:layout_height="12dp"
+                  android:layout_alignParentRight="true"
+                  android:layout_centerVertical="true"
+                  android:src="@drawable/bt_go_po"
+                  android:layout_marginRight="16dp"/>
+
+          </RelativeLayout>
+
+      </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_gray2"/>
+
+        <LinearLayout
+            android:id="@+id/ll_take"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bt_normal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="24dp">
+
+
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_left2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="消息推送"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:id="@+id/iv_take"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/butn_close"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/text_gray2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bt_normal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="24dp">
+
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_left3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="非Wifi网络流量"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/bt_go_po"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_gray2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bt_normal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="24dp">
+
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_left3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="清除缓存"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/bt_go_po"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/text_gray2"/>
+
+        <LinearLayout
+            android:id="@+id/ll_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bt_normal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="24dp">
+
+
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_left5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="检查最新版本"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/bt_go_po"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_gray2"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bt_normal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="24dp">
+
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_left4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="精彩推荐应用"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/bt_go_po"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <include layout="@layout/view_navigation_bar" />
+</LinearLayout>

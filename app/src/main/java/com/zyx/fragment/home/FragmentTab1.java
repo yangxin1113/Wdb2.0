@@ -91,7 +91,7 @@ public class FragmentTab1 extends BaseFragment {
                 LogUtil.i("zyx", "data,data:"+data);
                 if(data != null ){
                     gv_ProductData = ParserJsonProductitem.JsontoProductItem(data);
-                    LogUtil.i("zyx", "data,data:"+gv_ProductData.get(1).getProductName());
+                    //LogUtil.i("zyx", "data,data:"+gv_ProductData.get(1).getProductName());
                     gv_products_adapter = new GridViewAdapterProduct(getActivity(), gv_ProductData);
                     gv_products_adapter.notifyDataSetChanged();
                     gv_product_view.setAdapter(gv_products_adapter);

@@ -28,6 +28,7 @@
                 android:divider="@color/white"
                 android:clickable="true"></ListView>
 
+            <include layout="@layout/empty_order"/>
         </LinearLayout>
 
     </LinearLayout>

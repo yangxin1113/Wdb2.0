@@ -40,6 +40,7 @@ public class FragmentRecordActivity extends MyBaseFragmentActivity {
     private List<OrderData> lv_OrderData;
     private ListView lv_order_view;
     private String customerId;
+    private View emptyView ;
 
     @Override
     protected boolean isUserMapNull() {
@@ -82,6 +83,8 @@ public class FragmentRecordActivity extends MyBaseFragmentActivity {
         mtb_title = (MyTitleBar) findViewById(R.id.mtb_title);
 
         lv_order_view = (ListView) findViewById(R.id.lv_order);
+        emptyView = findViewById(R.id.rl_empty);
+        lv_order_view.setEmptyView(emptyView);
     }
 
     @Override

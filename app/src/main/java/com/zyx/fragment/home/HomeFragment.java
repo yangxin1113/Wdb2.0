@@ -422,7 +422,7 @@ public class HomeFragment extends BaseFragment implements UpdateUserInfo.onUpdat
         //slidingMenu.setMenu(R.layout.slidingmenu_home_left);
         slidingMenu.setMenu(getView());
         //slidingMenu.setBehindWidth(600);
-        slidingMenu.setBehindOffset(200);
+        slidingMenu.setBehindOffset(300);
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         slidingMenu.attachToActivity(getActivity(), SlidingMenu.SLIDING_WINDOW);

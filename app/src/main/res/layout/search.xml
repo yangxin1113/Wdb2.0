@@ -17,13 +17,12 @@
 
         <ImageView
             android:id="@+id/iv_left"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:src="@drawable/bt_back_white" />
         <EditText
-
             android:paddingLeft="5dp"
             android:id="@+id/auto_edit"
             android:layout_width="match_parent"
@@ -56,14 +55,189 @@
 
         <ImageView
             android:id="@+id/sousuo"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@drawable/btn_sousuo_selector"
-            android:layout_alignTop="@+id/search_clear"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="热门搜索"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"/>
+
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@mipmap/speak"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="32dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="iphone6s"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="死飞自行车"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="佳能单反"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="iphone6s"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="死飞自行车"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="佳能单反"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="iphone6s"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginLeft="16dp"
+                />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="死飞自行车"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="佳能单反"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_hot"
+                android:layout_marginRight="16dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/refresh"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="换一批试试"
+                android:textSize="14sp"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/bt_nomal"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -71,8 +245,8 @@
         android:text="历史搜索"
         android:gravity="center_vertical"
         android:layout_marginLeft="8dp"
-        android:textSize="18dp"
-        android:textColor="@color/gray"/>
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
 
 
     <ListView

@@ -1,11 +1,13 @@
 package com.zyx.fragment.me;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zyx.R;
@@ -25,6 +27,10 @@ public class FragmentMeInfo extends MyBaseFragmentActivity {
     private Button bt_login_out;
     private TextView tv_more;
     private TextView tv_modify_info;
+    private LinearLayout ll_account;
+    private LinearLayout ll_qr;
+    private LinearLayout ll_fit;
+    private LinearLayout ll_relate;
 
 
 
@@ -39,10 +45,28 @@ public class FragmentMeInfo extends MyBaseFragmentActivity {
                 ((MyApplication) getApplication()).setUser(null);
                 startHomeActivity();
                 break;
-            /*case R.id.tv_more:
+            case R.id.ll_account:
+                Intent i = new Intent(FragmentMeInfo.this,FragmentMeAccount.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
-            case R.id.tv_modify_info:
+            /*case R.id.tv_modify_info:
                 break;*/
+            case R.id.ll_qr:
+                i = new Intent(FragmentMeInfo.this, FragmentMeQr.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;
+            case R.id.ll_fit:
+                i = new Intent(FragmentMeInfo.this, FragmentMefit.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;
+            case R.id.ll_relate:
+                i = new Intent(FragmentMeInfo.this, FragmentMefit.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                break;
         }
 
     }
@@ -76,6 +100,10 @@ public class FragmentMeInfo extends MyBaseFragmentActivity {
         bt_login_out = (Button) findViewById(R.id.bt_login_out);
        /* tv_more = (TextView)findViewById(R.id.tv_more);
         tv_modify_info = (TextView)findViewById(R.id.tv_modify_info);*/
+        ll_account = (LinearLayout) findViewById(R.id.ll_account);
+        ll_qr = (LinearLayout) findViewById(R.id.ll_qr);
+        ll_fit = (LinearLayout) findViewById(R.id.ll_fit);
+        ll_relate = (LinearLayout) findViewById(R.id.ll_relate);
 
     }
 
@@ -102,8 +130,9 @@ public class FragmentMeInfo extends MyBaseFragmentActivity {
     protected void initEvent() {
         iv_left.setOnClickListener(this);
         bt_login_out.setOnClickListener(this);
-        tv_more.setOnClickListener(this);
-        tv_modify_info.setOnClickListener(this);
+        ll_account.setOnClickListener(this);
+        ll_qr.setOnClickListener(this);
+        ll_fit.setOnClickListener(this);
 
     }
 

@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14sp"
             android:text="Go,Yeah!"
             android:id="@+id/tv_custNick"
             android:textColor="@color/white"
@@ -64,24 +64,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
                 android:text="信誉值:"
                 android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="5000"
                 android:id="@+id/tv_credit"
-                android:textSize="16dp"
+                android:textSize="12sp"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
                 android:layout_marginLeft="10dp"
                 android:text="积分:"
                 android:textColor="@color/white"/>
@@ -89,18 +88,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+
                 android:text="666"
                 android:id="@+id/tv_point"
-                android:textSize="16dp"
+                android:textSize="12sp"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/white"/>
         </LinearLayout>
     </RelativeLayout>
 
-        <View
+       <!-- <View
             style="@style/border_line"
-            android:layout_marginTop="2dp"></View>
+            android:layout_marginTop="2dp"></View>-->
 
     </LinearLayout>
 
@@ -112,8 +111,8 @@
         android:background="@drawable/bt_side">
 
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/img_me_false"
             android:layout_marginLeft="20dp"/>
 
@@ -138,8 +137,8 @@
         android:background="@drawable/bt_side">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/img_loan_false"
             android:layout_marginLeft="20dp"/>
 
@@ -164,8 +163,8 @@
         android:background="@drawable/bt_side">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/img_order_false"
             android:layout_marginLeft="20dp"/>
 
@@ -190,8 +189,8 @@
         android:background="@drawable/bt_side">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/img_credit_false"
             android:layout_marginLeft="20dp"/>
 
@@ -216,8 +215,8 @@
         android:background="@drawable/bt_side">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/img_safty_false"
             android:layout_marginLeft="20dp"/>
 
@@ -243,15 +242,15 @@
         android:background="@drawable/bt_side">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/img_help_false"
             android:layout_marginLeft="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="关于帮助"
+            android:text="帮助中心"
             android:textSize="@dimen/text_size_16sp"
             android:textColor="@color/verification_code"
             android:layout_marginLeft="25dp"/>

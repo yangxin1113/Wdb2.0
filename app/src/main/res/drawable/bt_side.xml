@@ -11,7 +11,7 @@
 
     </shape></item>
     <item android:state_pressed="true"><shape>
-        <solid android:color="@color/color_text1_zh" />
+        <solid android:color="@color/text_gray2" />
         <padding android:bottom="4dp"
             android:top="4dp"
             android:left="12dp"

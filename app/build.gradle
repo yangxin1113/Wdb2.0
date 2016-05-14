@@ -22,6 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 repositories{
@@ -53,4 +54,9 @@ dependencies {
     compile 'in.srain.cube:ultra-ptr:1.0.7@aar'
     compile project(':pull')
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile files('libs/ipaynow_alipay_v1.0.1.jar')
+    compile files('libs/ipaynow_base_v1.3.5.jar')
+    compile files('libs/ipaynow_qq_v1.0.0.jar')
+    compile files('libs/ipaynow_upmp_v1.0.2.jar')
+    compile files('libs/ipaynow_wechatwp_v1.0.1.jar')
 }
