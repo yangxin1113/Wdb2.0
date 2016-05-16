@@ -26,7 +26,7 @@
             android:paddingLeft="5dp"
             android:id="@+id/auto_edit"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="32dp"
             android:layout_toLeftOf="@+id/sousuo"
             android:layout_centerVertical="true"
             android:background="@drawable/bt_title_box"
@@ -236,17 +236,12 @@
                 android:textColor="@color/bt_nomal"/>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_gray2"></View>
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="历史搜索"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="8dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"/>
 
 
     <ListView
@@ -258,6 +253,16 @@
     </ListView>
 
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_gray2"></View>
+
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -266,14 +271,13 @@
         <TextView
             android:id="@+id/clear_all"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
+            android:layout_height="48dp"
+            android:text="清除历史搜索"
             android:layout_centerInParent="true"
-            android:text="清空记录"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textMedium"
-            android:gravity="center"
-            android:background="@drawable/btn_com_selectot"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/bt_nomal"
+            android:padding="8dp"
             />
 
     </RelativeLayout>
