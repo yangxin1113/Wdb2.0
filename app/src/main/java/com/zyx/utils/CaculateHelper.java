@@ -40,7 +40,17 @@ public class CaculateHelper {
         //商品价格减去首付
         double exceptfirsprice = Parse.getInstance().parseDouble(price, "#.##") * (1 - Parse.getInstance().parseDouble(firstpay.replace("%",""), "#.##")*0.01);
         //除去每个月乘以0.09得每月还款
-        double mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month.replace("个月", "")), "#.##") * 1.09;
+        double mMonthprice = 0.00;
+        if(Parse.getInstance().parseInt(month.replace("个月", ""))>= 1 && Parse.getInstance().parseInt(month.replace("个月", ""))<=3)
+            mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month.replace("个月", "")), "#.##") * 1.014;
+        else if(Parse.getInstance().parseInt(month.replace("个月", ""))>= 4 && Parse.getInstance().parseInt(month.replace("个月", ""))<=6)
+            mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month.replace("个月", "")), "#.##") * 1.029;
+        else if(Parse.getInstance().parseInt(month.replace("个月", ""))>=7 && Parse.getInstance().parseInt(month.replace("个月", ""))<=12)
+            mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month.replace("个月", "")), "#.##") * 1.044;
+        else if(Parse.getInstance().parseInt(month.replace("个月", ""))>= 13 && Parse.getInstance().parseInt(month.replace("个月", ""))<=24)
+            mMonthprice = Parse.getInstance().parseDouble(exceptfirsprice / Parse.getInstance().parseInt(month.replace("个月", "")), "#.##") * 1.059;
+
+
         result = String.valueOf(Parse.getInstance().parseDouble(mMonthprice,"#.##"));
         return result;
     }

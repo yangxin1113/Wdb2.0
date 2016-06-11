@@ -190,21 +190,6 @@
                     android:text="选择属性"
                     android:layout_marginLeft="10dp"/>
 
-               <!-- <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/gray"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp">
-
-                    <com.zyx.widget.CategoryView
-                        android:id="@+id/category"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical"
-                        android:paddingLeft="15dp"></com.zyx.widget.CategoryView>
-                </LinearLayout>-->
 
                 <!-- 商品规格列表 -->
                 <LinearLayout
@@ -221,7 +206,6 @@
                         android:id="@+id/lv_property"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
                         android:divider="#C0C0C0"
                         android:dividerHeight="0.5px"
                         android:listSelector="#00000000">

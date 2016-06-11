@@ -59,10 +59,11 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/ll_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -82,6 +83,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/iv_head"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_centerVertical="true"
@@ -110,9 +112,10 @@
                 android:background="@color/text_gray2" />
 
             <LinearLayout
+                android:id="@+id/ll_nick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -132,6 +135,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_custNick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -162,9 +166,10 @@
                 android:background="@color/text_gray2" />
 
             <LinearLayout
+                android:id="@+id/ll_custpen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -184,6 +189,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_cutpen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -214,9 +220,10 @@
                 android:background="@color/text_gray2" />
 
             <LinearLayout
+                android:id="@+id/ll_custphone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -235,6 +242,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_custphonenum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -266,9 +274,10 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_idcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -287,12 +296,13 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_idcard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@+id/iv_right7"
-                        android:text="xxx"
+                        android:text="未验证"
                         android:textSize="16sp" />
 
 
@@ -316,9 +326,10 @@
                 android:background="@color/text_gray2" />
 
             <LinearLayout
+                android:id="@+id/ll_school"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -337,6 +348,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_school"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -367,9 +379,10 @@
                 android:background="@color/text_gray2" />
 
             <LinearLayout
+                android:id="@+id/ll_gradate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -383,11 +396,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="毕业时间"
+                        android:text="在校时间"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_gradate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -418,9 +432,10 @@
                 android:background="@color/text_gray2" />
 
             <LinearLayout
+                android:id="@+id/ll_educate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -439,6 +454,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_educate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -470,9 +486,10 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_custaddr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/bt_normal"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -482,6 +499,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_custaddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"

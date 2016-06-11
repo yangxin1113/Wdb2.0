@@ -20,10 +20,6 @@ public class FragmentMeRelate extends MyBaseFragmentActivity {
     private ImageView iv_left;// 返回按钮
 
 
-
-
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

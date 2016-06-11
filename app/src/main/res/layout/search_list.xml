@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="2dp">
+
+    <include layout="@layout/view_status_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="2dp"
+        android:background="@color/white"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bt_back_white" />
+
+
+        <Button
+            android:paddingLeft="5dp"
+            android:id="@+id/bt_search"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toLeftOf="@+id/sousuo"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_title_box"
+            android:drawableLeft="@mipmap/search_bar_icon_normal"
+            android:focusable="true"
+            android:text="@string/input_search_zh"
+            android:textColor="#b3b3b3"
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/iv_left"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            />
+
+        <ImageButton
+            android:id="@+id/search_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/sousuo"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:src="@drawable/search_clear"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/sousuo"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/btn_sousuo_selector"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="综合排名"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/bt_more"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="价格顺序"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/bt_normal"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="销量排名"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/bt_more"/>
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_gray2"></View>
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/search_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_gray2"></View>
+
+
+    <include layout="@layout/view_status_bar" />
+</LinearLayout>

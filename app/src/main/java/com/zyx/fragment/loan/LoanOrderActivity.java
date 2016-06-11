@@ -59,8 +59,6 @@ public class LoanOrderActivity extends MyBaseFragmentActivity implements UpdateU
     private String stages;
     private String loanMoney;
 
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

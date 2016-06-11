@@ -188,9 +188,18 @@ public class LoanFragment extends BaseFragment {
 
 
     private String updaterepay(String money, String month) {
+        String tv_money ="";
         Double Money = Parse.getInstance().parseDouble(money);
         Double Month = Parse.getInstance().parseDouble(month);
-        String tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)), "#.##"));
+        //String tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)), "#.##"));
+        if(Integer.valueOf(month)>= 1 && Integer.valueOf(month)<=3)
+            return tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)*1.014), "#.##"));
+        else if(Integer.valueOf(month)>= 4 && Integer.valueOf(month)<=6)
+            return tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)*1.029), "#.##"));
+        else if(Integer.valueOf(month)>=7 && Integer.valueOf(month)<=12)
+            return tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)*1.044), "#.##"));
+        else if(Integer.valueOf(month)>= 13 && Integer.valueOf(month)<=24)
+            return tv_money = String.valueOf(Parse.getInstance().parseDouble(String.valueOf((Money / Month)*1.059), "#.##"));
         return tv_money;
     }
 
@@ -208,6 +217,10 @@ public class LoanFragment extends BaseFragment {
         } else if(value % 1.0 != 0.0) {
             utils.showToast(getContext(), "请输入100的倍数的贷款金额");
             isNext =  false;
+        }else if(Money>2000){
+            utils.showToast(getContext(),
+                    "贷款金额不得大于2000");
+            isNext = false;
         }
         return isNext;
     }

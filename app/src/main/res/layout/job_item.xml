@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/qa_margin_5"
+    android:background="@drawable/bt_box_select"
+    android:paddingTop="@dimen/msc_container_padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/job_item">
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="@dimen/msc_container_padding"
+        android:layout_marginRight="4dp"
+        android:padding="1.0dip"
+        android:src="@mipmap/icon_w" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="啊啊啊啊啊"
+        android:id="@+id/title"
+        android:maxEms="10"
+        android:layout_alignTop="@+id/iv_pic"
+        android:layout_toRightOf="@+id/iv_pic"
+        android:layout_toEndOf="@+id/iv_pic"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Small Text"
+        android:id="@+id/time"
+        android:layout_below="@+id/title"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignStart="@+id/title"
+        android:layout_marginTop="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Small Text"
+        android:id="@+id/address"
+        android:layout_alignBottom="@+id/iv_pic"
+        android:layout_alignLeft="@+id/time"
+        android:layout_alignStart="@+id/time" />
+
+    <TextView
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="24dp"
+        android:text="120元/天"
+        android:textColor="@color/white"
+        android:id="@+id/salary"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/red"
+        android:layout_below="@+id/iv_pic"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bt_nomal"
+        android:text="报名中"
+        android:id="@+id/status"
+        android:layout_above="@+id/time"
+        android:layout_alignLeft="@+id/salary"
+        android:layout_alignStart="@+id/salary" />
+    </RelativeLayout>
+
+</RelativeLayout>

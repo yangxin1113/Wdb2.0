@@ -1,49 +1,15 @@
 package com.zyx.fragment.life;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zyx.R;
-import com.zyx.ad.MyAdapter.PropertyAdapter;
-import com.zyx.ad.ScaleView.HackyViewPager;
 import com.zyx.base.MyBaseFragmentActivity;
-import com.zyx.bean.Attr;
-import com.zyx.contants.Contants;
-import com.zyx.fragment.product.ProductOrderActivity;
-import com.zyx.thread.getJsonDataThread;
 import com.zyx.utils.LogUtil;
 import com.zyx.utils.MyMessageQueue;
-import com.zyx.widget.CategoryView;
 import com.zyx.widget.MyTitleBar;
-import com.zyx.widget.SpinerPopWindow;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by zyx on 2016/2/22.(无用)
@@ -80,7 +46,7 @@ public class BookFragmentActivity extends MyBaseFragmentActivity{
     @Override
     protected void init(Bundle arg0) {
 
-        setContentView(R.layout.fragment_book_index);
+        setContentView(R.layout.fragment_job_index);
 
     }
 

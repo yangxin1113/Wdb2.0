@@ -25,6 +25,9 @@ public final class Contants {
     /** 用户登录 */
     public static final String USER_LOGIN =	"LoginAction.action";
 
+    /** 返回用户信息 */
+    public static final String USER_RETURN = "ReCustomer.action";
+
     /** 判断用户存在 */
     public static final String USER_IsExit ="IsUserExit.action";
 
@@ -33,6 +36,15 @@ public final class Contants {
 
     /** 修改密码资料 */
     public static final String UPDATE_USER_INFO = "ModifyLoginPwd.action";
+
+
+    /** 修改用户信息*/
+    public static final String UPDATE_USER_INF = "ModifyUserInfo.action";
+
+    /** 上传文件*/
+    public static final String SUBMIT_FILE = "SubmitFile.action";
+
+
 
 
     /** 商品集合*/
@@ -68,6 +80,16 @@ public final class Contants {
     /** 获得某商品*/
     public static final String ZhongchouList = "getZhongchous.action";
 
+
+
+    /**
+     * 生活服务
+     *
+     */
+
+    /** 兼职*/
+    public static final String PartJobs= "PartJob.action";
+
     /** 用户文件夹 */
     public static final String USER_PATH = "USER/user";
 
@@ -92,4 +114,8 @@ public final class Contants {
 
     /** 服务器配置文件名 */
     public static final String CONFIGURE = "configure";
+
+    /**大学选择*/
+    public static final String PROVINCE_URL = "http://www.hisihi.com/app.php?s=/school/province";
+    public static final String SCHOOL_URL = "http://www.hisihi.com/app.php?s=/school/school/provinceid/";
 }

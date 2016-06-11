@@ -12,11 +12,11 @@
         android:layout_height="match_parent"
         android:layout_weight="1" >
 
-        <com.kedll.widget.PhotoviewPager
+        <com.zyx.widget.PhotoviewPager
             android:id="@+id/pp_view_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-        </com.kedll.widget.PhotoviewPager>
+        </com.zyx.widget.PhotoviewPager>
 
         <include layout="@layout/layout_title" />
 

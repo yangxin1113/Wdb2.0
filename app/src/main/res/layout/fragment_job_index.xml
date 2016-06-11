@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/view_status_bar" />
+
+    <include layout="@layout/layout_title"></include>
+
+    <!--<EditText
+        android:id="@+id/ib_search"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingRight="85dp"
+        android:src="@mipmap/icon_wdb"
+        android:hint="@string/input_search_zh"
+        android:textSize="14sp"
+        android:textColor="@color/lostPwd_color"
+        android:drawableLeft="@mipmap/img_search1"
+        android:background="@drawable/bt_title_box"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/border">
+
+                    <ListView
+                        android:id="@+id/lv_job"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        >
+                    </ListView>
+                </LinearLayout>
+
+            </LinearLayout>
+    <include layout="@layout/view_navigation_bar" />
+</LinearLayout>

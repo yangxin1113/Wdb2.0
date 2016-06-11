@@ -11,7 +11,7 @@ import com.zyx.ad.MyAdapter.ListOrderAdapter;
 import com.zyx.ad.MyAdapter.ListProductAdapter;
 import com.zyx.base.BaseFragment;
 import com.zyx.bean.ProductData;
-import com.zyx.fragment.Order.DetailOrderActivity;
+
 import com.zyx.fragment.product.TravelFragmentActivity;
 import com.zyx.widget.MyTitleBar;
 

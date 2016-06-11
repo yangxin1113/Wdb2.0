@@ -84,6 +84,17 @@
 
 
             <ImageView
+                android:id="@+id/iv_saomiao"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/bt_saomiao"
+                android:layout_toLeftOf="@+id/iv_speach"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"/>
+
+
+            <ImageView
+                android:id="@+id/iv_speach"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@mipmap/speak"

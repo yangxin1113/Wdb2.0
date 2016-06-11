@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,6 +43,7 @@ import com.zyx.utils.LogUtil;
 import com.zyx.utils.MyMessageQueue;
 import com.zyx.utils.Parse;
 import com.zyx.widget.CategoryView;
+import com.zyx.widget.CustomScrollView;
 import com.zyx.widget.MyTitleBar;
 import com.zyx.widget.SpinerPopWindow;
 import com.zyx.widget.SpinerPopWindow1;
@@ -97,6 +99,8 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
     private String[] imageUrl;
     /**ViewPager当前显示页的下标*/
     private int position=0;
+
+    private CustomScrollView scroll;
 
 
     /** 数据相关 */
@@ -251,6 +255,7 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
 
         view_status_bar = (View) findViewById(R.id.view_status_bar);
         view_navigation_bar = (View) findViewById(R.id.view_navigation_bar);
+        scroll = (CustomScrollView) findViewById(R.id.scroll);
 
         mtb_title = (MyTitleBar) findViewById(R.id.mtb_title);
         tv_ProductName = (TextView)findViewById(R.id.tv_product_name);
@@ -335,6 +340,15 @@ public class ProductFragmentActivity extends MyBaseFragmentActivity{
         tv_property.setOnClickListener(this);
         ll_drop.setOnClickListener(this);
         ll_drop1.setOnClickListener(this);
+        lv_property.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    scroll.requestDisallowInterceptTouchEvent(true);
+                }
+                return false;
+            }
+        });
        /* mSpinerPopWindow1.setItemListener(this);
         mSpinerPopWindow11.setItemListener(this);*/
 

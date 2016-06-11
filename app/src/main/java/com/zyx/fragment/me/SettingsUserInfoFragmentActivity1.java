@@ -1,16 +1,21 @@
 package com.zyx.fragment.me;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -31,12 +36,19 @@ import com.zyx.base.MyBaseFragmentActivity;
 import com.zyx.contants.Contants;
 import com.zyx.contants.UpdateUserInfo;
 import com.zyx.dialog.AddImageDialog;
-import com.zyx.thread.GetDataThread;
+import com.zyx.thread.PostDataThread;
+import com.zyx.thread.PostFileThread;
+import com.zyx.utils.LogUtil;
 import com.zyx.utils.MyMessageQueue;
+import com.zyx.utils.MyUtils;
+import com.zyx.utils.Resolve;
 import com.zyx.widget.CircleImageView;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -166,6 +178,69 @@ public class SettingsUserInfoFragmentActivity1 extends MyBaseFragmentActivity im
 
     @Override
     protected void handlerMessage(Message msg) {
+        switch (msg.what) {
+        case 0x4000:
+        // 提交文件成功
+        Map<String, Map<String, Object>> mapXML1 = (Map<String, Map<String, Object>>) msg.obj;
+            Log.w("zyx111",String.valueOf(mapXML1.get("code")));
+        /*ArrayList<Map<String, Object>> resultList1 = Resolve.getInstance()
+                .getList(mapXML1, "result");*/
+        if (mapXML1 != null && mapXML1.size() > 0) {
+
+            utils.showToast(getApplicationContext(), mapXML1.toString());
+            if ("200".equals(getParse().isNull(
+                    mapXML1.get("code")))) {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("CustomerId", ((MyApplication) getApplication()).getUser().get("CustomerId").toString());
+                startRunnable(new PostDataThread(Contants.USER_RETURN, map,
+                        handler, 0x4100, 0x4109));
+                LogUtil.i("zyx", "2222222222222");
+                break;
+            } else {
+                showSubmitImgDialog(getParse().isNull(
+                        mapXML1.get("msg")));
+                break;
+            }
+        }
+        case 0x4009:
+        // 提交文件失败
+        showSubmitImgDialog("上传头像失败，是否重试？");
+        break;
+
+        case 0x4100:
+        // 修改头像成功
+        Map<String, Map<String, Object>> mapXML2 = (Map<String, Map<String, Object>>) msg.obj;
+            Log.w("zyx",mapXML2.toString());
+
+        if (mapXML2 != null && mapXML2.size() > 0) {
+            if ("200".equals(mapXML2.get("code"))) {
+                ArrayList<Map<String, Object>> userinfList = Resolve
+                        .getInstance().getList(mapXML2, "userInfo");
+
+                if (userinfList != null && userinfList.size() > 0) {
+                    Map<String, Object> user = userinfList.get(0);
+                    if (user.get("CustomerId") != null) {
+                        ((MyApplication) getApplication()).setUser(user);
+                        utils.showToast(getApplicationContext(), "头像修改成功！");
+                        setUserInfo(user);
+                        break;
+                    }
+                }
+            } else {
+                showSubmitImgDialog(getParse().isNull(
+                        mapXML2.get("msg")));
+                break;
+            }
+        }
+        case 0x4109:
+        // 修改头像失败
+        showSubmitImgDialog("上传头像失败，是否重试？");
+        break;
+        default:
+        break;
+    }
+    if (pd.isShowing())
+            pd.dismiss();
 
     }
 
@@ -194,6 +269,7 @@ public class SettingsUserInfoFragmentActivity1 extends MyBaseFragmentActivity im
         et_custName = (EditText)findViewById(R.id.et_custName);
         et_idCard = (EditText)findViewById(R.id.et_custIdCard);
         et_phoneNum = (EditText)findViewById(R.id.et_custPhoneNum);
+        iv_head = (CircleImageView) findViewById(R.id.iv_head);
 
     }
 
@@ -216,8 +292,6 @@ public class SettingsUserInfoFragmentActivity1 extends MyBaseFragmentActivity im
         lp.width = width - utils.dp2px(getApplicationContext(), 20);
         lp.height = lp.width;
         iv_show_head.setLayoutParams(lp);
-
-
 
     }
 
@@ -245,7 +319,7 @@ public class SettingsUserInfoFragmentActivity1 extends MyBaseFragmentActivity im
      */
     private void setUserInfo(Map<String, Object> user) {
         if (user != null) {
-            String headimg = getParse().isNull(user.get("headimg"));
+            String headimg = getParse().isNull(user.get("CustHead"));
             if (headimg.equals("")) {
                 iv_head.setImageResource(R.mipmap.img_head_false);
                 iv_show_head.setImageResource(R.mipmap.img_head_false);
@@ -282,12 +356,14 @@ public class SettingsUserInfoFragmentActivity1 extends MyBaseFragmentActivity im
                     ((MyApplication) getApplication()).getUserHeadOptions());
             pd.setMessage("上传头像中...");
             pd.show();
-            startRunnable(new GetDataThread(getApplicationContext(),
-                    Contants.UPDATE_USER_INFO
-                            + utils.getDeviceId(getApplicationContext())
-                            + "&AppName=52", handler, MyMessageQueue.OK,
-                    MyMessageQueue.DATA_EXCEPTION,
-                    MyMessageQueue.DATA_EXCEPTION, false));
+
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("CustomerId", ((MyApplication) getApplication()).getUser().get("CustomerId").toString());
+            ArrayList<String> fileList = new ArrayList<String>();
+            fileList.add(imageFile);
+            startRunnable(new PostFileThread(Contants.SUBMIT_FILE
+                    , map, fileList, 0x4000, 0x4009, -1,
+                    "jpeg", handler));
         }
     }
 
@@ -423,6 +499,107 @@ public class SettingsUserInfoFragmentActivity1 extends MyBaseFragmentActivity im
             }
         });
         ab.show();
+    }
+
+    @Override
+    protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(arg0, arg1, arg2);
+        if (arg0 == 1) {
+            // 相册返回
+            if (arg1 == RESULT_OK) {
+                if (arg2.getExtras() == null) {
+                    return;
+                }
+                photoList = (ArrayList<Map<String, Object>>) arg2
+                        .getSerializableExtra("selectedList");
+                if (photoList != null && photoList.size() > 0) {
+                    String outFile = getParse().isNull(
+                            photoList.get(0).get("imagePath")).replace(
+                            ".",
+                            MyUtils.getInstance().MD5(
+                                    String.valueOf(System.currentTimeMillis()))
+                                    + ".");
+                    startPhotoZoom(
+                            Uri.fromFile(new File(getParse().isNull(
+                                    photoList.get(0).get("imagePath")))),
+                            Uri.fromFile(new File(outFile)));
+                }
+            }
+        } else if (arg0 == 2) {
+            // 裁剪图片返回
+            if (arg1 == RESULT_OK) {
+                File file = null;
+                if (Environment.getExternalStorageState().equals(
+                        Environment.MEDIA_MOUNTED)) {
+                    file = new File(getExternalCacheDir().getPath()
+                            + "/images_data");
+                } else {
+                    file = new File(getCacheDir().getPath() + "/images_data");
+                }
+                if (!file.exists()) {
+                    file.mkdirs();
+                }
+                file = new File(file.getPath()
+                        + "/"
+                        + MyUtils.getInstance().MD5(
+                        String.valueOf(System.currentTimeMillis()))
+                        + ".jpeg");
+                Bundle bundle = arg2.getExtras();
+                Bitmap bitmap = null;
+                if (bundle != null) {
+                    bitmap = bundle.getParcelable("data");
+                }
+
+                if (bitmap != null) {// 保存图片
+                    FileOutputStream fos = null;
+                    try {
+                        fos = new FileOutputStream(file.getPath());
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                        imageFile = file.getPath();
+                        bitmap.recycle();
+                    } catch (FileNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        // e.printStackTrace();
+                        utils.showToast(getApplicationContext(), "保存图片失败");
+                        imageFile = null;
+                    }
+                    submitImage();
+                }
+
+            }
+        } else if (arg0 == 3) {
+            // 系统相机返回
+            if (MyApplication.fileUri != null) {
+                Options op = new Options();
+                op.inSampleSize = 16;
+                Bitmap bm = BitmapFactory.decodeFile(
+                        MyApplication.fileUri.getPath(), op);
+                if (bm == null) {
+                    return;
+                }
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("isCheck", true);
+                map.put("imagePath", MyApplication.fileUri);
+                photoList.add(0, map);
+                if (photoList != null && photoList.size() > 0) {
+                    String outFile = getParse().isNull(
+                            photoList.get(0).get("imagePath"))
+                            .replace(
+                                    ".",
+                                    utils.MD5(String.valueOf(System
+                                            .currentTimeMillis())) + ".");
+                    startPhotoZoom(
+                            Uri.fromFile(new File(getParse().isNull(
+                                    photoList.get(0).get("imagePath")))),
+                            Uri.fromFile(new File(outFile)));
+                }
+            }
+        } else if (arg0 == 10) {// 修改其它资料成功返回
+            if (arg1 == RESULT_OK) {
+
+            }
+        }
     }
 
     /**

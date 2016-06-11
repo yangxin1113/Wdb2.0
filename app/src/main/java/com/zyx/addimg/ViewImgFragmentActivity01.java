@@ -85,6 +85,7 @@ public class ViewImgFragmentActivity01 extends MyBaseFragmentActivity {
 		setContentView(R.layout.fragmentactivity_view_img01);
 		selectedList = (ArrayList<Map<String, Object>>) getIntent()
 				.getSerializableExtra("selectedList");
+		utils.showToast(getApplicationContext(),selectedList.toString());
 		current = getIntent().getIntExtra("current", 0);
 		if (selectedList != null) {
 			for (int i = 0; i < selectedList.size(); i++) {

@@ -43,9 +43,9 @@ public class LifeFragment extends BaseFragment {
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case R.id.ll_parttime:
-                /*i = new Intent(getActivity(), JobFragmentActivity.class);
+                i = new Intent(getActivity(), JobFragmentActivity.class);
                 startActivity(i);
-                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);*/
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
 
 

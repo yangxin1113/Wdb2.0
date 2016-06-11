@@ -338,6 +338,7 @@ public class HttpClientUtil {
 				item = me.getContentLength();
 				ContentBody file = new FileBody(new File(fileList.get(i)),
 						contentType);
+				me.addPart("uploadFileName", new StringBody(file.getFilename().toString()));
 				me.addPart("UFInput" + (i + 1), file);
 				long sizeItem = me.getContentLength() - mapSize;
 				Log.e("单张图片大小：", String.valueOf(sizeItem));

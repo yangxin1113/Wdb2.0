@@ -95,6 +95,7 @@ public class AddImgFragmentActivity02 extends MyBaseFragmentActivity implements
 			if (imgList != null) {
 				setAdapter();
 				tv_count.setText(selectedList.size() + "/" + maxImg);
+				utils.showToast(getApplicationContext(),String.valueOf(selectedList.size()));
 			}
 			break;
 
@@ -149,6 +150,7 @@ public class AddImgFragmentActivity02 extends MyBaseFragmentActivity implements
 		tv_determine.setText(getString(R.string.determine_zh));
 		gv_addimg.setOnScrollListener(new PauseOnScrollListener(imageLoader,
 				true, true));
+
 	}
 
 	@Override
@@ -177,6 +179,7 @@ public class AddImgFragmentActivity02 extends MyBaseFragmentActivity implements
 
 		tv_view.setOnClickListener(this);
 		tv_determine.setOnClickListener(this);
+		//gv_addimg.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -233,12 +236,16 @@ public class AddImgFragmentActivity02 extends MyBaseFragmentActivity implements
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.rl_selected:
+			utils.showToast(getApplicationContext(),"fdsafdsfs"+list.get(position).get("imagePath").toString());
 			for (int i = 0; i < selectedList.size(); i++) {
 				if (getParse().isNull(selectedList.get(i).get("imagePath"))
 						.equals(getParse().isNull(
 								list.get(position).get("imagePath")))) {
 					selectedList.remove(i--);
-				}
+				}/*else{
+					selectedList.add(i, (Map<String, Object>) list.get(position).get("imagePath")
+							);
+				}*/
 			}
 			list.get(position).put("isCheck", false);
 			break;
